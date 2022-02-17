@@ -13,28 +13,34 @@ const WooCommerce = new WooCommerceRestApi({
     consumerSecret: 'cs_524a79c134001e1c82f209675cf4d1303c8d3899', // Your consumer secret
     version: 'wc/v3' // WooCommerce WP REST API version
 });
-
+var bg1 = require('./../../images/background/bg1.jpg');
 var bg3 = require('./../../images/banner/bnr1.jpg');
+
+
 
 class Place extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { dataPlaces: [] };
+        this.state = { dataPlaces: [], pages: [], currentPage: 1 };
+
+        this.onDecrease = this.onDecrease.bind(this);
     }
 
     componentDidMount() {
         WooCommerce.get("products",
 
             {
-                per_page: 50,
+                per_page: 12,
+                //category: 20,
+                page: this.state.currentPage,
             },
 
         )
             .then((response) => {
                 this.setState({
-                    dataPlaces:
-                        response.data
+                    dataPlaces: response.data,
+                    pages: response.headers['x-wp-totalpages']
                 });
                 console.log(this.state.dataPlaces)
             })
@@ -42,6 +48,14 @@ class Place extends Component {
                 console.log(error.response.data);
             });
     }
+
+    onDecrease() {
+        this.setState({
+            page: 2
+        });
+    }
+
+
 
     render() {
         return (
@@ -60,13 +74,74 @@ class Place extends Component {
                         </div>
                     </div>
                 </div>
+
+                <div className="section-full book-form overlay-black-dark bg-img-fix p-t30 p-b10 mid" style={{ backgroundImage: "url(" + bg1 + ")" }}>
+                    <div className="container">
+                        <form className="row">
+                            <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
+                                <label>Keywords</label>
+                                <input className="form-control" placeholder="Enter Zip Code" type="text" />
+                            </div>
+                            <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
+                                <label>Activity</label>
+                                <select className="form-control">
+                                    <option>Any</option>
+                                    <option>City Tours</option>
+                                    <option>Cultural &amp; Thematic Tours</option>
+                                    <option>Family Friendly Tours</option>
+                                    <option>Holiday &amp; Seasonal Tours</option>
+                                    <option>Indulgence &amp; Luxury Tours</option>
+                                    <option>Outdoor Activites</option>
+                                    <option>Relaxation Tours</option>
+                                    <option>Wild &amp; Adventure Tours</option>
+                                </select>
+                            </div>
+                            <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
+                                <label>Destination</label>
+                                <select className="form-control">
+                                    <option>Any</option>
+                                    <option>City Tours</option>
+                                    <option>Cultural &amp; Thematic Tours</option>
+                                    <option>Family Friendly Tours</option>
+                                    <option>Holiday &amp; Seasonal Tours</option>
+                                    <option>Indulgence &amp; Luxury Tours</option>
+                                    <option>Outdoor Activites</option>
+                                    <option>Relaxation Tours</option>
+                                    <option>Wild &amp; Adventure Tours</option>
+                                </select>
+                            </div>
+                            <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
+                                <label>Duration</label>
+                                <select className="form-control">
+                                    <option>Any</option>
+                                    <option>City Tours</option>
+                                    <option>Cultural &amp; Thematic Tours</option>
+                                    <option>Family Friendly Tours</option>
+                                    <option>Holiday &amp; Seasonal Tours</option>
+                                    <option>Indulgence &amp; Luxury Tours</option>
+                                    <option>Outdoor Activites</option>
+                                    <option>Relaxation Tours</option>
+                                    <option>Wild &amp; Adventure Tours</option>
+                                </select>
+                            </div>
+                            <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
+                                <label>Date</label>
+                                <input type='text' className="form-control" id='datetimepicker4' />
+                            </div>
+                            <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
+                                <label>Find</label>
+                                <Link to={'/place'} className="site-button btn-block">SEARCH</Link>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
                 <div className="section-full bg-white content-inner dlab-about-1">
                     <div className="container">
                         <div className="row">
-                            <div className="col-lg-4 col-md-5 col-sm-5">
-  
-                            </div>
-                            <div className="col-lg-8 col-md-7 col-sm-7">
+
+                            <div className="">
                                 <div className="m-b10">
                                     <form>
                                         <div className="form-group">
@@ -92,13 +167,29 @@ class Place extends Component {
                                                 <div className="dlab-info p-tb30 p-lr10 text-center bg-gray">
                                                     <h4 className="dlab-title m-t0"><Link>{item.name}</Link></h4>
                                                     <p className="m-b10">{item.name}</p>
-                                                    <Link to={'./booking/'+item.id} className="site-button outline radius-xl m-lr5">View Details</Link>
+                                                    <Link to={'./booking/' + item.id} className="site-button outline radius-xl m-lr5">View Details</Link>
                                                     <Link to={'./booking'} className="site-button outline radius-xl m-lr5">View Map</Link>
                                                 </div>
                                             </div>
                                         </div>
                                     ))}
                                 </div>
+
+                                <div className="pagination-bx clearfix text-center">
+                                    <ul className="pagination">
+                                        <li className="previous"><Link><i className="ti-arrow-left"></i> Prev</Link></li>
+
+                                        {Array.apply(null, Array(+this.state.pages))?.map(function (item, i) {
+                                            return <li onClick={() => this.onDecrease}><Link>{i}</Link></li>;
+                                        })}
+
+                                        {/* <li className="active"><Link>1</Link></li> */}
+
+
+                                        <li className="next"><Link>Next <i className="ti-arrow-right"></i></Link></li>
+                                    </ul>
+                                </div>
+
                             </div>
                         </div>
                     </div>
