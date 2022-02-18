@@ -24,7 +24,7 @@ class Place extends Component {
         super(props);
         this.state = { dataPlaces: [], pages: [], currentPage: 1 };
 
-        this.onDecrease = this.onDecrease.bind(this);
+        this.changePage = this.changePage.bind(this);
     }
 
     componentDidMount() {
@@ -49,10 +49,33 @@ class Place extends Component {
             });
     }
 
-    onDecrease() {
+    changePage(page) {
+
         this.setState({
-            page: 2
+            currentPage: page
         });
+
+        WooCommerce.get("products",
+
+            {
+                per_page: 12,
+                //category: 20,
+                page: page,
+            },
+
+        )
+            .then((response) => {
+                this.setState({
+                    dataPlaces: response.data,
+                    pages: response.headers['x-wp-totalpages']
+                });
+                console.log(this.state.dataPlaces)
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+            });
+
+
     }
 
 
@@ -179,12 +202,11 @@ class Place extends Component {
                                     <ul className="pagination">
                                         <li className="previous"><Link><i className="ti-arrow-left"></i> Prev</Link></li>
 
-                                        {Array.apply(null, Array(+this.state.pages))?.map(function (item, i) {
-                                            return <li onClick={() => this.onDecrease}><Link>{i}</Link></li>;
+                                        {Array.apply(null, Array(+this.state.pages))?.map((item, i) => {
+                                            return <li onClick={() => { this.changePage(i + 1) }}><Link>{i + 1}</Link></li>;
                                         })}
 
                                         {/* <li className="active"><Link>1</Link></li> */}
-
 
                                         <li className="next"><Link>Next <i className="ti-arrow-right"></i></Link></li>
                                     </ul>
