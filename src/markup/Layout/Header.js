@@ -47,7 +47,7 @@ class Header extends Component {
                                     <li>
                                         <Link className="site-button-link" to={'/place'}>Туры</Link>
                                     </li>
-                                    <li><Link className="site-button-link" to={'/packages'}>Packages</Link></li>
+                                    <li><Link className="site-button-link" to={'/packages'}>Пакетные туры</Link></li>
                                 </ul>
                             </div>
                             <div className="dlab-topbar-right top-login">
@@ -72,17 +72,14 @@ class Header extends Component {
                             </button>
                             <div className="header-nav navbar-collapse collapse navbar myNavbar justify-content-end" id="navbarNavDropdown">
                                 <ul className="nav navbar-nav">
-                                    <li><Link to={''}>Главная <i class="fa fa-chevron-down"></i></Link>
-                                        <ul class="sub-menu">
-                                            <li><Link to={'./'} class="dez-page">Home 1</Link></li>
-                                            <li><Link to={'index-2'} class="dez-page">Home 2 <span class="new-page menu-new">New</span></Link></li>
-                                        </ul>
+                                    <li><Link to={'./'}>Главная <i class="fa "></i></Link>
+
                                     </li>
                                     <li><Link to={'./place'}> Туры <i className="fa"></i></Link></li>
                                     <li><Link>Базы <i className="fa fa-chevron-down"></i></Link>
                                         <ul className="sub-menu">
-                                            <li><Link to={'hotel'} className="dez-page">Hotel</Link></li>
-                                            <li><Link to={'hotelbooking'} className="dez-page">Hotel Booking</Link></li>
+                                            <li><Link to={'baza_lipoviy'} className="dez-page">Урочище БОЛЬШОЙ ЛИПОВЫЙ</Link></li>
+                                            <li><Link to={'baza_saha'} className="dez-page">Мама Саха</Link></li>
                                         </ul>
                                     </li>
                                     <li><Link>Блог <i className="fa fa-chevron-down"></i></Link>

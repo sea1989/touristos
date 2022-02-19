@@ -164,7 +164,7 @@ class About extends Component {
                                     <div className="add-area">
                                         <h3>1000 $ for person - 6 nights</h3>
                                         <h2>Discount <span className="text-primary">10-30%</span> Off</h2>
-                                        <p>If you’re looking for a truly memorable family break here you find the lowest price on the right hotel for you. It's indescribable. Stay up to date and check out the deals for these trending destinations.</p>
+                                        <p>If you re looking for a truly memorable family break here you find the lowest price on the right hotel for you. It's indescribable. Stay up to date and check out the deals for these trending destinations.</p>
                                         <Link className="site-button white">See Promotion Tours</Link>
                                     </div>
                                 </div>

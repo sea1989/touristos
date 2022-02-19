@@ -26,6 +26,7 @@ import PortfolioGrid2 from './Pages/PortfolioGrid2';
 import Contacts from './Pages/Contacts';
 import Popuss from './Pages/Tab';
 import ListingDetails from './Pages/ListingDetails';
+import BazaLipoviy from './Pages/BazaLipoviy';
 
 
 class Markup extends Component {
@@ -47,6 +48,7 @@ class Markup extends Component {
                         <Route path='/register2' exact component={Register2} />
                         <Route path='/forgot' exact component={ForgotPass} />
                         <Route path='/hotelbooking' exact component={HotelBooking} />
+                        <Route path='/baza_lipoviy' exact component={BazaLipoviy} />
                         <Route path='/blogclassic' exact component={BlogClassic} />
                         <Route path='/blogclassicsidebar' exact component={BlogClassicSidebar} />
                         <Route path='/bloggrid' exact component={BlogGrid} />

@@ -190,8 +190,7 @@ class Place extends Component {
                                                 <div className="dlab-info p-tb30 p-lr10 text-center bg-gray">
                                                     <h4 className="dlab-title m-t0"><Link>{item.name}</Link></h4>
                                                     <p className="m-b10">{item.name}</p>
-                                                    <Link to={'./booking/' + item.id} className="site-button outline radius-xl m-lr5">View Details</Link>
-                                                    <Link to={'./booking'} className="site-button outline radius-xl m-lr5">View Map</Link>
+                                                    <Link to={'./booking/' + item.id} className="site-button outline radius-xl m-lr5">Подробнее</Link>
                                                 </div>
                                             </div>
                                         </div>

@@ -4431,10 +4431,10 @@ select option{
 	z-index:1;
 }
 .nav-btn-center-lr.btn-1 .nav-left{
-	left: -50px;
+	left: 0px;
 }
 .nav-btn-center-lr.btn-1 .nav-right{
-	right: -50px;
+	right: 0px;
 }
 
 @media only screen and (max-width: 1200px){
@@ -4456,10 +4456,10 @@ select option{
 		padding: 0 15px 20px;
 	}
 	.nav-btn-center-lr.btn-1 .nav-left{
-		left: -5px;
+		left: 0px;
 	}
 	.nav-btn-center-lr.btn-1 .nav-right{
-		right: -5px;
+		right: 0px;
 	}
 }
 @media only screen and (max-width: 576px){

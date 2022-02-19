@@ -37,7 +37,6 @@ const content = [
 ];
 
 var bg1 = require('./../../images/background/bg1.jpg');
-var bg3 = require('./../../images/background/bg3.jpg');
 
 class Homepage extends Component {
 
@@ -50,7 +49,7 @@ class Homepage extends Component {
         WooCommerce.get("products?category=20",
 
             {
-                per_page: 9, 
+                per_page: 9,
             }
 
         )
@@ -155,29 +154,13 @@ class Homepage extends Component {
 
                     <TopPlaces places={this.state.dataPlaces} />
 
-                    <div className="section-full bg-white content-inner-2 bgeffect overlay-black-middle" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-lg-6 col-md-12">
-                                    <div className="add-area">
-                                        <h3>1000 $ for person - 6 nights</h3>
-                                        <h2>Discount <span className="text-primary">10-30%</span> Off</h2>
-                                        <p>If you’re looking for a truly memorable family break here you find the lowest price on the right hotel for you. It's indescribable. Stay up to date and check out the deals for these trending destinations.</p>
-                                        <Link to='' className="site-button white">See Promotion Tours</Link>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6 col-md-6"></div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <Slick />
 
                     <div className="section-full bg-white content-inner dlab-about-1 promotions">
                         <div className="container">
                             <div className="section-head text-black text-center">
-                                <h2 className="text-uppercase m-b0">PACKAGES</h2>
-                                <p className="font-18">BEST TRAVEL PACKAGES </p>
+                                <h2 className="text-uppercase m-b0">Пакетные туры</h2>
+                                <p className="font-18">Лучшие пакетные туры </p>
                             </div>
                             <div className="row packages">
                                 <div className="col-lg-6 col-xl-3 col-sm-6 col-md-6 m-b30">
@@ -186,7 +169,7 @@ class Homepage extends Component {
                                             <Link><img src={require('./../../images/gallery/img4.jpg')} alt="" /></Link>
                                         </div>
                                         <div className="dlab-info p-a15 border-1">
-                                            <h4 className="dlab-title m-t0"><Link href="packages.html">Weekdays in Australia</Link></h4>
+                                            <h4 className="dlab-title m-t0"><Link href="packages.html">Выходные на природе</Link></h4>
                                             <span className="location">Peelamedu, Cbe, Australia</span>
                                             <div className="package-content">
                                                 <ul className="package-meta">
@@ -207,7 +190,7 @@ class Homepage extends Component {
                                             <Link><img src={require('./../../images/gallery/img3.jpg')} alt="" /></Link>
                                         </div>
                                         <div className="dlab-info p-a15 border-1">
-                                            <h4 className="dlab-title m-t0"><Link href="packages.html">Weekdays in India</Link></h4>
+                                            <h4 className="dlab-title m-t0"><Link href="packages.html">Выходные в Индии)</Link></h4>
                                             <span className="location">Peelamedu, Cbe, India</span>
                                             <div className="package-content">
                                                 <ul className="package-meta">
@@ -228,7 +211,7 @@ class Homepage extends Component {
                                             <Link><img src={require('./../../images/gallery/img5.jpg')} alt="" /></Link>
                                         </div>
                                         <div className="dlab-info p-a15 border-1">
-                                            <h4 className="dlab-title m-t0"><Link href="packages.html">Weekdays in South America</Link></h4>
+                                            <h4 className="dlab-title m-t0"><Link href="packages.html">Выходные в Америке)</Link></h4>
                                             <span className="location">Peelamedu, Cbe, South America</span>
                                             <div className="package-content">
                                                 <ul className="package-meta">
@@ -249,7 +232,7 @@ class Homepage extends Component {
                                             <Link><img src={require('./../../images/gallery/img6.jpg')} alt="" /></Link>
                                         </div>
                                         <div className="dlab-info p-a15 border-1">
-                                            <h4 className="dlab-title m-t0"><Link href="packages.html">Weekdays in Philippines</Link></h4>
+                                            <h4 className="dlab-title m-t0"><Link href="packages.html">Выходные в Филиппинах)</Link></h4>
                                             <span className="location">Peelamedu, Cbe, Philippines</span>
                                             <div className="package-content">
                                                 <ul className="package-meta">
@@ -267,6 +250,9 @@ class Homepage extends Component {
                             </div>
                         </div>
                     </div>
+
+                    <Slick />
+
                 </div>
                 <Footer />
             </div>

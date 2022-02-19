@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
-import Header from './../Layout/Header';
-import Footer from './../Layout/Footer';
+import Header from '../Layout/Header';
+import Footer from '../Layout/Footer';
 
 const hotelSlider = [
     {
@@ -52,7 +52,7 @@ function SamplePrevArrow(props) {
     );
 }
 
-class HotelBooking extends Component {
+class BazaLipoviy extends Component {
 
     render() {
         var settings = {
@@ -68,11 +68,11 @@ class HotelBooking extends Component {
                 <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                     <div className="container">
                         <div className="dlab-bnr-inr-entry">
-                            <h1 className="text-white">Hotal Booking</h1>
+                            <h1 className="text-white">Урочище БОЛЬШОЙ ЛИПОВЫЙ</h1>
                             <div className="breadcrumb-row">
                                 <ul className="list-inline">
-                                    <li><Link>Home</Link></li>
-                                    <li>Hotel Booking</li>
+                                    <li><Link>Главная</Link></li>
+                                    <li>Базы</li>
                                 </ul>
                             </div>
                         </div>
@@ -85,14 +85,14 @@ class HotelBooking extends Component {
                                 <div className="col-lg-8">
                                     <div className="d-flex info-bx m-b30">
                                         <div className="tour-title">
-                                            <h2>FabHotel RMS Comforts</h2>
-                                            <p><i className="fa fa-map-marker m-r5"></i>Yeshwanthpur, Bangalore <Link className="text-primary">View on Map</Link></p>
-                                            <p><span className="site-button button-sm button-gray">Hotel</span> <span className="site-button button-sm">Bar</span> Tour</p>
+                                            <h2>Урочище БОЛЬШОЙ ЛИПОВЫЙ</h2>
+                                            <p><i className="fa fa-map-marker m-r5"></i>Партизанск <Link className="text-primary">View on Map</Link></p>
+                                            <p><span className="site-button button-sm button-gray">База</span> <span className="site-button button-sm">Отдых</span> Тур</p>
                                         </div>
                                         <div className="tour-price ml-auto">
-                                            <span>Per Room Per Night</span>
-                                            <h2 className="price">Rs.1,07,990</h2>
-                                            <h4 className="actual-price">Rs.1,23,990</h4>
+                                            <span>Номер/1 ночь</span>
+                                            <h2 className="price">Руб 5,990</h2>
+                                            <h4 className="actual-price">Руб 7,990</h4>
                                         </div>
                                     </div>
                                     <div className="product-gallery on-show-slider">
@@ -110,31 +110,43 @@ class HotelBooking extends Component {
 
                                     </div>
                                     <div className="tour-days">
-                                        <h2 className="m-b10">About Hotel</h2>
-                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
+                                        <h2 className="m-b10">ОПИСАНИЕ БАЗЫ</h2>
+                                        <p>Центр расположен в лесной зоне, в 13 км от центра города Партизанска и в 5-ти км. от п.Наречное, в 2 км от станции Красноармейское.
+                                            Располагается Центр в уникальном природном комплексе, в глубоком таежном распадке, в предгорьях Сихотэ-Алиня (хребет Партизанский и хребет Пидан).
+                                            С неповторимым микроклиматом, со своим температурным режимом, влажностью, розой ветров и воздуха, прозрачного,
+                                            пронизанного особыми ароматами леса и прохладой горных ключей, несущего запахи и силу тайги, это все и создает уникальный оздоровительный эффект данного места.
+                                            Территория обустроена, разбиты цветники, куртины из цветущих кустарников, альпийская горка с лекарственными,
+                                            красно- книжными растениями и эндемиками Приморского края (микробиота вечнозеленая, брусника, можжевельник с берегов Кемы, бадан, очиток едкий, разнообразие папоротников),
+                                            газоны на территории подстрижены и предназначены для игр, отдыха и сна. На них так хорошо спится. Дорожки выложены брусчаткой и отсыпаны отсевом, в ночное время территория и беседки освещены.
+                                            Центр — это большой дом в 2 этажа, в 9 жилых комнат (4 больших комнаты на 1-ом этаже, 5  поменьше комнат на втором этаже, 2-е из них с балконами),
+                                            VIP зальчика для посиделок, бильярдной, зоны отдыха с библиотекой и холла с камином, большим телевизором (спутниковое телевидение, DVD) и обеденной зоной.
+                                            Окна в доме пластиковые, полы покрыты ковровым покрытием.  Дом теплый, в зимнее время отапливается каином, батареями и инфракрасными обогревателями. В доме ходят в тапочках.
+                                            Комнаты оборудованы 2-х спальными кроватями, плетеной мебелью, зеркалом, вешалкой и телевизором.
+                                            Есть комната №2 на 3- человека. В комнатах установлены индивидуальные регуляторы температуры, выставить комфортный для себя температурный режим может каждый.
+                                            Несколько комнат возможно оборудовать дополнительными местами для детей (раскладушками).
+                                            Большие теплые одеяла,  хорошее постельное белье  и полотенца для умывания. В доме оборудованы туалетные комнаты, душ с горячей водой работает от бойлера. На втором этаже собрана библиотека на вкус любого читателя.
+                                        </p>
                                         <div className="row">
+
                                             <div className="col-md-12 col-lg-12 col-sm-12">
+                                                <h5>Для активного отдыха предлагаем к услугам гостей :</h5>
                                                 <ul className="list-hand-point primary">
-                                                    <li>Closeness to ISRO (1.6 km) and BEL (2.4 km)</li>
-                                                    <li>Cozy rooms with modern interiors</li>
-                                                    <li>In-house restaurant serving tasty dishes</li>
+                                                    <li>русская парная с купелью</li>
+                                                    <li>каток</li>
+                                                    <li>веревочный парк «ПОПОЛЗЕНЬ»</li>
+                                                    <li>таежную горку для санок</li>
+                                                    <li>лыжню по таежному распадку протяженностью 7 км, 1,5 км</li>
+                                                    <li>лыжня для маленьких, от 3х лет (специальные лыжи) и горка на территории</li>
+                                                    <li>клюшки, лыжи, коньки и санки</li>
+                                                    <li>тир (пневматика, лук)</li>
+                                                    <li>мячи, бадминтон</li>
                                                 </ul>
                                             </div>
                                             <div className="col-md-12 col-lg-12 col-sm-12">
-                                                <h5>Where we are Located</h5>
+                                                <h5>Стоимость проживания в Центре на 2020 — 2021 год.</h5>
                                                 <ul className="list-hand-point primary">
-                                                    <li>The FabHotel RMS Comforts is situated on 5th Main in the Mathikere Extension area</li>
-                                                    <li>Yeshwantpur Junction Railway Station is 1.8 km, while Krantivira Sangolli Rayanna Railway Station is 7.3 km from the hotel</li>
-                                                    <li>Sandal Soap Factory Metro Station is 2.6 km and Kempegowda International Airport is a 40-minute drive (30.5 km)</li>
-                                                    <li>Some of the prominent landmarks near the hotel include BBMP Office (700 m), Ramaiah Institute of Technology (750 m), Indian Institute of Science (950 m), BEL-THALES Systems Limited (1.5 km), ISRO (1.6 km), RTO Office Yeshwanthpura (1.8 km), Antrix Corporation Limited (1.9 km), Bharat Electronics Limited (2.1 km) and Professional Tax Office (2.5 km)</li>
-                                                    <li>Sandal Soap Factory Metro Station is 2.6 km and Kempegowda International Airport is a 40-minute drive (30.5 km)</li>
-                                                </ul>
-                                            </div>
-                                            <div className="col-md-12 col-lg-12 col-sm-12">
-                                                <h5>Where to Eat</h5>
-                                                <ul className="list-hand-point primary">
-                                                    <li>The hotel has a restaurant that treats you with a wide range of dishes across multiple cuisines</li>
-                                                    <li>Sri Krishna Bhavan (53 m), Shree Sagar (63 m), Delight (72 m), Reddy Mess (140 m), Star Biryani Center (290 m) and Indira Canteen (300 m) are among many dining options around the hotel</li>
+                                                    <li>Полный пансион	- от 3000</li>
+                                                    <li>2-х местный номер (без питания). Доп услуги оплачиваются отдельно - от 4000</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -427,4 +439,4 @@ class HotelBooking extends Component {
         )
     }
 }
-export default HotelBooking;
+export default BazaLipoviy;

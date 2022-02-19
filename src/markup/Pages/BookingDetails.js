@@ -63,6 +63,20 @@ const tourDay = [
 
 var bg3 = require('./../../images/banner/bnr1.jpg');
 
+function SampleNextArrow(props) {
+    const {  onClick } = props;
+    return (
+      <div className="la la-angle-right nav-right"  onClick={onClick}/>
+    );
+  }
+  
+  function SamplePrevArrow(props) {
+    const {  onClick } = props;
+    return (
+      <div className="la la-angle-left nav-left" onClick={onClick}/>
+    );
+  }
+
 const BookingDetails = () => {
     const { id } = useParams();
     const [tour, setTour] = useState([]);
@@ -85,10 +99,12 @@ const BookingDetails = () => {
     }, [id])
 
     var settings = {
-        dots: false,
+        dots: true,
         slidesToShow: 1,
         infinite: true,
-        centerPadding: 30
+        centerPadding: 30,
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />,
     };
     return (
         <div>
@@ -124,7 +140,7 @@ const BookingDetails = () => {
                                     </div>
                                 </div>
                                 <div className="product-gallery on-show-slider">
-                                    <Slider {...settings}>
+                                    <Slider className="blog-carousel nav-btn-center-lr btn-1" {...settings} >
 
                                         {
                                             tourImg.map((item, index) => (
@@ -151,9 +167,7 @@ const BookingDetails = () => {
                                         <div className="flex-fill col-6">
                                             <Link to={"/hotelbooking"} className="site-button btn-block" data-toggle="modal" data-target="#exampleModal1">Бронировать</Link>
                                         </div>
-                                        <div className="flex-fill col-6">
-                                            <Link to={"/contact"} className="site-button-secondry btn-block" data-toggle="modal" data-target="#exampleModal">Отправить запрос</Link>
-                                        </div>
+ 
                                     </div>
                                     <div className="m-t50">
                                         <img src={require('./../../images/add/add-bnr.jpg')} className="d-md-none d-xl-block d-lg-block" alt="" />
