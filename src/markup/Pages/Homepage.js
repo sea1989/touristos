@@ -20,9 +20,9 @@ const WooCommerce = new WooCommerceRestApi({
 
 const content = [
     {
-        title: 'Vulputate Mollis Ultricies Fermentum Parturient',
-        button: 'Read More',
-        image: require('./../../images/main-slider/slide1.jpg'),
+        title: 'Родной край достоин Вашей любви и внимания!',
+        button: 'Календарь событий',
+        image: 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/Чандолаз2.jpg',
     },
     {
         title: 'Tortor Dapibus Commodo Aenean Quam',
@@ -88,7 +88,6 @@ class Homepage extends Component {
                         ))}
                     </Slider>
 
-
                     <div className="section-full book-form overlay-black-dark bg-img-fix p-t30 p-b10 mid" style={{ backgroundImage: "url(" + bg1 + ")" }}>
                         <div className="container">
                             <form className="row">
@@ -150,11 +149,7 @@ class Homepage extends Component {
                         </div>
                     </div>
 
-
-
                     <TopPlaces places={this.state.dataPlaces} />
-
-
 
                     <div className="section-full bg-white content-inner dlab-about-1 promotions">
                         <div className="container">

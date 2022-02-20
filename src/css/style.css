@@ -2454,13 +2454,6 @@ dl dd {
     line-height: 24px;
 }
 
-.dlab-media {
-    overflow: hidden;
-    position: relative;
-
-    max-height: 209px;
-}
-
 .dlab-box:hover .dlab-info-has,
 .dlab-media:hover .dlab-info-has {
     opacity: 1;
@@ -12583,8 +12576,6 @@ ul[class*="list-"] {
 /*== media with content box css ==*/
 
 .dlab-box {
-    min-height: 500px;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -15910,4 +15901,19 @@ ol.commentlist li .star-rating {
 
 .login-form .form-control::-webkit-input-placeholder {
     color: #000;
+}
+
+.slider-background {
+    background: #6666a4;
+}
+
+.top-item {
+    min-height: 500px;
+}
+
+.top-item__media {
+    overflow: hidden;
+    position: relative;
+
+    max-height: 209px;
 }

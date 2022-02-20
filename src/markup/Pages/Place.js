@@ -185,8 +185,8 @@ class Place extends Component {
 
                                     {this.state.dataPlaces.map((item, index) => (
                                         <div className="col-md-12 col-lg-6 col-sm-12 m-b30" key={index}>
-                                            <div className="dlab-box place-bx">
-                                                <div className="dlab-media"> <Link><img src={item.images[0]?.src || 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2018/11/DSC_2797-scaled.jpg'} alt="" /></Link> </div>
+                                            <div className="dlab-box place-bx top-item">
+                                                <div className="dlab-media top-item__media"> <Link><img src={item.images[0]?.src || 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2018/11/DSC_2797-scaled.jpg'} alt="" /></Link> </div>
                                                 <div className="dlab-info p-tb30 p-lr10 text-center bg-gray">
                                                     <h4 className="dlab-title m-t0"><Link>{item.name}</Link></h4>
                                                     <p className="m-b10">{item.name}</p>

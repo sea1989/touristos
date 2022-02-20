@@ -35,8 +35,8 @@ class TopPlaces extends Component {
                         {this.props.places.map((item, index) => (
 
                             <div className="col-lg-4 col-md-6 col-sm-6 m-b30 card-container" key={index}>
-                                <div className="dlab-box">
-                                    <div className="dlab-media">
+                                <div className="dlab-box top-item">
+                                    <div className="dlab-media top-item__media">
                                         <Link to={'./booking'}>
                                             <img src={item.images[0]?.src || 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2018/11/DSC_2797-scaled.jpg'} alt="" />
                                         </Link>

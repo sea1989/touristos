@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-// import {} from 'react-router-dom'
-
-
-
 class Header extends Component {
 
     componentDidMount() {
@@ -78,8 +74,8 @@ class Header extends Component {
                                     <li><Link to={'./place'}> Туры <i className="fa"></i></Link></li>
                                     <li><Link>Базы <i className="fa fa-chevron-down"></i></Link>
                                         <ul className="sub-menu">
-                                            <li><Link to={'baza_lipoviy'} className="dez-page">Урочище БОЛЬШОЙ ЛИПОВЫЙ</Link></li>
-                                            <li><Link to={'baza_saha'} className="dez-page">Мама Саха</Link></li>
+                                            <li><Link to={'baza_lipoviy_ver2'} className="dez-page">Урочище БОЛЬШОЙ ЛИПОВЫЙ</Link></li>
+                                            <li><Link to={'baza_saha_ver2'} className="dez-page">База отдыха "Мама-Саха</Link></li>
                                         </ul>
                                     </li>
                                     <li><Link>Блог <i className="fa fa-chevron-down"></i></Link>
