@@ -3,6 +3,9 @@ import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
 import { Link } from 'react-router-dom';
 import Slick from './Slick';
+
+import Slick2 from './Slick2';
+
 import TopPlaces from './../Element/TopPlaces';
 import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
@@ -49,7 +52,7 @@ class Homepage extends Component {
         WooCommerce.get("products?category=20",
 
             {
-                per_page: 9,
+                per_page: 6,
             }
 
         )
@@ -92,58 +95,65 @@ class Homepage extends Component {
                         <div className="container">
                             <form className="row">
                                 <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
-                                    <label>Keywords</label>
-                                    <input className="form-control" placeholder="Enter Zip Code" type="text" />
+                                    <label>Ключевые слова</label>
+                                    <input className="form-control" placeholder="Поиск" type="text" />
                                 </div>
                                 <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
-                                    <label>Activity</label>
+                                    <label>Категории</label>
                                     <select className="form-control">
-                                        <option>Any</option>
-                                        <option>City Tours</option>
-                                        <option>Cultural &amp; Thematic Tours</option>
-                                        <option>Family Friendly Tours</option>
-                                        <option>Holiday &amp; Seasonal Tours</option>
-                                        <option>Indulgence &amp; Luxury Tours</option>
-                                        <option>Outdoor Activites</option>
-                                        <option>Relaxation Tours</option>
-                                        <option>Wild &amp; Adventure Tours</option>
+                                        <option>Обзорные</option>
+                                        <option>Морские</option>
+                                        <option>Познавательные</option>
+                                        <option>Пешеходные</option>
+                                        <option>Активные</option>
+                                        <option>Промышленные</option>
+                                        <option>Природные объекты</option>
+                                        <option>Город крепость</option>
                                     </select>
                                 </div>
                                 <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
-                                    <label>Destination</label>
+                                    <label>Вид тура</label>
                                     <select className="form-control">
-                                        <option>Any</option>
-                                        <option>City Tours</option>
-                                        <option>Cultural &amp; Thematic Tours</option>
-                                        <option>Family Friendly Tours</option>
-                                        <option>Holiday &amp; Seasonal Tours</option>
-                                        <option>Indulgence &amp; Luxury Tours</option>
-                                        <option>Outdoor Activites</option>
-                                        <option>Relaxation Tours</option>
-                                        <option>Wild &amp; Adventure Tours</option>
+                                        <option>Пеший</option>
+                                        <option>Экскурсия</option>
+                                        <option>Тур</option>
+                                        <option>Катерный</option>
+                                        <option>Автобусный</option>
+                                        <option>Катер + автобус</option>
+                                        <option>Семейный</option>
+                                        <option>Детский</option>
+                                        <option>Активный</option>
+                                        <option>Обзорный</option>
+                                        <option>Индивидуальный</option>
+                                        <option>Групповой</option>
                                     </select>
                                 </div>
                                 <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
-                                    <label>Duration</label>
+                                    <label>Направления</label>
                                     <select className="form-control">
-                                        <option>Any</option>
-                                        <option>City Tours</option>
-                                        <option>Cultural &amp; Thematic Tours</option>
-                                        <option>Family Friendly Tours</option>
-                                        <option>Holiday &amp; Seasonal Tours</option>
-                                        <option>Indulgence &amp; Luxury Tours</option>
-                                        <option>Outdoor Activites</option>
-                                        <option>Relaxation Tours</option>
-                                        <option>Wild &amp; Adventure Tours</option>
+                                        <option>Горы</option>
+                                        <option>Острова</option>
+                                        <option>Заповедники</option>
+                                        <option>Базы отдыха</option>
+                                        <option>Лечение</option>
+                                        <option>Море</option>
+                                        <option>Водопады</option>
                                     </select>
                                 </div>
                                 <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
-                                    <label>Date</label>
-                                    <input type='text' className="form-control" id='datetimepicker4' />
+                                    <label>Продолжительность</label>
+                                    <select className="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4 отдыха</option>
+                                        <option>5 и более</option>
+                                    </select>
                                 </div>
+
                                 <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                                     <label>Find</label>
-                                    <Link to={'/place'} className="site-button btn-block">SEARCH</Link>
+                                    <Link to={'/place'} className="site-button btn-block">Поиск</Link>
                                 </div>
                             </form>
                         </div>
@@ -247,6 +257,7 @@ class Homepage extends Component {
                     </div>
 
                     <Slick />
+                    <Slick2 />
 
                 </div>
                 <Footer />

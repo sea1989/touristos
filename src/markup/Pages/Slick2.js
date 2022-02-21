@@ -35,17 +35,17 @@ const destination = [
 var bg1 = require('./../../images/background/bg1.jpg');
 
 function SampleNextArrow(props) {
-  const {  onClick } = props;
-  return (
-    <div className="la la-angle-right nav-right"  onClick={onClick}/>
-  );
+    const { onClick } = props;
+    return (
+        <div className="la la-angle-right nav-right" onClick={onClick} />
+    );
 }
 
 function SamplePrevArrow(props) {
-  const {  onClick } = props;
-  return (
-    <div className="la la-angle-left nav-left" onClick={onClick}/>
-  );
+    const { onClick } = props;
+    return (
+        <div className="la la-angle-left nav-left" onClick={onClick} />
+    );
 }
 
 
@@ -58,8 +58,8 @@ class Slick2 extends Component {
             infinite: true,
             autoplay: false,
             speed: 2000,
-			nextArrow: <SampleNextArrow />,
-			prevArrow: <SamplePrevArrow />,
+            nextArrow: <SampleNextArrow />,
+            prevArrow: <SamplePrevArrow />,
             // className: "center",
             // centerMode: true,
             // centerPadding: "60px",
@@ -89,9 +89,8 @@ class Slick2 extends Component {
                 <div className="section-full bg-white content-inner-1 testimonial-one-area overlay-black-dark" style={{ backgroundImage: "url(" + bg1 + ")" }}>
                     <div className="container">
                         <div className="section-head style1 text-center text-white">
-                            <h2 className="box-title">What Our Users Say</h2>
+                            <h2 className="box-title">Наши партнеры</h2>
                             <div className="dlab-separator bg-primary"></div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
                         </div>
                         <div className="row">
                             <div className="col-lg-12">

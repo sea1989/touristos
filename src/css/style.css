@@ -15905,6 +15905,7 @@ ol.commentlist li .star-rating {
 
 .slider-background {
     background: #6666a4;
+    padding: 48px;
 }
 
 .top-item {
@@ -15916,4 +15917,8 @@ ol.commentlist li .star-rating {
     position: relative;
 
     max-height: 209px;
+}
+
+.slider-project-list img {
+    max-width: 180px;
 }

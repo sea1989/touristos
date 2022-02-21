@@ -17,7 +17,6 @@ var bg1 = require('./../../images/background/bg1.jpg');
 var bg3 = require('./../../images/banner/bnr1.jpg');
 
 
-
 class Place extends Component {
 
     constructor(props) {
@@ -25,17 +24,20 @@ class Place extends Component {
         this.state = { dataPlaces: [], pages: [], currentPage: 1 };
 
         this.changePage = this.changePage.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        console.log(event.target.value);
     }
 
     componentDidMount() {
         WooCommerce.get("products",
-
             {
                 per_page: 12,
                 //category: 20,
                 page: this.state.currentPage,
             },
-
         )
             .then((response) => {
                 this.setState({
@@ -74,11 +76,7 @@ class Place extends Component {
             .catch((error) => {
                 console.log(error.response.data);
             });
-
-
     }
-
-
 
     render() {
         return (
@@ -87,11 +85,10 @@ class Place extends Component {
                 <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                     <div className="container">
                         <div className="dlab-bnr-inr-entry">
-                            <h1 className="text-white">Туры</h1>
+                            <h1 className="text-white">Услуги</h1>
                             <div className="breadcrumb-row">
                                 <ul className="list-inline">
-                                    <li><Link>Главная</Link></li>
-                                    <li>Туры</li>
+                                    <li>Туры и Экскурсии</li>
                                 </ul>
                             </div>
                         </div>
@@ -102,62 +99,70 @@ class Place extends Component {
                     <div className="container">
                         <form className="row">
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
-                                <label>Keywords</label>
-                                <input className="form-control" placeholder="Enter Zip Code" type="text" />
+                                <label>Ключевые слова</label>
+                                <input className="form-control" placeholder="Поиск" type="text" />
                             </div>
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
-                                <label>Activity</label>
-                                <select className="form-control">
-                                    <option>Any</option>
-                                    <option>City Tours</option>
-                                    <option>Cultural &amp; Thematic Tours</option>
-                                    <option>Family Friendly Tours</option>
-                                    <option>Holiday &amp; Seasonal Tours</option>
-                                    <option>Indulgence &amp; Luxury Tours</option>
-                                    <option>Outdoor Activites</option>
-                                    <option>Relaxation Tours</option>
-                                    <option>Wild &amp; Adventure Tours</option>
+                                <label>Категории</label>
+                                <select className="form-control" onChange={this.handleChange}>
+                                    <option>Обзорные</option>
+                                    <option>Морские</option>
+                                    <option>Познавательные</option>
+                                    <option>Пешеходные</option>
+                                    <option>Активные</option>
+                                    <option>Промышленные</option>
+                                    <option>Природные объекты</option>
+                                    <option>Город крепость</option>
                                 </select>
                             </div>
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
-                                <label>Destination</label>
+                                <label>Вид тура</label>
                                 <select className="form-control">
-                                    <option>Any</option>
-                                    <option>City Tours</option>
-                                    <option>Cultural &amp; Thematic Tours</option>
-                                    <option>Family Friendly Tours</option>
-                                    <option>Holiday &amp; Seasonal Tours</option>
-                                    <option>Indulgence &amp; Luxury Tours</option>
-                                    <option>Outdoor Activites</option>
-                                    <option>Relaxation Tours</option>
-                                    <option>Wild &amp; Adventure Tours</option>
+                                    <option>Пеший</option>
+                                    <option>Экскурсия</option>
+                                    <option>Тур</option>
+                                    <option>Катерный</option>
+                                    <option>Автобусный</option>
+                                    <option>Катер + автобус</option>
+                                    <option>Семейный</option>
+                                    <option>Детский</option>
+                                    <option>Активный</option>
+                                    <option>Обзорный</option>
+                                    <option>Индивидуальный</option>
+                                    <option>Групповой</option>
                                 </select>
                             </div>
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
-                                <label>Duration</label>
+                                <label>Направления</label>
                                 <select className="form-control">
-                                    <option>Any</option>
-                                    <option>City Tours</option>
-                                    <option>Cultural &amp; Thematic Tours</option>
-                                    <option>Family Friendly Tours</option>
-                                    <option>Holiday &amp; Seasonal Tours</option>
-                                    <option>Indulgence &amp; Luxury Tours</option>
-                                    <option>Outdoor Activites</option>
-                                    <option>Relaxation Tours</option>
-                                    <option>Wild &amp; Adventure Tours</option>
+                                    <option>Горы</option>
+                                    <option>Острова</option>
+                                    <option>Заповедники</option>
+                                    <option>Базы отдыха</option>
+                                    <option>Лечение</option>
+                                    <option>Море</option>
+                                    <option>Водопады</option>
                                 </select>
                             </div>
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
-                                <label>Date</label>
-                                <input type='text' className="form-control" id='datetimepicker4' />
+                                <label>Продолжительность</label>
+                                <select className="form-control">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4 отдыха</option>
+                                    <option>5 и более</option>
+                                </select>
                             </div>
+
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                                 <label>Find</label>
-                                <Link to={'/place'} className="site-button btn-block">SEARCH</Link>
+                                <Link to={'/place'} className="site-button btn-block">Поиск</Link>
                             </div>
                         </form>
                     </div>
                 </div>
+
 
 
                 <div className="section-full bg-white content-inner dlab-about-1">
