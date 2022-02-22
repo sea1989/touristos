@@ -64,18 +64,18 @@ const tourDay = [
 var bg3 = require('./../../images/banner/bnr1.jpg');
 
 function SampleNextArrow(props) {
-    const {  onClick } = props;
+    const { onClick } = props;
     return (
-      <div className="la la-angle-right nav-right"  onClick={onClick}/>
+        <div className="la la-angle-right nav-right" onClick={onClick} />
     );
-  }
-  
-  function SamplePrevArrow(props) {
-    const {  onClick } = props;
+}
+
+function SamplePrevArrow(props) {
+    const { onClick } = props;
     return (
-      <div className="la la-angle-left nav-left" onClick={onClick}/>
+        <div className="la la-angle-left nav-left" onClick={onClick} />
     );
-  }
+}
 
 const BookingDetails = () => {
     const { id } = useParams();
@@ -158,7 +158,7 @@ const BookingDetails = () => {
                                 </div>
                                 <div className="tour-days">
                                     <h2 className="m-b10">О маршруте</h2>
-                                    <p>Это давно установленный факт, что читатель будет отвлекаться на удобочитаемое содержание страницы при просмотре ее макета. </p>
+                                    <p>{tour.description} </p>
                                 </div>
                             </div>
                             <div className="col-lg-4">
@@ -167,7 +167,7 @@ const BookingDetails = () => {
                                         <div className="flex-fill col-6">
                                             <Link to={"/hotelbooking"} className="site-button btn-block" data-toggle="modal" data-target="#exampleModal1">Бронировать</Link>
                                         </div>
- 
+
                                     </div>
                                     <div className="m-t50">
                                         <img src={require('./../../images/add/add-bnr.jpg')} className="d-md-none d-xl-block d-lg-block" alt="" />

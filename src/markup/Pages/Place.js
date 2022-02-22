@@ -25,10 +25,78 @@ class Place extends Component {
 
         this.changePage = this.changePage.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleChangeType = this.handleChangeType.bind(this);
     }
 
     handleChange(event) {
         console.log(event.target.value);
+
+        if (event.target.value === 'Морские') {
+            WooCommerce.get("products",
+                {
+                    per_page: 12,
+                    category: 20,
+                    page: this.state.currentPage,
+                },
+            )
+                .then((response) => {
+                    this.setState({
+                        dataPlaces: response.data,
+                        pages: response.headers['x-wp-totalpages']
+                    });
+                    console.log(this.state.dataPlaces)
+                })
+                .catch((error) => {
+                    console.log(error.response.data);
+                });
+        }
+
+        else if (event.target.value === 'Обзорные') {
+            WooCommerce.get("products",
+                {
+                    per_page: 12,
+                    category: 19,
+                    page: this.state.currentPage,
+                },
+            )
+                .then((response) => {
+                    this.setState({
+                        dataPlaces: response.data,
+                        pages: response.headers['x-wp-totalpages']
+                    });
+                    console.log(this.state.dataPlaces)
+                })
+                .catch((error) => {
+                    console.log(error.response.data);
+                });
+        }
+
+    }
+
+    handleChangeType(event) {
+        console.log(event.target.value);
+
+        if (event.target.value === 'Пеший') {
+            WooCommerce.get("products",
+                {
+                    per_page: 12,
+                    category: 23,
+                    page: this.state.currentPage,
+                },
+            )
+                .then((response) => {
+                    this.setState({
+                        dataPlaces: response.data,
+                        pages: response.headers['x-wp-totalpages']
+                    });
+                    console.log(this.state.dataPlaces)
+                })
+                .catch((error) => {
+                    console.log(error.response.data);
+                });
+        }
+
+
     }
 
     componentDidMount() {
@@ -98,13 +166,11 @@ class Place extends Component {
                 <div className="section-full book-form overlay-black-dark bg-img-fix p-t30 p-b10 mid" style={{ backgroundImage: "url(" + bg1 + ")" }}>
                     <div className="container">
                         <form className="row">
-                            <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
-                                <label>Ключевые слова</label>
-                                <input className="form-control" placeholder="Поиск" type="text" />
-                            </div>
+
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                                 <label>Категории</label>
                                 <select className="form-control" onChange={this.handleChange}>
+                                    <option>Любая</option>
                                     <option>Обзорные</option>
                                     <option>Морские</option>
                                     <option>Познавательные</option>
@@ -117,7 +183,8 @@ class Place extends Component {
                             </div>
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                                 <label>Вид тура</label>
-                                <select className="form-control">
+                                <select className="form-control" onChange={this.handleChangeType}>
+                                    <option>Любой</option>
                                     <option>Пеший</option>
                                     <option>Экскурсия</option>
                                     <option>Тур</option>
@@ -135,6 +202,7 @@ class Place extends Component {
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                                 <label>Направления</label>
                                 <select className="form-control">
+                                    <option>Любое</option>
                                     <option>Горы</option>
                                     <option>Острова</option>
                                     <option>Заповедники</option>
@@ -146,12 +214,31 @@ class Place extends Component {
                             </div>
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                                 <label>Продолжительность</label>
+
                                 <select className="form-control">
+                                    <option>Любая</option>
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                     <option>4 отдыха</option>
                                     <option>5 и более</option>
+                                </select>
+
+                            </div>
+
+                            <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
+                                <label>География тура</label>
+                                <select className="form-control">
+                                    <option>Любая</option>
+                                    <option>Большой липовый</option>
+                                    <option>Мама-Саха</option>
+                                    <option>Хасанский район</option>
+                                    <option>Заповедник</option>
+                                    <option>остальное Приморье</option>
+                                    <option>Алтай</option>
+                                    <option>Байкал</option>
+                                    <option>Москва</option>
+                                    <option>Россия</option>
                                 </select>
                             </div>
 
