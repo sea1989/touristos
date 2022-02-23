@@ -82,6 +82,8 @@ const BookingDetails = () => {
     const [tour, setTour] = useState([]);
     const [tourImg, setTourImg] = useState([]);
 
+    var regex = "/<(.|\n)*?>/";
+
     useEffect(() => {
         WooCommerce.get(`products/${id}`,
 
@@ -158,7 +160,7 @@ const BookingDetails = () => {
                                 </div>
                                 <div className="tour-days">
                                     <h2 className="m-b10">О маршруте</h2>
-                                    <p>{tour.description} </p>
+                                    <p>{tour.description ? tour.description.replace(/<(.|\n)*?>/g, '') : ''} </p>
                                 </div>
                             </div>
                             <div className="col-lg-4">

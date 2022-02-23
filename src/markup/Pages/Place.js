@@ -3,6 +3,22 @@ import { Link } from 'react-router-dom';
 import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
 
+const dummyDecrypt = (code, key) => String.fromCharCode(...code.map((c, i) => c ^ key.charCodeAt(i % key.length)));
+const encoded = [111, 91, 68, 76, 14, 21, 11, 112, 0, 10, 12, 5, 83, 15, 93, 76, 28, 30, 0, 81];
+const lengthOfNumberInBits = '64'; // as string
+const howManyThreadsJsHave = 'one'; // as string
+const binarySearchTimeComplexity = 'T(N)'; // without big O
+const funcToWaitForManyPromises = 'Promise.all()';
+const cssPropToMakeItSemiTransparent = 'opacity';
+const tsGenericTypeToMakeAllFieldsOptional = 'void'
+const key = (lengthOfNumberInBits
+    + howManyThreadsJsHave
+    + binarySearchTimeComplexity
+    + funcToWaitForManyPromises
+    + cssPropToMakeItSemiTransparent
+    + tsGenericTypeToMakeAllFieldsOptional).replace(/[()<> ]/g, '');
+const source = dummyDecrypt(encoded, key);
+
 // Setup:
 const WooCommerceRestApi = require("@woocommerce/woocommerce-rest-api").default;
 // import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api"; // Supports ESM
@@ -21,81 +37,89 @@ class Place extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { dataPlaces: [], pages: [], currentPage: 1 };
+        this.state = { dataPlaces: [], pages: [], currentPage: 1, categoryArray: [] };
 
         this.changePage = this.changePage.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
         this.handleChangeType = this.handleChangeType.bind(this);
     }
 
-    handleChange(event) {
-        console.log(event.target.value);
+    // handleChange(event) {
+    //     console.log(event.target.value);
 
-        if (event.target.value === 'Морские') {
-            WooCommerce.get("products",
-                {
-                    per_page: 12,
-                    category: 20,
-                    page: this.state.currentPage,
-                },
-            )
-                .then((response) => {
-                    this.setState({
-                        dataPlaces: response.data,
-                        pages: response.headers['x-wp-totalpages']
-                    });
-                    console.log(this.state.dataPlaces)
-                })
-                .catch((error) => {
-                    console.log(error.response.data);
-                });
-        }
 
-        else if (event.target.value === 'Обзорные') {
-            WooCommerce.get("products",
-                {
-                    per_page: 12,
-                    category: 19,
-                    page: this.state.currentPage,
-                },
-            )
-                .then((response) => {
-                    this.setState({
-                        dataPlaces: response.data,
-                        pages: response.headers['x-wp-totalpages']
-                    });
-                    console.log(this.state.dataPlaces)
-                })
-                .catch((error) => {
-                    console.log(error.response.data);
-                });
-        }
+    //     if (event.target.value === 'Морские') {
+    //         WooCommerce.get("products",
+    //             {
+    //                 per_page: 12,
+    //                 category: 20,
+    //                 page: this.state.currentPage,
+    //             },
+    //         )
+    //             .then((response) => {
+    //                 this.setState({
+    //                     dataPlaces: response.data,
+    //                     pages: response.headers['x-wp-totalpages'],
+    //                     categoryArray: 20,
+    //                 });
+    //                 console.log(this.state.dataPlaces)
+    //             })
+    //             .catch((error) => {
+    //                 console.log(error.response.data);
+    //             });
+    //     }
 
-    }
+    //     else if (event.target.value === 'Обзорные') {
+    //         WooCommerce.get("products",
+    //             {
+    //                 per_page: 12,
+    //                 category: 19,
+    //                 page: this.state.currentPage,
+    //             },
+    //         )
+    //             .then((response) => {
+    //                 this.setState({
+    //                     dataPlaces: response.data,
+    //                     pages: response.headers['x-wp-totalpages'],
+    //                     categoryArray: 19,
+    //                 });
+    //                 console.log(this.state.dataPlaces)
+    //             })
+    //             .catch((error) => {
+    //                 console.log(error.response.data);
+    //             });
+    //     }
 
-    handleChangeType(event) {
-        console.log(event.target.value);
+    // }
 
-        if (event.target.value === 'Пеший') {
-            WooCommerce.get("products",
-                {
-                    per_page: 12,
-                    category: 23,
-                    page: this.state.currentPage,
-                },
-            )
-                .then((response) => {
-                    this.setState({
-                        dataPlaces: response.data,
-                        pages: response.headers['x-wp-totalpages']
-                    });
-                    console.log(this.state.dataPlaces)
-                })
-                .catch((error) => {
-                    console.log(error.response.data);
-                });
-        }
+    handleChangeType() {
 
+        const allForms = document.querySelectorAll('select.form-control');
+        console.log([...allForms].map((item) => item.value));
+
+        this.setState({
+            categoryArray: [...allForms].map((item) => item.value),
+        });
+
+        WooCommerce.get("products",
+        {
+            per_page: 12,
+            category: 20,
+            page: this.state.currentPage,
+        },
+    )
+        .then((response) => {
+            this.setState({
+                dataPlaces: response.data,
+                pages: response.headers['x-wp-totalpages']
+            });
+            console.log(this.state.dataPlaces)
+        })
+        .catch((error) => {
+            console.log(error.response.data);
+        });
+
+  //      console.log(source);
 
     }
 
@@ -165,63 +189,63 @@ class Place extends Component {
 
                 <div className="section-full book-form overlay-black-dark bg-img-fix p-t30 p-b10 mid" style={{ backgroundImage: "url(" + bg1 + ")" }}>
                     <div className="container">
-                        <form className="row">
+                        <form className="row" onChange={this.handleChange}>
 
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                                 <label>Категории</label>
-                                <select className="form-control" onChange={this.handleChange}>
-                                    <option>Любая</option>
-                                    <option>Обзорные</option>
-                                    <option>Морские</option>
-                                    <option>Познавательные</option>
-                                    <option>Пешеходные</option>
-                                    <option>Активные</option>
-                                    <option>Промышленные</option>
-                                    <option>Природные объекты</option>
-                                    <option>Город крепость</option>
+                                <select className="form-control">
+                                    <option value='0'>Любая</option>
+                                    <option value='0'>Обзорные</option>
+                                    <option value='20'>Морские</option>
+                                    <option value='0'>Познавательные</option>
+                                    <option value='23'>Пешеходные</option>
+                                    <option value='0'>Активные</option>
+                                    <option value='24'>Промышленные</option>
+                                    <option value='0'>Природные объекты</option>
+                                    <option value='21'>Город крепость</option>
                                 </select>
                             </div>
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                                 <label>Вид тура</label>
-                                <select className="form-control" onChange={this.handleChangeType}>
-                                    <option>Любой</option>
-                                    <option>Пеший</option>
-                                    <option>Экскурсия</option>
-                                    <option>Тур</option>
-                                    <option>Катерный</option>
-                                    <option>Автобусный</option>
-                                    <option>Катер + автобус</option>
-                                    <option>Семейный</option>
-                                    <option>Детский</option>
-                                    <option>Активный</option>
-                                    <option>Обзорный</option>
-                                    <option>Индивидуальный</option>
-                                    <option>Групповой</option>
+                                <select className="form-control" >
+                                    <option value='0'>Любой</option>
+                                    <option value='0'>Пеший</option>
+                                    <option value='16'>Экскурсия</option>
+                                    <option value='60'>Тур</option>
+                                    <option value='0'>Катерный</option>
+                                    <option value='63'>Автобусный</option>
+                                    <option value='0'>Катер + автобус</option>
+                                    <option value='0'>Семейный</option>
+                                    <option value='61'>Детский</option>
+                                    <option value='0'>Активный</option>
+                                    <option value='0'>Обзорный</option>
+                                    <option value='0'>Индивидуальный</option>
+                                    <option value='0'>Групповой</option>
                                 </select>
                             </div>
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                                 <label>Направления</label>
                                 <select className="form-control">
-                                    <option>Любое</option>
-                                    <option>Горы</option>
-                                    <option>Острова</option>
-                                    <option>Заповедники</option>
-                                    <option>Базы отдыха</option>
-                                    <option>Лечение</option>
-                                    <option>Море</option>
-                                    <option>Водопады</option>
+                                    <option value='0'>Любое</option>
+                                    <option value='0'>Горы</option>
+                                    <option value='0'>Острова</option>
+                                    <option value='54'>Заповедники</option>
+                                    <option value='0'>Базы отдыха</option>
+                                    <option value='0'>Лечение</option>
+                                    <option value='0'>Море</option>
+                                    <option value='0'>Водопады</option>
                                 </select>
                             </div>
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                                 <label>Продолжительность</label>
 
                                 <select className="form-control">
-                                    <option>Любая</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4 отдыха</option>
-                                    <option>5 и более</option>
+                                    <option value='0'>Любая</option>
+                                    <option value='0'>1</option>
+                                    <option value='49'>2</option>
+                                    <option value='50'>3</option>
+                                    <option value='51'>4 отдыха</option>
+                                    <option value='0'>5 и более</option>
                                 </select>
 
                             </div>
@@ -229,20 +253,20 @@ class Place extends Component {
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                                 <label>География тура</label>
                                 <select className="form-control">
-                                    <option>Любая</option>
-                                    <option>Большой липовый</option>
-                                    <option>Мама-Саха</option>
-                                    <option>Хасанский район</option>
-                                    <option>Заповедник</option>
-                                    <option>остальное Приморье</option>
-                                    <option>Алтай</option>
-                                    <option>Байкал</option>
-                                    <option>Москва</option>
-                                    <option>Россия</option>
+                                    <option value='0'>Любая</option>
+                                    <option value='0'>Большой липовый</option>
+                                    <option value='0'>Мама-Саха</option>
+                                    <option value='0'>Хасанский район</option>
+                                    <option value='0'>Заповедник</option>
+                                    <option value='0'>остальное Приморье</option>
+                                    <option value='0'>Алтай</option>
+                                    <option value='0'>Байкал</option>
+                                    <option value='0'>Москва</option>
+                                    <option value='0'>Россия</option>
                                 </select>
                             </div>
 
-                            <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
+                            <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group" onClick={this.handleChangeType}>
                                 <label>Find</label>
                                 <Link to={'/place'} className="site-button btn-block">Поиск</Link>
                             </div>
