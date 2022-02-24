@@ -81,8 +81,7 @@ const BookingDetails = () => {
     const { id } = useParams();
     const [tour, setTour] = useState([]);
     const [tourImg, setTourImg] = useState([]);
-
-    var regex = "/<(.|\n)*?>/";
+    const [schedule, setSchedule] = useState([])
 
     useEffect(() => {
         WooCommerce.get(`products/${id}`,
@@ -91,7 +90,8 @@ const BookingDetails = () => {
             .then((response) => {
                 setTour(response.data);
                 setTourImg(response.data.images);
-
+                setSchedule(response.data.attributes.filter((item) => (item.name === 'schedule'))[0].options[0]);
+                console.log(response.data.attributes.filter((item) => (item.name === 'schedule'))[0].options);
             })
             .catch((error) => {
                 console.log(error.response.data);
@@ -178,41 +178,30 @@ const BookingDetails = () => {
                             </div>
                         </div>
 
-                        {tourDay.map((item, index) => (
-                            <div className="row m-b30" key={index}>
+                        {
+                            <div className="row m-b30" >
                                 <div className="col-md-3 col-lg-2">
                                     <div className="sticky-top">
-                                        <div className="day-details bg-primary">DAY {item.day}</div>
+                                        <div className="day-details bg-primary">Расписание</div>
                                     </div>
                                 </div>
                                 <div className="col-md-9 col-lg-10">
                                     <div className="day-details-bx">
                                         <div className="row">
-                                            <div className="col-md-12 col-lg-6">
-                                                <h4 className="m-b5">{item.title}</h4>
-                                                <div className="m-b10">
-                                                    <ul className="rating-star">
-                                                        <li><i className="fa fa-star"></i></li>
-                                                        <li><i className="fa fa-star"></i></li>
-                                                        <li><i className="fa fa-star"></i></li>
-                                                        <li><i className="fa fa-star"></i></li>
-                                                        <li><i className="fa fa-star"></i></li>
-                                                    </ul>
-                                                </div>
-                                                <p>{item.desc}</p>
+                                            <div className="col-md-12 ">
+
+                                                <p>{schedule ? schedule : ''}</p>
                                                 <ul className="tour-tag">
                                                     <li><Link>Breakfast</Link></li>
                                                     <li><Link>Dinner</Link></li>
                                                 </ul>
                                             </div>
-                                            <div className="col-md-12 col-lg-6">
-                                                <img src={item.image} className="radius-sm" alt="" />
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        ))}
+                        }
                     </div>
                     {/* <div className="modal fade submit-query" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div className="modal-dialog" role="document">

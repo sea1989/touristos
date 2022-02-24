@@ -40,59 +40,12 @@ class Place extends Component {
         this.state = { dataPlaces: [], pages: [], currentPage: 1, categoryArray: [] };
 
         this.changePage = this.changePage.bind(this);
-        // this.handleChange = this.handleChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.handleChangeType = this.handleChangeType.bind(this);
     }
 
-    // handleChange(event) {
-    //     console.log(event.target.value);
-
-
-    //     if (event.target.value === 'Морские') {
-    //         WooCommerce.get("products",
-    //             {
-    //                 per_page: 12,
-    //                 category: 20,
-    //                 page: this.state.currentPage,
-    //             },
-    //         )
-    //             .then((response) => {
-    //                 this.setState({
-    //                     dataPlaces: response.data,
-    //                     pages: response.headers['x-wp-totalpages'],
-    //                     categoryArray: 20,
-    //                 });
-    //                 console.log(this.state.dataPlaces)
-    //             })
-    //             .catch((error) => {
-    //                 console.log(error.response.data);
-    //             });
-    //     }
-
-    //     else if (event.target.value === 'Обзорные') {
-    //         WooCommerce.get("products",
-    //             {
-    //                 per_page: 12,
-    //                 category: 19,
-    //                 page: this.state.currentPage,
-    //             },
-    //         )
-    //             .then((response) => {
-    //                 this.setState({
-    //                     dataPlaces: response.data,
-    //                     pages: response.headers['x-wp-totalpages'],
-    //                     categoryArray: 19,
-    //                 });
-    //                 console.log(this.state.dataPlaces)
-    //             })
-    //             .catch((error) => {
-    //                 console.log(error.response.data);
-    //             });
-    //     }
-
-    // }
-
-    handleChangeType() {
+    handleChange(event) {
+        console.log(event.target.value);
 
         const allForms = document.querySelectorAll('select.form-control');
         console.log([...allForms].map((item) => item.value));
@@ -101,25 +54,72 @@ class Place extends Component {
             categoryArray: [...allForms].map((item) => item.value),
         });
 
-        WooCommerce.get("products",
-        {
-            per_page: 12,
-            category: 20,
-            page: this.state.currentPage,
-        },
-    )
-        .then((response) => {
-            this.setState({
-                dataPlaces: response.data,
-                pages: response.headers['x-wp-totalpages']
-            });
-            console.log(this.state.dataPlaces)
-        })
-        .catch((error) => {
-            console.log(error.response.data);
-        });
+        //     if (event.target.value === 'Морские') {
+        //         WooCommerce.get("products",
+        //             {
+        //                 per_page: 12,
+        //                 category: 20,
+        //                 page: this.state.currentPage,
+        //             },
+        //         )
+        //             .then((response) => {
+        //                 this.setState({
+        //                     dataPlaces: response.data,
+        //                     pages: response.headers['x-wp-totalpages'],
+        //                     categoryArray: 20,
+        //                 });
+        //                 console.log(this.state.dataPlaces)
+        //             })
+        //             .catch((error) => {
+        //                 console.log(error.response.data);
+        //             });
+        //     }
 
-  //      console.log(source);
+        //     else if (event.target.value === 'Обзорные') {
+        //         WooCommerce.get("products",
+        //             {
+        //                 per_page: 12,
+        //                 category: 19,
+        //                 page: this.state.currentPage,
+        //             },
+        //         )
+        //             .then((response) => {
+        //                 this.setState({
+        //                     dataPlaces: response.data,
+        //                     pages: response.headers['x-wp-totalpages'],
+        //                     categoryArray: 19,
+        //                 });
+        //                 console.log(this.state.dataPlaces)
+        //             })
+        //             .catch((error) => {
+        //                 console.log(error.response.data);
+        //             });
+        //     }
+
+    }
+
+    handleChangeType() {
+
+
+        WooCommerce.get("products",
+            {
+                per_page: 12,
+                category: this.state.categoryArray.toString(),
+                page: 1,
+            },
+        )
+            .then((response) => {
+                this.setState({
+                    dataPlaces: response.data,
+                    pages: response.headers['x-wp-totalpages']
+                });
+                console.log(this.state.dataPlaces)
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+            });
+
+        //      console.log(source);
 
     }
 
@@ -153,7 +153,7 @@ class Place extends Component {
 
             {
                 per_page: 12,
-                //category: 20,
+                category: this.state.categoryArray.toString(),
                 page: page,
             },
 
@@ -209,7 +209,7 @@ class Place extends Component {
                                 <label>Вид тура</label>
                                 <select className="form-control" >
                                     <option value='0'>Любой</option>
-                                    <option value='0'>Пеший</option>
+                                    <option value='23'>Пеший</option>
                                     <option value='16'>Экскурсия</option>
                                     <option value='60'>Тур</option>
                                     <option value='0'>Катерный</option>
