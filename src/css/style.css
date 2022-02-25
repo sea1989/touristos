@@ -15922,3 +15922,7 @@ ol.commentlist li .star-rating {
 .slider-project-list img {
     max-width: 180px;
 }
+
+strong {
+    font-weight: bold;
+}

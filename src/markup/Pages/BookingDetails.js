@@ -160,7 +160,7 @@ const BookingDetails = () => {
                                 </div>
                                 <div className="tour-days">
                                     <h2 className="m-b10">О маршруте</h2>
-                                    <p>{tour.description ? tour.description.replace(/<(.|\n)*?>/g, '') : ''} </p>
+                                    <p dangerouslySetInnerHTML={{ __html: tour.description }} />
                                 </div>
                             </div>
                             <div className="col-lg-4">
@@ -189,8 +189,7 @@ const BookingDetails = () => {
                                     <div className="day-details-bx">
                                         <div className="row">
                                             <div className="col-md-12 ">
-
-                                                <p>{schedule ? schedule : ''}</p>
+                                                <p dangerouslySetInnerHTML={{ __html: tour.short_description }} />
                                                 <ul className="tour-tag">
                                                     <li><Link>Breakfast</Link></li>
                                                     <li><Link>Dinner</Link></li>
