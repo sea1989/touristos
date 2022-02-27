@@ -54,57 +54,15 @@ class Place extends Component {
             categoryArray: [...allForms].map((item) => item.value),
         });
 
-        //     if (event.target.value === 'Морские') {
-        //         WooCommerce.get("products",
-        //             {
-        //                 per_page: 12,
-        //                 category: 20,
-        //                 page: this.state.currentPage,
-        //             },
-        //         )
-        //             .then((response) => {
-        //                 this.setState({
-        //                     dataPlaces: response.data,
-        //                     pages: response.headers['x-wp-totalpages'],
-        //                     categoryArray: 20,
-        //                 });
-        //                 console.log(this.state.dataPlaces)
-        //             })
-        //             .catch((error) => {
-        //                 console.log(error.response.data);
-        //             });
-        //     }
-
-        //     else if (event.target.value === 'Обзорные') {
-        //         WooCommerce.get("products",
-        //             {
-        //                 per_page: 12,
-        //                 category: 19,
-        //                 page: this.state.currentPage,
-        //             },
-        //         )
-        //             .then((response) => {
-        //                 this.setState({
-        //                     dataPlaces: response.data,
-        //                     pages: response.headers['x-wp-totalpages'],
-        //                     categoryArray: 19,
-        //                 });
-        //                 console.log(this.state.dataPlaces)
-        //             })
-        //             .catch((error) => {
-        //                 console.log(error.response.data);
-        //             });
-        //     }
-
     }
 
     handleChangeType() {
-
 
         WooCommerce.get("products",
             {
                 per_page: 12,
                 category: this.state.categoryArray.toString(),
+                relation: 'AND',
                 page: 1,
             },
         )
@@ -249,7 +207,6 @@ class Place extends Component {
                                 </select>
 
                             </div>
-
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                                 <label>География тура</label>
                                 <select className="form-control">
@@ -273,8 +230,6 @@ class Place extends Component {
                         </form>
                     </div>
                 </div>
-
-
 
                 <div className="section-full bg-white content-inner dlab-about-1">
                     <div className="container">
@@ -320,8 +275,6 @@ class Place extends Component {
                                         {Array.apply(null, Array(+this.state.pages))?.map((item, i) => {
                                             return <li onClick={() => { this.changePage(i + 1) }}><Link>{i + 1}</Link></li>;
                                         })}
-
-                                        {/* <li className="active"><Link>1</Link></li> */}
 
                                         <li className="next"><Link>Next <i className="ti-arrow-right"></i></Link></li>
                                     </ul>

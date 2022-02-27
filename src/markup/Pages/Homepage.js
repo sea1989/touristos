@@ -49,10 +49,11 @@ class Homepage extends Component {
     }
 
     componentDidMount() {
-        WooCommerce.get("products?category=21",
+        WooCommerce.get("products",
 
             {
                 per_page: 6,
+                featured: true,
             }
 
         )
