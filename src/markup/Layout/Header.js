@@ -100,8 +100,6 @@ class Header extends Component {
                                     <li><Link>О нас <i className="fa fa-chevron-down"></i></Link>
                                         <ul className="sub-menu">
                                             <li><Link to={'/portfolio2'} className="dez-page">Portfolio Grid 2 </Link></li>
-                                            {/*<li><Link to={'portfolio2'} className="dez-page">Portfolio Grid 3 </Link></li>
-												<li><Link to={'portfolio2'} className="dez-page">Portfolio Grid 4 </Link></li>*/}
                                         </ul>
                                     </li>
                                     <li><Link to={'/contact'} className="dez-page">Контакты</Link></li>
