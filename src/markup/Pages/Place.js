@@ -29,6 +29,7 @@ const WooCommerce = new WooCommerceRestApi({
     consumerSecret: 'cs_524a79c134001e1c82f209675cf4d1303c8d3899', // Your consumer secret
     version: 'wc/v3' // WooCommerce WP REST API version
 });
+
 var bg1 = require('./../../images/background/bg1.jpg');
 var bg3 = require('./../../images/banner/bnr1.jpg');
 
@@ -53,7 +54,6 @@ class Place extends Component {
         this.setState({
             categoryArray: [...allForms].map((item) => item.value),
         });
-
     }
 
     handleChangeType() {

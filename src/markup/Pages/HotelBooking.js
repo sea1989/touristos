@@ -68,7 +68,7 @@ class HotelBooking extends Component {
                 <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                     <div className="container">
                         <div className="dlab-bnr-inr-entry">
-                            <h1 className="text-white">Hotal Booking</h1>
+                            <h1 className="text-white">Hotel Booking</h1>
                             <div className="breadcrumb-row">
                                 <ul className="list-inline">
                                     <li><Link>Home</Link></li>

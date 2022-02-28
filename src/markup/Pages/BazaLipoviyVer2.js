@@ -5,11 +5,23 @@ import { Link } from 'react-router-dom';
 import { TabContent, TabPane } from 'reactstrap';
 import classnames from 'classnames';
 
+// Setup:
+const WooCommerceRestApi = require("@woocommerce/woocommerce-rest-api").default;
+// import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api"; // Supports ESM
+
+const WooCommerce = new WooCommerceRestApi({
+    url: 'https://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/', // Your store URL
+    consumerKey: 'ck_ec13b20905009b1ea7018f1696f5f0d45738b4a4', // Your consumer key
+    consumerSecret: 'cs_524a79c134001e1c82f209675cf4d1303c8d3899', // Your consumer secret
+    version: 'wc/v3' // WooCommerce WP REST API version
+});
 
 var bg3 = 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/baza_lipoviy.jpg';
 
 const BazaLipoviyVer2 = (props) => {
     const [activeTab, setActiveTab] = useState('1');
+
+    const [dataPlaces, setDataPlaces] = useState([]);
 
     const [lipovoy, setLipovoy] = useState([]);
 
@@ -25,10 +37,29 @@ const BazaLipoviyVer2 = (props) => {
                 console.log(data);
                 setLipovoy({
                     title: data.acf.desc,
+                    content: data.content.rendered,
                     images: [...data.content.rendered.matchAll(/src="(.*?)"/g)].map(
                         ([, link]) => link
                     ),
                 });
+            });
+    }, []);
+
+    useEffect(() => {
+        WooCommerce.get("products",
+
+            {
+                per_page: 6,
+                category: 19,
+            }
+        )
+            .then((response) => {
+
+                setDataPlaces(response.data);
+                console.log(dataPlaces)
+            })
+            .catch((error) => {
+                console.log(error.response.data);
             });
     }, []);
 
@@ -110,20 +141,9 @@ const BazaLipoviyVer2 = (props) => {
                                             <h3 className="title"><i className="la la-file-text m-r5"></i> описание</h3>
                                         </div>
                                         <div className="content-body">
-                                            <p>Центр расположен в лесной зоне, в 13 км от центра города Партизанска и в 5-ти км. от п.Наречное, в 2 км от станции Красноармейское.
-                                                Располагается Центр в уникальном природном комплексе, в глубоком таежном распадке, в предгорьях Сихотэ-Алиня (хребет Партизанский и хребет Пидан).
-                                                С неповторимым микроклиматом, со своим температурным режимом, влажностью, розой ветров и воздуха, прозрачного,
-                                                пронизанного особыми ароматами леса и прохладой горных ключей, несущего запахи и силу тайги, это все и создает уникальный оздоровительный эффект данного места.
-                                                Территория обустроена, разбиты цветники, куртины из цветущих кустарников, альпийская горка с лекарственными,
-                                                красно- книжными растениями и эндемиками Приморского края (микробиота вечнозеленая, брусника, можжевельник с берегов Кемы, бадан, очиток едкий, разнообразие папоротников),
-                                                газоны на территории подстрижены и предназначены для игр, отдыха и сна. На них так хорошо спится. Дорожки выложены брусчаткой и отсыпаны отсевом, в ночное время территория и беседки освещены.
-                                                Центр — это большой дом в 2 этажа, в 9 жилых комнат (4 больших комнаты на 1-ом этаже, 5  поменьше комнат на втором этаже, 2-е из них с балконами),
-                                                VIP зальчика для посиделок, бильярдной, зоны отдыха с библиотекой и холла с камином, большим телевизором (спутниковое телевидение, DVD) и обеденной зоной.
-                                                Окна в доме пластиковые, полы покрыты ковровым покрытием.  Дом теплый, в зимнее время отапливается каином, батареями и инфракрасными обогревателями. В доме ходят в тапочках.
-                                                Комнаты оборудованы 2-х спальными кроватями, плетеной мебелью, зеркалом, вешалкой и телевизором.
-                                                Есть комната №2 на 3- человека. В комнатах установлены индивидуальные регуляторы температуры, выставить комфортный для себя температурный режим может каждый.
-                                                Несколько комнат возможно оборудовать дополнительными местами для детей (раскладушками).
-                                                Большие теплые одеяла,  хорошее постельное белье  и полотенца для умывания. В доме оборудованы туалетные комнаты, душ с горячей водой работает от бойлера. На втором этаже собрана библиотека на вкус любого читателя.</p>
+
+                                            <p dangerouslySetInnerHTML={{ __html: lipovoy.content }} />
+
                                         </div>
                                     </div>
                                     <div className="content-box">
@@ -282,6 +302,26 @@ const BazaLipoviyVer2 = (props) => {
                                     </div>
 
                                     <iframe title="This is a unique title" src="https://yandex.ru/map-widget/v1/?um=constructor%3Adebb49e651a6cc6ff194d513dcbdb3b6787745f0de4aecb30e0524c6c95cc0b0&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
+
+                                    <div className="row">
+                                        <div className="col-md-12 col-sm-12 m-b15">
+                                            <h3 className="m-b5">Варианты :</h3>
+                                            <div className="dlab-separator bg-primary"></div>
+                                        </div>
+
+                                        {dataPlaces.map((item, index) => (
+                                            <div className="col-md-12 col-lg-6 col-sm-12 m-b30" key={index}>
+                                                <div className="dlab-box place-bx top-item">
+                                                    <div className="dlab-media top-item__media"> <Link><img src={item.images[0]?.src || 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2018/11/DSC_2797-scaled.jpg'} alt="" /></Link> </div>
+                                                    <div className="dlab-info p-tb30 p-lr10 text-center bg-gray">
+                                                        <h4 className="dlab-title m-t0"><Link>{item.name}</Link></h4>
+                                                        <p className="m-b10">{item.name}</p>
+                                                        <Link to={'./booking/' + item.id} className="site-button outline radius-xl m-lr5">Подробнее</Link>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
 
                                 </div>
 

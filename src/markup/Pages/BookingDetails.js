@@ -91,12 +91,10 @@ const BookingDetails = () => {
                 setTour(response.data);
                 setTourImg(response.data.images);
                 setSchedule(response.data.attributes.filter((item) => (item.name === 'schedule'))[0].options[0]);
-                console.log(response.data.attributes.filter((item) => (item.name === 'schedule'))[0].options);
             })
             .catch((error) => {
                 console.log(error.response.data);
             });
-
 
     }, [id])
 

@@ -55,7 +55,6 @@ class Homepage extends Component {
                 per_page: 6,
                 featured: true,
             }
-
         )
             .then((response) => {
                 this.setState({
