@@ -3,22 +3,6 @@ import { Link } from 'react-router-dom';
 import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
 
-const dummyDecrypt = (code, key) => String.fromCharCode(...code.map((c, i) => c ^ key.charCodeAt(i % key.length)));
-const encoded = [111, 91, 68, 76, 14, 21, 11, 112, 0, 10, 12, 5, 83, 15, 93, 76, 28, 30, 0, 81];
-const lengthOfNumberInBits = '64'; // as string
-const howManyThreadsJsHave = 'one'; // as string
-const binarySearchTimeComplexity = 'T(N)'; // without big O
-const funcToWaitForManyPromises = 'Promise.all()';
-const cssPropToMakeItSemiTransparent = 'opacity';
-const tsGenericTypeToMakeAllFieldsOptional = 'void'
-const key = (lengthOfNumberInBits
-    + howManyThreadsJsHave
-    + binarySearchTimeComplexity
-    + funcToWaitForManyPromises
-    + cssPropToMakeItSemiTransparent
-    + tsGenericTypeToMakeAllFieldsOptional).replace(/[()<> ]/g, '');
-const source = dummyDecrypt(encoded, key);
-
 // Setup:
 const WooCommerceRestApi = require("@woocommerce/woocommerce-rest-api").default;
 // import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api"; // Supports ESM
@@ -76,8 +60,6 @@ class Place extends Component {
             .catch((error) => {
                 console.log(error.response.data);
             });
-
-        //      console.log(source);
 
     }
 
