@@ -81,7 +81,7 @@ const BookingDetails = () => {
     const { id } = useParams();
     const [tour, setTour] = useState([]);
     const [tourImg, setTourImg] = useState([]);
-    const [schedule, setSchedule] = useState([])
+    const [baner, setBaner] = useState([]);
 
     useEffect(() => {
         WooCommerce.get(`products/${id}`,
@@ -90,12 +90,11 @@ const BookingDetails = () => {
             .then((response) => {
                 setTour(response.data);
                 setTourImg(response.data.images);
-                setSchedule(response.data.attributes.filter((item) => (item.name === 'schedule'))[0].options[0]);
+                setBaner(response.data.attributes.filter((item) => item.name === 'baner')[0].options[0]);
             })
             .catch((error) => {
                 console.log(error.response.data);
             });
-
     }, [id])
 
     var settings = {
@@ -170,7 +169,7 @@ const BookingDetails = () => {
 
                                     </div>
                                     <div className="m-t50">
-                                        <img src={require('./../../images/add/add-bnr.jpg')} className="d-md-none d-xl-block d-lg-block" alt="" />
+                                        <img src={baner ? baner : ''} className="d-md-none d-xl-block d-lg-block" alt="" />
                                     </div>
                                 </div>
                             </div>
