@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import GoogleMaps from "simple-react-google-maps"
-import Header2 from './../Layout/Header2';
+import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
 
-var bg3 = require('./../../images/banner/bnr1.jpg');
+var bg3 = 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/baza_lipoviy.jpg';
 class Contacts extends Component {
 
     render() {
         return (
             <div>
-                <Header2 />
+                <Header />
                 <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                     <div className="container">
                         <div className="dlab-bnr-inr-entry">
-                            <h1 className="text-white">Blog Classic</h1>
+                            <h1 className="text-white">Контакты</h1>
                             <div className="breadcrumb-row">
                                 <ul className="list-inline">
-                                    <li><Link>Home</Link></li>
-                                    <li>Blog Classic</li>
+                                    <li><Link>Главная</Link></li>
+                                    <li>Контакты</li>
                                 </ul>
                             </div>
                         </div>
@@ -29,14 +29,14 @@ class Contacts extends Component {
                         <div className="row">
                             <div className="col-lg-4 col-md-6 d-lg-flex d-md-flex">
                                 <div className="p-a30 border m-b30 contact-area border-1 align-self-stretch ">
-                                    <h4 className="m-b10">Quick Contact</h4>
-                                    <p>If you have any questions simply use the following contact details.</p>
+                                    <h4 className="m-b10">Контакты</h4>
+                                    <p>Если у Вас есть какой-либо вопрос свяжитесь с нами удобным для Вас способом</p>
                                     <ul className="no-margin">
                                         <li className="icon-bx-wraper left m-b30">
                                             <div className="icon-bx-xs border-1"> <Link className="icon-cell"><i className="ti-location-pin"></i></Link> </div>
                                             <div className="icon-content">
-                                                <h6 className="text-uppercase m-tb0 dlab-tilte">Address:</h6>
-                                                <p>123 West Street, Melbourne Victoria 3000 Australia</p>
+                                                <h6 className="text-uppercase m-tb0 dlab-tilte">Адрес:</h6>
+                                                <p>Владивосток, Партизанский Проспект,13 офис 5</p>
                                             </div>
                                         </li>
                                         <li className="icon-bx-wraper left  m-b30">
@@ -49,8 +49,8 @@ class Contacts extends Component {
                                         <li className="icon-bx-wraper left">
                                             <div className="icon-bx-xs border-1"> <Link className="icon-cell"><i className="ti-mobile"></i></Link> </div>
                                             <div className="icon-content">
-                                                <h6 className="text-uppercase m-tb0 dlab-tilte">PHONE</h6>
-                                                <p>+61 3 8376 6284</p>
+                                                <h6 className="text-uppercase m-tb0 dlab-tilte">Телефон</h6>
+                                                <p> 271-49-05</p>
                                             </div>
                                         </li>
                                     </ul>
@@ -67,7 +67,7 @@ class Contacts extends Component {
                             </div>
                             <div className="col-lg-4 col-md-6">
                                 <div className="p-a30 m-b30 	bg-gray clearfix">
-                                    <h4>Send Message Us</h4>
+                                    <h4>Напишите нам письмо</h4>
                                     <div className="dzFormMsg"></div>
                                     <form method="post" className="dzForm" action="script/contact.php">
                                         <input type="hidden" value="Contact" name="dzToDo" />
@@ -75,21 +75,21 @@ class Contacts extends Component {
                                             <div className="col-lg-12">
                                                 <div className="form-group">
                                                     <div className="input-group">
-                                                        <input name="dzName" type="text" required className="form-control" placeholder="Your Name" />
+                                                        <input name="dzName" type="text" required className="form-control" placeholder="Ваше имя" />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="col-lg-12">
                                                 <div className="form-group">
                                                     <div className="input-group">
-                                                        <input name="dzEmail" type="email" className="form-control" required placeholder="Your Email Id" />
+                                                        <input name="dzEmail" type="email" className="form-control" required placeholder="Ваша почта" />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="col-lg-12">
                                                 <div className="form-group">
                                                     <div className="input-group">
-                                                        <textarea name="dzMessage" rows="4" className="form-control" required placeholder="Your Message..."></textarea>
+                                                        <textarea name="dzMessage" rows="4" className="form-control" required placeholder="Ваще сообщение..."></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -102,20 +102,14 @@ class Contacts extends Component {
                                                 </div>
                                             </div>
                                             <div className="col-lg-12">
-                                                <button name="submit" type="submit" value="Submit" className="site-button "> <span>Submit</span> </button>
+                                                <button name="submit" type="submit" value="Submit" className="site-button "> <span>Отправить</span> </button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12 d-lg-flex m-b30">
-                                <GoogleMaps
-                                    apiKey={"AIzaSyAgDuz2Nd_tVY0H-h0xUimE25_-O85-mdM"}
-                                    style={{ height: "500px", width: "100%" }}
-                                    zoom={6}
-                                    center={{ lat: 37.4224764, lng: -122.0842499 }}
-                                    markers={{ lat: 37.4224764, lng: -122.0842499 }} //optional
-                                />
+                                <iframe title="This is a unique title" src="https://yandex.ru/map-widget/v1/?um=constructor%3Adebb49e651a6cc6ff194d513dcbdb3b6787745f0de4aecb30e0524c6c95cc0b0&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
                             </div>
                         </div>
                     </div>

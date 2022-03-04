@@ -87,14 +87,20 @@ class Header extends Component {
                                     <li><Link to={'/'}>Главная <i class="fa "></i></Link>
 
                                     </li>
-                                    <li><Link to={'/place'}> Услуги <i className="fa"></i></Link></li>
+                                    <li><Link> Услуги <i className="fa fa-chevron-down"></i></Link>
+                                        <ul className="sub-menu">
+                                            <li><Link to={'/place'} className="dez-page">Туры</Link></li>
+                                            <li><Link to={'/portfolio2'} className="dez-page">График маршрутов</Link></li>
+                                        </ul>
+                                    </li>
+
                                     <li><Link>Базы <i className="fa fa-chevron-down"></i></Link>
                                         <ul className="sub-menu">
                                             <li><Link to={'/baza_lipoviy_ver2'} className="dez-page">Урочище БОЛЬШОЙ ЛИПОВЫЙ</Link></li>
                                             <li><Link to={'/baza_saha_ver2'} className="dez-page">База отдыха "Мама-Саха</Link></li>
                                         </ul>
                                     </li>
-                                    <li><Link to={'/blogleftsidebar'}>Блог <i className="fa fa-chevron-down"></i></Link>
+                                    <li><Link to={'/blogleftsidebar'}>Блог <i className="fa "></i></Link>
 
                                     </li>
                                     <li><Link>О нас <i className="fa fa-chevron-down"></i></Link>

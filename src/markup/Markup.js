@@ -58,7 +58,7 @@ class Markup extends Component {
                         <Route path='/bloggrid' exact component={BlogGrid} />
                         <Route path='/bloggridsidebar' exact component={BlogGridSidebar} />
                         <Route path='/blogleftsidebar' exact component={BlogLeftSidebar} />
-                        <Route path='/blogdetails' exact component={BlogDetails} />
+                        <Route path='/blogdetails/:id' exact component={BlogDetails} />
                         <Route path='/portfolio2' exact component={PortfolioGrid2} />
                         <Route path='/contact' exact component={Contacts} />
                         <Route path='/popup' exact component={Popuss} />
