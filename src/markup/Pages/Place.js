@@ -30,9 +30,9 @@ const Place = () => {
     const [searchValue, setSearchValue] = useState('');
 
 
-    const filteredTours = dataPlaces.filter(tour => {
-        return tour.name.toLowerCase().includes(searchValue.toLowerCase())
-    });
+    // const filteredTours = dataPlaces.filter(tour => {
+    //     return tour.name.toLowerCase().includes(searchValue.toLowerCase())
+    // });
 
 
     function handleChange(event) {
@@ -44,6 +44,28 @@ const Place = () => {
         setCategoryArray(
             [...allForms].map((item) => item.value).reduce((acc, item) => item == 0 ? acc : [...acc, item], []),
         );
+    }
+
+    function handleSearch() {
+        WooCommerce.get("products",
+
+            {
+                per_page: 12,
+                search: searchValue,
+                //category: 20,
+            }
+        )
+            .then((response) => {
+
+                setDataPlaces(response.data);
+                setPages(response.headers['x-wp-totalpages']);
+
+                console.log(dataPlaces)
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+            });
+
     }
 
     function handleChangeType() {
@@ -268,7 +290,11 @@ const Place = () => {
                                                 )}
                                             />
                                             <span className="input-group-btn p-l15">
-                                                <button className="site-button" type="button">Поиск</button>
+                                                <button
+                                                    className="site-button"
+                                                    type="button"
+                                                    onClick={handleSearch}
+                                                >Поиск</button>
                                             </span>
                                         </div>
                                     </div>
@@ -280,7 +306,7 @@ const Place = () => {
                                     <div className="dlab-separator bg-primary"></div>
                                 </div>
 
-                                {filteredTours.map((item, index) => (
+                                {dataPlaces.map((item, index) => (
                                     <div className="col-md-12 col-lg-6 col-sm-12 m-b30" key={index}>
                                         <div className="dlab-box place-bx top-item">
                                             <div className="dlab-media top-item__media"> <Link><img src={item.images[0]?.src || 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2018/11/DSC_2797-scaled.jpg'} alt="" /></Link> </div>
