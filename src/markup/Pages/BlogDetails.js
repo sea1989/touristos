@@ -11,7 +11,7 @@ const BlogDetails = () => {
     const [blog, setBlog] = useState([]);
 
     useEffect(() => {
-        fetch(`https://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/posts/${id}`)
+        fetch(`http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/posts/${id}`)
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
