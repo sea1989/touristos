@@ -32,29 +32,7 @@ class Header extends Component {
     render() {
         return (
             <header className="site-header mo-left header">
-                <div className="top-bar bg-dark">
-                    <div className="container">
-                        <div className="row d-flex justify-content-between">
-                            <div className="dlab-topbar-left">
-                                <ul>
-                                    <li>
-                                        <Link to={'/hotel'} className="site-button-link"> Базы </Link>
-                                    </li>
-                                    <li>
-                                        <Link className="site-button-link" to={'/place'}>Услуги</Link>
-                                    </li>
-                                    <li><Link className="site-button-link" to={'/packages'}>Пакетные туры</Link></li>
-                                </ul>
-                            </div>
-                            <div className="dlab-topbar-right top-login">
-                                <ul>
-                                    <li><Link to={'/login'} className="site-button-link">Войти</Link></li>
-                                    <li><Link to={'/register'} className="site-button-link">Регистрация</Link></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div className="sticky-header navbar-expand-lg">
                     <div className="main-bar clearfix onepage">
                         <div className="container clearfix">
@@ -91,6 +69,7 @@ class Header extends Component {
                                         <ul className="sub-menu">
                                             <li><Link to={'/place'} className="dez-page">Туры</Link></li>
                                             <li><Link to={'/portfolio2'} className="dez-page">График маршрутов</Link></li>
+                                            <li><Link to={'/packages'} className="dez-page" >Пакетные туры</Link></li>
                                         </ul>
                                     </li>
 

@@ -134,8 +134,8 @@ const BookingDetails = () => {
                                     </div>
                                     <div className="tour-price ml-auto">
                                         <span>Цена</span>
-                                        <h2 className="price">17,990 Руб</h2>
-                                        <h4 className="actual-price">23,990 Руб</h4>
+                                        <h2 className="price">{tour.price} Руб</h2>
+                                        <h4 className="actual-price">{tour.regular_price} Руб</h4>
                                     </div>
                                 </div>
                                 <div className="product-gallery on-show-slider">
