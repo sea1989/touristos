@@ -242,58 +242,23 @@ const BazaLipoviyVer2 = (props) => {
 
                                     <div className="content-box">
                                         <div className="content-header">
-                                            <h3 className="title"><i className="la la-calendar-check-o m-r5"></i>events</h3>
+                                            <h3 className="title"><i className="la la-calendar-check-o m-r5"></i>События</h3>
                                         </div>
                                         <div className="content-body">
                                             <div className="row">
-                                                <div className="col-lg-6 col-md-6 col-sm-6">
-                                                    <div className="listing-bx event-listing m-b10">
-                                                        <div className="listing-media">
-                                                            <Link to={''}>
-                                                                <img src={require('./../../images/featured/pic3.jpg')} alt="" />
-                                                            </Link>
-                                                        </div>
-                                                        <div className="listing-info">
-                                                            <h3 className="title"><Link to={''}>Moments To Remember From Directory</Link></h3>
-                                                            <ul className="event-meta">
-                                                                <li className="event-date"><span>SEP</span> <strong>04</strong></li>
-                                                                <li>Tuesday 08:00</li>
-                                                                <li>Sydney NSW, Australia</li>
-                                                                <li>44 people interested</li>
-                                                            </ul>
-                                                        </div>
-                                                        <div className="event-bottom">
-                                                            <ul>
-                                                                <li className="event-hosted"><span>Hosted By </span> <Link to={''}>John Smith</Link></li>
-                                                                <li><Link to={''}><i className="la la-star-o"></i></Link></li>
-                                                            </ul>
+
+                                                {dataPlaces.map((item, index) => (
+                                                    <div className="col-md-12 col-lg-6 col-sm-12 m-b30" key={index}>
+                                                        <div className="dlab-box place-bx top-item">
+                                                            <div className="dlab-media top-item__media"> <Link><img src={item.images[0]?.src || 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2018/11/DSC_2797-scaled.jpg'} alt="" /></Link> </div>
+                                                            <div className="dlab-info p-tb30 p-lr10 text-center bg-gray">
+                                                                <h4 className="dlab-title m-t0"><Link>{item.name}</Link></h4>
+                                                                <p className="m-b10">{item.name}</p>
+                                                                <Link to={'./booking/' + item.id} className="site-button outline radius-xl m-lr5">Подробнее</Link>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div className="col-lg-6 col-md-6 col-sm-6">
-                                                    <div className="listing-bx event-listing m-b10">
-                                                        <div className="listing-media">
-                                                            <Link to={''}>
-                                                                <img src={require('./../../images/featured/pic2.jpg')} alt="" />
-                                                            </Link>
-                                                        </div>
-                                                        <div className="listing-info">
-                                                            <h3 className="title"><Link to={''}>Moments To Remember From Directory</Link></h3>
-                                                            <ul className="event-meta">
-                                                                <li className="event-date"><span>SEP</span> <strong>04</strong></li>
-                                                                <li>Tuesday 08:00</li>
-                                                                <li>Sydney NSW, Australia</li>
-                                                                <li>44 people interested</li>
-                                                            </ul>
-                                                        </div>
-                                                        <div className="event-bottom">
-                                                            <ul>
-                                                                <li className="event-hosted"><span>Hosted By </span> <Link to={''}>John Smith</Link></li>
-                                                                <li><Link to={''}><i className="la la-star-o"></i></Link></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                ))}
                                             </div>
                                         </div>
                                         <div className="content-footer content-btn">
@@ -303,25 +268,7 @@ const BazaLipoviyVer2 = (props) => {
 
                                     <iframe title="This is a unique title" src="https://yandex.ru/map-widget/v1/?um=constructor%3Adebb49e651a6cc6ff194d513dcbdb3b6787745f0de4aecb30e0524c6c95cc0b0&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
 
-                                    <div className="row">
-                                        <div className="col-md-12 col-sm-12 m-b15">
-                                            <h3 className="m-b5">Варианты :</h3>
-                                            <div className="dlab-separator bg-primary"></div>
-                                        </div>
 
-                                        {dataPlaces.map((item, index) => (
-                                            <div className="col-md-12 col-lg-6 col-sm-12 m-b30" key={index}>
-                                                <div className="dlab-box place-bx top-item">
-                                                    <div className="dlab-media top-item__media"> <Link><img src={item.images[0]?.src || 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2018/11/DSC_2797-scaled.jpg'} alt="" /></Link> </div>
-                                                    <div className="dlab-info p-tb30 p-lr10 text-center bg-gray">
-                                                        <h4 className="dlab-title m-t0"><Link>{item.name}</Link></h4>
-                                                        <p className="m-b10">{item.name}</p>
-                                                        <Link to={'./booking/' + item.id} className="site-button outline radius-xl m-lr5">Подробнее</Link>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
 
                                 </div>
 
@@ -590,34 +537,23 @@ const BazaLipoviyVer2 = (props) => {
                                 <div className="col-xl-12">
                                     <div className="content-box">
                                         <div className="content-header">
-                                            <h3 className="title">events</h3>
+                                            <h3 className="title">События</h3>
                                         </div>
                                         <div className="content-body">
                                             <div className="row">
-                                                <div className="col-lg-4">
-                                                    <div className="listing-bx event-listing m-b30">
-                                                        <div className="listing-media">
-                                                            <Link to={''}>
-                                                                <img src={require('./../../images/gallery/pic1.jpg')} alt="" />
-                                                            </Link>
-                                                        </div>
-                                                        <div className="listing-info">
-                                                            <h3 className="title"><Link to={''}>Moments To Remember From Directory</Link></h3>
-                                                            <ul className="event-meta">
-                                                                <li className="event-date"><span className="text-primary">SEP</span> <strong>04</strong></li>
-                                                                <li>Tuesday 08:00</li>
-                                                                <li>Sydney NSW, Australia</li>
-                                                                <li>44 people interested</li>
-                                                            </ul>
-                                                        </div>
-                                                        <div className="event-bottom">
-                                                            <ul>
-                                                                <li className="event-hosted"><span>Hosted By </span> <Link to={''}>John Smith</Link></li>
-                                                                <li><Link to={''}><i className="la la-star-o"></i></Link></li>
-                                                            </ul>
+
+                                                {dataPlaces.map((item, index) => (
+                                                    <div className="col-md-12 col-lg-6 col-sm-12 m-b30" key={index}>
+                                                        <div className="dlab-box place-bx top-item">
+                                                            <div className="dlab-media top-item__media"> <Link><img src={item.images[0]?.src || 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2018/11/DSC_2797-scaled.jpg'} alt="" /></Link> </div>
+                                                            <div className="dlab-info p-tb30 p-lr10 text-center bg-gray">
+                                                                <h4 className="dlab-title m-t0"><Link>{item.name}</Link></h4>
+                                                                <p className="m-b10">{item.name}</p>
+                                                                <Link to={'./booking/' + item.id} className="site-button outline radius-xl m-lr5">Подробнее</Link>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                ))}
                                             </div>
                                         </div>
                                     </div>

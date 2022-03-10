@@ -47,15 +47,13 @@ const BlogLeftSidebar = () => {
     const [blog, setBlog] = useState([]);
 
     useEffect(() => {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/posts/')
+        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/posts?categories=82')
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
                 setBlog(data.map((item) => ({
-
                     id: item.id,
                     title: item.title.rendered,
-                    // content: item.content.rendered,
                     desc: item.acf.short_description,
                     date: item.date,
                     image: item.acf.ava,

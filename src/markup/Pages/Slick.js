@@ -17,7 +17,7 @@ const destination = [
         title: 'Australia '
     },
     {
-        image: 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/image-1-1.png',
+        image: 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/03/Frame-71.png',
         title: 'India'
     },
     {

@@ -9,17 +9,23 @@ const BlogDetails = () => {
 
     const { id } = useParams();
     const [blog, setBlog] = useState([]);
-
+    const [content, setContent] = useState('');
+    const [date, setDate] = useState('');
+    const [title, setTitle] = useState('');
+    const [author, setAuthor] = useState('');
     useEffect(() => {
-        fetch(`http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/posts/${id}`)
+        fetch(`https://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/posts/${id}`)
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
-                setBlog(data.content.rendered,
-                );
+                setBlog(data);
+                setContent(data.content.rendered);
+                setDate(data.date);
+                setTitle(data.title.rendered);
+                setAuthor(data.author);
             });
-    }, [id]);
 
+    }, [id]);
     return (
         <div>
             <Header />
@@ -43,17 +49,18 @@ const BlogDetails = () => {
                             <div className="blog-post blog-single blog-style-1">
                                 <div className="dlab-post-meta">
                                     <ul className="d-flex align-items-center">
-                                        <li className="post-date">September 18, 2017</li>
-                                        <li className="post-author">By <Link>demongo</Link> </li>
+                                        {/* //September 18, 2017 s*/}
+                                        <li className="post-date">{date}</li>
+                                        <li className="post-author">By <Link>{author}</Link> </li>
                                         <li className="post-comment"><Link>5k</Link> </li>
                                     </ul>
                                 </div>
                                 <div className="dlab-post-title">
-                                    <h4 className="post-title m-t0"><Link>World’s largest Muslim group denounces Islamist extremism</Link></h4>
+                                    <h4 className="post-title m-t0"><Link>{title}</Link></h4>
                                 </div>
 
                                 <div className="dlab-post-text">
-                                    <p dangerouslySetInnerHTML={{ __html: blog }} />
+                                    <p dangerouslySetInnerHTML={{ __html: content }} />
                                 </div>
                                 <div className="dlab-post-tags clear">
                                     <div className="post-tags"> <Link>Child </Link> <Link>Eduction </Link> <Link>Money </Link> <Link>Resturent </Link> </div>
@@ -168,7 +175,7 @@ const BlogDetails = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-4 col-md-5 sticky-top">
+                        {/* <div className="col-lg-4 col-md-5 sticky-top">
                             <aside className="side-bar">
                                 <div className="widget">
                                     <h6 className="widget-title style-1">Search</h6>
@@ -230,7 +237,6 @@ const BlogDetails = () => {
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className="widget widget_gallery gallery-grid-3">
                                     <h6 className="widget-title style-1">Our services</h6>
                                     <ul>
@@ -242,7 +248,6 @@ const BlogDetails = () => {
                                         <li><div className="dlab-post-thum"><Link className="dlab-img-overlay1 dlab-img-effect zoom-slow"><img src={require('./../../images/gallery/pic9.jpg')} alt="" /></Link></div></li>
                                     </ul>
                                 </div>
-
                                 <div className="widget widget_archive">
                                     <h6 className="widget-title style-1">Categories List</h6>
                                     <ul>
@@ -253,7 +258,6 @@ const BlogDetails = () => {
                                         <li><Link>disinclination</Link></li>
                                     </ul>
                                 </div>
-
                                 <div className="widget widget-newslatter">
                                     <h6 className="widget-title style-1">Newsletter</h6>
                                     <div className="news-box">
@@ -268,7 +272,7 @@ const BlogDetails = () => {
                                     </div>
                                 </div>
                             </aside>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
