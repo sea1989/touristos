@@ -162,12 +162,71 @@ const BookingDetails = () => {
                             </div>
                             <div className="col-lg-4">
                                 <div className="sticky-top">
-                                    <div className="d-flex sp10">
-                                        <div className="flex-fill col-6">
-                                            <Link to={"/hotelbooking"} className="site-button btn-block" data-toggle="modal" data-target="#exampleModal1">Бронировать</Link>
-                                        </div>
 
-                                    </div>
+                                    <form className="hotel-booking">
+                                        <div className="row">
+                                            <div className="col-md-6 col-xl-6 col-sm-6 col-6">
+                                                <div className="form-group">
+                                                    <div className="input-group">
+                                                        <input name="dzName" required="" className="form-control" placeholder="" type="date" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="col-md-6 col-xl-6 col-sm-6 col-6">
+                                                <div className="form-group">
+                                                    <div className="input-group">
+                                                        <input name="dzName" required="" className="form-control" placeholder="" type="date" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-12">
+                                                <div className="form-group">
+                                                    <div className="input-group">
+                                                        <input name="dzName" required="" className="form-control" placeholder="ФИО" type="text" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-12">
+                                                <div className="form-group">
+                                                    <div className="input-group">
+                                                        <input name="dzName" required="" className="form-control" placeholder="+7 977 777 77 77" type="tel" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-12">
+                                                <div className="form-group">
+                                                    <div className="input-group">
+                                                        <input name="dzName" required="" className="form-control" placeholder="info@mail.ru" type="mail" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="col-md-6 col-xl-4 col-sm-6 col-6">
+                                                <div className="form-group">
+                                                    <div className="quantity btn-quantity">
+                                                        <input className="form-control" id="demo_vertical2" type="number" placeholder='1' name="demo_vertical2" />
+                                                    </div>
+                                                    <span className="font-12">Rooms</span>
+                                                </div>
+                                            </div>
+
+                                            <div className="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-12">
+                                                <div className="form-group">
+                                                    <div className="input-group">
+                                                        <input name="dzName" required="" className="form-control" placeholder="Комментарий (при желании)" type="textarea" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-12">
+                                                <Link ><button type="submit" className="site-button btn-block">Забронировать</button></Link>
+                                            </div>
+                                        </div>
+                                    </form>
+
                                     <div className="m-t50">
                                         <img src={baner ? baner : ''} className="d-md-none d-xl-block d-lg-block" alt="" />
                                     </div>
