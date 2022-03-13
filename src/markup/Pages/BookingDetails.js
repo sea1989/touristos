@@ -16,51 +16,6 @@ const WooCommerce = new WooCommerceRestApi({
 });
 
 
-const tourDay = [
-    {
-        image: require('./../../images/our-work/pic1.jpg'),
-        day: 1,
-        title: 'Arrival in London',
-        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model.',
-
-    },
-    {
-        image: require('./../../images/our-work/pic2.jpg'),
-        day: 2,
-        title: 'Arrival in London',
-        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model.',
-
-    },
-    {
-        image: require('./../../images/our-work/pic3.jpg'),
-        day: 3,
-        title: 'Arrival in London',
-        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model.',
-
-    },
-    {
-        image: require('./../../images/our-work/pic4.jpg'),
-        day: 4,
-        title: 'Arrival in London',
-        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model.',
-
-    },
-    {
-        image: require('./../../images/our-work/pic5.jpg'),
-        day: 5,
-        title: 'Arrival in London',
-        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model.',
-
-    },
-    {
-        image: require('./../../images/our-work/pic6.jpg'),
-        day: 6,
-        title: 'Arrival in London',
-        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model.',
-
-    },
-]
-
 var bg3 = require('./../../images/banner/bnr1.jpg');
 
 function SampleNextArrow(props) {
