@@ -38,6 +38,30 @@ const BookingDetails = () => {
     const [tourImg, setTourImg] = useState([]);
     const [baner, setBaner] = useState([]);
 
+    const [dateStart, setDateStart] = useState('');
+    const [dateFinish, setDateFinish] = useState('');
+    const [fio, setFio] = useState('');
+    const [tel, setTel] = useState('');
+    const [email, setEmail] = useState('');
+    const [rooms, setRooms] = useState('');
+    const [comments, setComments] = useState('');
+
+    const objForm = {
+        dateStart: dateStart,
+        dateFinish: dateFinish,
+        fio: fio,
+        tel: tel,
+        email: email,
+        rooms: rooms,
+        comments: comments,
+        tourName: tour.name
+    }
+
+    function formHandler() {
+        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/contact-form-7/v1/contact-forms/4220/feedback',
+            { method: 'POST', body: new FormData(document.querySelector('#formElem')) })
+    }
+
     useEffect(() => {
         WooCommerce.get(`products/${id}`,
 
@@ -118,19 +142,38 @@ const BookingDetails = () => {
                             <div className="col-lg-4">
                                 <div className="sticky-top">
 
-                                    <form className="hotel-booking">
+                                    <form id="formElem" className="hotel-booking">
+                                        <input type='hidden' name='tourName' value={tour.name}></input>
                                         <div className="row">
                                             <div className="col-md-6 col-xl-6 col-sm-6 col-6">
                                                 <div className="form-group">
                                                     <div className="input-group">
-                                                        <input name="dzName" required="" className="form-control" placeholder="" type="date" />
+                                                        <input
+                                                            name="dateStart"
+                                                            required=""
+                                                            className="form-control"
+                                                            placeholder=""
+                                                            type="date"
+                                                            onChange={(event) => setDateStart(
+                                                                event.target.value
+                                                            )}
+                                                        />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="col-md-6 col-xl-6 col-sm-6 col-6">
                                                 <div className="form-group">
                                                     <div className="input-group">
-                                                        <input name="dzName" required="" className="form-control" placeholder="" type="date" />
+                                                        <input
+                                                            name="dateFinish"
+                                                            required=""
+                                                            className="form-control"
+                                                            placeholder=""
+                                                            type="date"
+                                                            onChange={(event) => setDateFinish(
+                                                                event.target.value
+                                                            )}
+                                                        />
                                                     </div>
                                                 </div>
                                             </div>
@@ -138,7 +181,16 @@ const BookingDetails = () => {
                                             <div className="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-12">
                                                 <div className="form-group">
                                                     <div className="input-group">
-                                                        <input name="dzName" required="" className="form-control" placeholder="ФИО" type="text" />
+                                                        <input
+                                                            name="fio"
+                                                            required=""
+                                                            className="form-control"
+                                                            placeholder="ФИО"
+                                                            type="text"
+                                                            onChange={(event) => setFio(
+                                                                event.target.value
+                                                            )}
+                                                        />
                                                     </div>
                                                 </div>
                                             </div>
@@ -146,7 +198,16 @@ const BookingDetails = () => {
                                             <div className="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-12">
                                                 <div className="form-group">
                                                     <div className="input-group">
-                                                        <input name="dzName" required="" className="form-control" placeholder="+7 977 777 77 77" type="tel" />
+                                                        <input
+                                                            name="tel"
+                                                            required=""
+                                                            className="form-control"
+                                                            placeholder="+7 977 777 77 77"
+                                                            type="tel"
+                                                            onChange={(event) => setTel(
+                                                                event.target.value
+                                                            )}
+                                                        />
                                                     </div>
                                                 </div>
                                             </div>
@@ -154,7 +215,16 @@ const BookingDetails = () => {
                                             <div className="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-12">
                                                 <div className="form-group">
                                                     <div className="input-group">
-                                                        <input name="dzName" required="" className="form-control" placeholder="info@mail.ru" type="mail" />
+                                                        <input
+                                                            name="email"
+                                                            required=""
+                                                            className="form-control"
+                                                            placeholder="info@mail.ru"
+                                                            type="mail"
+                                                            onChange={(event) => setEmail(
+                                                                event.target.value
+                                                            )}
+                                                        />
                                                     </div>
                                                 </div>
                                             </div>
@@ -162,7 +232,16 @@ const BookingDetails = () => {
                                             <div className="col-md-6 col-xl-4 col-sm-6 col-6">
                                                 <div className="form-group">
                                                     <div className="quantity btn-quantity">
-                                                        <input className="form-control" id="demo_vertical2" type="number" placeholder='1' name="demo_vertical2" />
+                                                        <input
+                                                            className="form-control"
+                                                            id="demo_vertical2"
+                                                            type="number"
+                                                            placeholder='1'
+                                                            name="rooms"
+                                                            onChange={(event) => setRooms(
+                                                                event.target.value
+                                                            )}
+                                                        />
                                                     </div>
                                                     <span className="font-12">Rooms</span>
                                                 </div>
@@ -171,13 +250,26 @@ const BookingDetails = () => {
                                             <div className="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-12">
                                                 <div className="form-group">
                                                     <div className="input-group">
-                                                        <input name="dzName" required="" className="form-control" placeholder="Комментарий (при желании)" type="textarea" />
+                                                        <input
+                                                            name="comments"
+                                                            required=""
+                                                            className="form-control"
+                                                            placeholder="Комментарий (при желании)"
+                                                            type="textarea"
+                                                            onChange={(event) => setComments(
+                                                                event.target.value
+                                                            )}
+                                                        />
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div className="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-12">
-                                                <Link ><button type="submit" className="site-button btn-block">Забронировать</button></Link>
+                                                <Link ><button
+                                                    type="submit"
+                                                    className="site-button btn-block"
+                                                    onClick={formHandler}
+                                                >Забронировать</button></Link>
                                             </div>
                                         </div>
                                     </form>
