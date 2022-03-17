@@ -38,25 +38,6 @@ const BookingDetails = () => {
     const [tourImg, setTourImg] = useState([]);
     const [baner, setBaner] = useState([]);
 
-    const [dateStart, setDateStart] = useState('');
-    const [dateFinish, setDateFinish] = useState('');
-    const [fio, setFio] = useState('');
-    const [tel, setTel] = useState('');
-    const [email, setEmail] = useState('');
-    const [rooms, setRooms] = useState('');
-    const [comments, setComments] = useState('');
-
-    const objForm = {
-        dateStart: dateStart,
-        dateFinish: dateFinish,
-        fio: fio,
-        tel: tel,
-        email: email,
-        rooms: rooms,
-        comments: comments,
-        tourName: tour.name
-    }
-
     function formHandler() {
         fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/contact-form-7/v1/contact-forms/4220/feedback',
             { method: 'POST', body: new FormData(document.querySelector('#formElem')) })
@@ -154,9 +135,6 @@ const BookingDetails = () => {
                                                             className="form-control"
                                                             placeholder=""
                                                             type="date"
-                                                            onChange={(event) => setDateStart(
-                                                                event.target.value
-                                                            )}
                                                         />
                                                     </div>
                                                 </div>
@@ -170,9 +148,6 @@ const BookingDetails = () => {
                                                             className="form-control"
                                                             placeholder=""
                                                             type="date"
-                                                            onChange={(event) => setDateFinish(
-                                                                event.target.value
-                                                            )}
                                                         />
                                                     </div>
                                                 </div>
@@ -187,9 +162,6 @@ const BookingDetails = () => {
                                                             className="form-control"
                                                             placeholder="ФИО"
                                                             type="text"
-                                                            onChange={(event) => setFio(
-                                                                event.target.value
-                                                            )}
                                                         />
                                                     </div>
                                                 </div>
@@ -204,9 +176,6 @@ const BookingDetails = () => {
                                                             className="form-control"
                                                             placeholder="+7 977 777 77 77"
                                                             type="tel"
-                                                            onChange={(event) => setTel(
-                                                                event.target.value
-                                                            )}
                                                         />
                                                     </div>
                                                 </div>
@@ -221,9 +190,6 @@ const BookingDetails = () => {
                                                             className="form-control"
                                                             placeholder="info@mail.ru"
                                                             type="mail"
-                                                            onChange={(event) => setEmail(
-                                                                event.target.value
-                                                            )}
                                                         />
                                                     </div>
                                                 </div>
@@ -238,9 +204,6 @@ const BookingDetails = () => {
                                                             type="number"
                                                             placeholder='1'
                                                             name="rooms"
-                                                            onChange={(event) => setRooms(
-                                                                event.target.value
-                                                            )}
                                                         />
                                                     </div>
                                                     <span className="font-12">Rooms</span>
@@ -256,9 +219,6 @@ const BookingDetails = () => {
                                                             className="form-control"
                                                             placeholder="Комментарий (при желании)"
                                                             type="textarea"
-                                                            onChange={(event) => setComments(
-                                                                event.target.value
-                                                            )}
                                                         />
                                                     </div>
                                                 </div>

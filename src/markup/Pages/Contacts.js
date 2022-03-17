@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import GoogleMaps from "simple-react-google-maps"
+
+import Inst from '../../images/icon/iconsinstagram.png';
+import Telegram from '../../images/icon/iconstelegram.png';
+
 import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
 
@@ -36,31 +39,28 @@ class Contacts extends Component {
                                             <div className="icon-bx-xs border-1"> <Link className="icon-cell"><i className="ti-location-pin"></i></Link> </div>
                                             <div className="icon-content">
                                                 <h6 className="text-uppercase m-tb0 dlab-tilte">Адрес:</h6>
-                                                <p>Владивосток, Партизанский Проспект,13 офис 5</p>
+                                                <p>Владивосток, ул. Алеутская 28, офис 207</p>
                                             </div>
                                         </li>
                                         <li className="icon-bx-wraper left  m-b30">
                                             <div className="icon-bx-xs border-1"> <Link className="icon-cell"><i className="ti-email"></i></Link> </div>
                                             <div className="icon-content">
                                                 <h6 className="text-uppercase m-tb0 dlab-tilte">Email:</h6>
-                                                <p>info@example.com</p>
+                                                <p>turistdv@bk.ru</p>
                                             </div>
                                         </li>
                                         <li className="icon-bx-wraper left">
                                             <div className="icon-bx-xs border-1"> <Link className="icon-cell"><i className="ti-mobile"></i></Link> </div>
                                             <div className="icon-content">
                                                 <h6 className="text-uppercase m-tb0 dlab-tilte">Телефон</h6>
-                                                <p> 271-49-05</p>
+                                                <p> +7 423 290-94-10</p>
                                             </div>
                                         </li>
                                     </ul>
                                     <div className="m-t20">
                                         <ul className="dlab-social-icon dlab-social-icon-lg">
-                                            <li><Link className="fa fa-facebook bg-primary"></Link></li>
-                                            <li><Link className="fa fa-twitter bg-primary"></Link></li>
-                                            <li><Link className="fa fa-linkedin bg-primary"></Link></li>
-                                            <li><Link className="fa fa-pinterest-p bg-primary"></Link></li>
-                                            <li><Link className="fa fa-google-plus bg-primary"></Link></li>
+                                        <li><Link to={'https://www.instagram.com/vldvtour/'} className="site-button instagram sharp"><img src={Inst} width="16px" height="16px" alt="instagram" /><i className="fa "></i></Link></li>
+                                    <li><Link to={'https://t.me/vldvtour'} className="site-button sharp"><i className="fa"><img src={Telegram} width="16px" height="16px" alt="telegram" /></i></Link></li>
                                         </ul>
                                     </div>
                                 </div>

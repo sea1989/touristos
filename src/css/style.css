@@ -3056,7 +3056,7 @@ blockquote p {
 }
 
 blockquote:before {
-    content: "\f10d";
+    content: "\201C";
     font-family: "FontAwesome";
     color: #21ab64;
     font-size: 35px;
@@ -3597,6 +3597,8 @@ blockquote:before {
 
 .header-nav .nav {
     float: right;
+    display: flex;
+    align-items: center;
 }
 
 .header-nav .nav i {
@@ -3850,7 +3852,7 @@ blockquote:before {
 }
 
 .header-nav .nav > li.menu-item-has-children:before {
-    content: "\f078";
+    content: "\02C5";
     display: block;
     font-family: "FontAwesome";
     right: 4px;
@@ -4179,7 +4181,7 @@ blockquote:before {
     /* Mobile Responsive */
     .side-nav .nav.navbar-nav li a i.fa-chevron-down:before,
     .nav.navbar-nav li a i.fa-chevron-down:before {
-        content: "\f078";
+        content: "\02C5";
     }
     .side-nav .nav.navbar-nav li.open a i.fa-chevron-down:before,
     .nav.navbar-nav li.open a i.fa-chevron-down:before {
@@ -4199,7 +4201,7 @@ blockquote:before {
         z-index: 3;
     }
     .header-nav .nav > li .sub-menu li i.fa-angle-right:before {
-        content: "\f078";
+        content: "\02C5";
         font-size: 10px;
     }
     .header-nav .nav > li .sub-menu li.open i.fa-angle-right:before {
@@ -10648,7 +10650,7 @@ ul[class*="list-"] {
 }
 
 .quote-left:before {
-    content: "\f10d";
+    content: "\201C";
     left: 0;
 }
 

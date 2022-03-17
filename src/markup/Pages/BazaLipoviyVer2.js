@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import { TabContent, TabPane } from 'reactstrap';
 import classnames from 'classnames';
 
+import Inst from '../../images/icon/iconsinstagram.png';
+import Telegram from '../../images/icon/iconstelegram.png';
+
 // Setup:
 const WooCommerceRestApi = require("@woocommerce/woocommerce-rest-api").default;
 // import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api"; // Supports ESM
@@ -25,9 +28,13 @@ const BazaLipoviyVer2 = (props) => {
 
     const [lipovoy, setLipovoy] = useState([]);
 
-
     const toggle = tab => {
         if (activeTab !== tab) setActiveTab(tab);
+    }
+
+    function formHandler() {
+        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/contact-form-7/v1/contact-forms/4220/feedback',
+            { method: 'POST', body: new FormData(document.querySelector('#formElem')) })
     }
 
     useEffect(() => {
@@ -36,8 +43,11 @@ const BazaLipoviyVer2 = (props) => {
             .then((data) => {
                 console.log(data);
                 setLipovoy({
-                    title: data.acf.desc,
+                    title: data.title.rendered,
                     content: data.content.rendered,
+                    img: [...data.acf.gallery.matchAll(/src="(.*?)"/g)].map(
+                        ([, link]) => link
+                    ),
                     images: [...data.content.rendered.matchAll(/src="(.*?)"/g)].map(
                         ([, link]) => link
                     ),
@@ -152,36 +162,21 @@ const BazaLipoviyVer2 = (props) => {
                                         </div>
                                         <div className="content-body">
                                             <ul className="icon-box-list list-col-4">
-                                                <li><Link to={''} className="icon-box-info">
-                                                    <div className="icon-cell bg-gray">
-                                                        <i className="la la-life-buoy"></i>
-                                                    </div>
-                                                    <span>Expert</span>
-                                                </Link></li>
+
                                                 <li><Link to={''} className="icon-box-info">
                                                     <div className="icon-cell bg-gray">
                                                         <i className="la la-cutlery"></i>
                                                     </div>
                                                     <span>Restaurant</span>
                                                 </Link></li>
+
                                                 <li><Link to={''} className="icon-box-info">
                                                     <div className="icon-cell bg-gray">
                                                         <i className="la la-shopping-cart"></i>
                                                     </div>
                                                     <span>Shopping</span>
                                                 </Link></li>
-                                                <li><Link to={''} className="icon-box-info">
-                                                    <div className="icon-cell bg-gray">
-                                                        <i className="la la-line-chart"></i>
-                                                    </div>
-                                                    <span>State Street</span>
-                                                </Link></li>
-                                                <li><Link to={''} className="icon-box-info">
-                                                    <div className="icon-cell bg-gray">
-                                                        <i className="la la-lemon-o"></i>
-                                                    </div>
-                                                    <span>Tea Tasting</span>
-                                                </Link></li>
+
                                                 <li><Link to={''} className="icon-box-info">
                                                     <div className="icon-cell bg-gray">
                                                         <i className="la la-wifi"></i>
@@ -198,40 +193,16 @@ const BazaLipoviyVer2 = (props) => {
                                         <div className="content-body">
                                             <div className="widget widget_gallery gallery-grid-4 lightgallery">
                                                 <ul>
-                                                    <li>
-                                                        <span className="check-km" title="Light Gallery Grid 1">
-                                                            <Link to={''}>
-                                                                <div className="dlab-post-thum"><img src='http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2021/09/44092.1403671886.jpg' alt="" /></div>
-                                                            </Link>
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <span className="check-km" title="Light Gallery Grid 1">
-                                                            <Link to={''}>
-                                                                <div className="dlab-post-thum"><img src='http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2021/09/44092.1403671886.jpg' alt="" /></div>
-                                                            </Link>
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <span className="check-km" title="Light Gallery Grid 1">
-                                                            <Link to={''}>
-                                                                <div className="dlab-post-thum"><img src='http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2021/09/44092.1403671886.jpg' alt="" /></div>
-                                                            </Link>
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <span className="check-km" title="Light Gallery Grid 1">
-                                                            <Link to={''}>
-                                                                <div className="dlab-post-thum"><img src='http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2021/09/44092.1403671886.jpg' alt="" /></div>
-                                                                <div className="more-images">
-                                                                    <div>
-                                                                        <strong>6</strong>
-                                                                        <span>Images</span>
-                                                                    </div>
-                                                                </div>
-                                                            </Link>
-                                                        </span>
-                                                    </li>
+
+                                                    {lipovoy.img ? lipovoy.img.map((item) =>
+                                                        <li>
+                                                            <span className="check-km" title="Light Gallery Grid 1">
+                                                                <Link to={''}>
+                                                                    <div className="dlab-post-thum"><img src={item} alt="" /></div>
+                                                                </Link>
+                                                            </span>
+                                                        </li>) : ''}
+
                                                 </ul>
                                             </div>
                                         </div>
@@ -268,45 +239,131 @@ const BazaLipoviyVer2 = (props) => {
 
                                     <iframe title="This is a unique title" src="https://yandex.ru/map-widget/v1/?um=constructor%3Adebb49e651a6cc6ff194d513dcbdb3b6787745f0de4aecb30e0524c6c95cc0b0&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
 
-
-
                                 </div>
 
                                 <div className="col-xl-4 col-lg-5 col-md-12 sticky-top">
                                     <aside className="side-bar listing-side-bar">
                                         <div className="content-box">
-                                            <div className="content-header">
-                                                <h3 className="title"><i className="la la-bullhorn m-r5"></i>Best Seller</h3>
-                                            </div>
+
                                             <div className="content-body">
                                                 <div className="tour-booking-form">
                                                     <div className="tour-booking-head">
 
-                                                        <span>Выбрать</span>
+                                                        <span>Выбрать даты</span>
                                                     </div>
-                                                    <form className="row sp15">
-                                                        <div className="form-group col-md-6">
-                                                            <input type="text" className="form-control" placeholder="Имя" />
-                                                        </div>
-                                                        <div className="form-group col-md-6">
-                                                            <input type="text" className="form-control" placeholder="Фамилия" />
-                                                        </div>
-                                                        <div className="form-group col-md-6">
-                                                            <input type="email" className="form-control" placeholder="Email" />
-                                                        </div>
-                                                        <div className="form-group col-md-6">
-                                                            <input type="text" className="form-control" placeholder="Кол-во гостей" />
-                                                        </div>
-                                                        <div className="form-group col-md-12">
-                                                            <input type="text" className="form-control" placeholder="Телефон" />
-                                                        </div>
-                                                        <div className="form-group col-md-12">
-                                                            <textarea className="form-control" placeholder="Текст"></textarea>
-                                                        </div>
-                                                        <div className="form-group col-md-12">
-                                                            <button className="site-button btn-block text-uppercase button-md">Забронировать</button>
+
+
+                                                    <form id="formElem" className="hotel-booking">
+                                                        <input type='hidden' name='tourName' value={lipovoy.title}></input>
+                                                        <div className="row">
+                                                            <div className="col-md-6 col-xl-6 col-sm-6 col-6">
+                                                                <div className="form-group">
+                                                                    <div className="input-group">
+                                                                        <input
+                                                                            name="dateStart"
+                                                                            required=""
+                                                                            className="form-control"
+                                                                            placeholder=""
+                                                                            type="date"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div className="col-md-6 col-xl-6 col-sm-6 col-6">
+                                                                <div className="form-group">
+                                                                    <div className="input-group">
+                                                                        <input
+                                                                            name="dateFinish"
+                                                                            required=""
+                                                                            className="form-control"
+                                                                            placeholder=""
+                                                                            type="date"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-12">
+                                                                <div className="form-group">
+                                                                    <div className="input-group">
+                                                                        <input
+                                                                            name="fio"
+                                                                            required=""
+                                                                            className="form-control"
+                                                                            placeholder="ФИО"
+                                                                            type="text"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-12">
+                                                                <div className="form-group">
+                                                                    <div className="input-group">
+                                                                        <input
+                                                                            name="tel"
+                                                                            required=""
+                                                                            className="form-control"
+                                                                            placeholder="+7 977 777 77 77"
+                                                                            type="tel"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-12">
+                                                                <div className="form-group">
+                                                                    <div className="input-group">
+                                                                        <input
+                                                                            name="email"
+                                                                            required=""
+                                                                            className="form-control"
+                                                                            placeholder="info@mail.ru"
+                                                                            type="mail"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="col-md-6 col-xl-4 col-sm-6 col-6">
+                                                                <div className="form-group">
+                                                                    <div className="quantity btn-quantity">
+                                                                        <input
+                                                                            className="form-control"
+                                                                            id="demo_vertical2"
+                                                                            type="number"
+                                                                            placeholder='1'
+                                                                            name="rooms"
+                                                                        />
+                                                                    </div>
+                                                                    <span className="font-12">Rooms</span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-12">
+                                                                <div className="form-group">
+                                                                    <div className="input-group">
+                                                                        <input
+                                                                            name="comments"
+                                                                            required=""
+                                                                            className="form-control"
+                                                                            placeholder="Комментарий (при желании)"
+                                                                            type="textarea"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-12">
+                                                                <Link ><button
+                                                                    type="submit"
+                                                                    className="site-button btn-block"
+                                                                    onClick={formHandler}
+                                                                >Забронировать</button></Link>
+                                                            </div>
                                                         </div>
                                                     </form>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -321,35 +378,26 @@ const BazaLipoviyVer2 = (props) => {
                                                         <div className="icon-cell bg-gray">
                                                             <i className="la la-envelope"></i>
                                                         </div>
-                                                        <span>info@example.com</span>
+                                                        <span>turistdv@bk.ru</span>
                                                     </Link></li>
                                                     <li><Link to={''} className="icon-box-info">
                                                         <div className="icon-cell bg-gray">
                                                             <i className="la la-phone"></i>
                                                         </div>
-                                                        <span>+91 1 234 5648</span>
+                                                        <span>+7 423 290-94-10</span>
                                                     </Link></li>
-                                                    <li><Link to={''} className="icon-box-info">
-                                                        <div className="icon-cell bg-gray">
-                                                            <i className="la la-globe"></i>
-                                                        </div>
-                                                        <span>https://triper.dexignlab.com/</span>
-                                                    </Link></li>
+
                                                     <li><Link to={''} className="icon-box-info">
                                                         <div className="icon-cell bg-gray">
                                                             <i className="la la-map-marker"></i>
                                                         </div>
-                                                        <span>Demo Address #8901 Marmora Road</span>
+                                                        <span>Владивосток, ул. Алеутская 28, офис 207</span>
                                                     </Link></li>
                                                 </ul>
                                                 <ul className="list-inline m-tb20">
-                                                    <li><Link to={''} className="site-button sharp"><i className="fa fa-facebook"></i></Link></li>
-                                                    <li><Link to={''} className="site-button sharp"><i className="fa fa-google-plus"></i></Link></li>
-                                                    <li><Link to={''} className="site-button sharp"><i className="fa fa-linkedin"></i></Link></li>
-                                                    <li><Link to={''} className="site-button sharp"><i className="fa fa-instagram"></i></Link></li>
-                                                    <li><Link to={''} className="site-button sharp"><i className="fa fa-twitter"></i></Link></li>
+                                                    <li><Link to={'https://www.instagram.com/vldvtour/'} className="site-button instagram sharp"><img src={Inst} width="16px" height="16px" alt="instagram" /><i className="fa "></i></Link></li>
+                                                    <li><Link to={'https://t.me/vldvtour'} className="site-button sharp"><i className="fa"><img src={Telegram} width="16px" height="16px" alt="telegram" /></i></Link></li>
                                                 </ul>
-                                                <Link to={''} className="site-button  btn-block gray"><i className="fa fa-envelope"></i> Inbox</Link>
                                             </div>
                                         </div>
 
@@ -359,12 +407,7 @@ const BazaLipoviyVer2 = (props) => {
                                             </div>
                                             <div className="content-body">
                                                 <ul className="icon-box-list list-col-2">
-                                                    <li><Link to={''} className="icon-box-info">
-                                                        <div className="icon-cell bg-gray">
-                                                            <i className="la la-life-buoy"></i>
-                                                        </div>
-                                                        <span>Expert</span>
-                                                    </Link></li>
+
                                                     <li><Link to={''} className="icon-box-info">
                                                         <div className="icon-cell bg-gray">
                                                             <i className="la la-cutlery"></i>
@@ -377,18 +420,7 @@ const BazaLipoviyVer2 = (props) => {
                                                         </div>
                                                         <span>Shopping</span>
                                                     </Link></li>
-                                                    <li><Link to={''} className="icon-box-info">
-                                                        <div className="icon-cell bg-gray">
-                                                            <i className="la la-line-chart"></i>
-                                                        </div>
-                                                        <span>State Street</span>
-                                                    </Link></li>
-                                                    <li><Link to={''} className="icon-box-info">
-                                                        <div className="icon-cell bg-gray">
-                                                            <i className="la la-lemon-o"></i>
-                                                        </div>
-                                                        <span>Tea Tasting</span>
-                                                    </Link></li>
+
                                                     <li><Link to={''} className="icon-box-info">
                                                         <div className="icon-cell bg-gray">
                                                             <i className="la la-wifi"></i>
@@ -409,11 +441,10 @@ const BazaLipoviyVer2 = (props) => {
                                 <div className="col-xl-12">
                                     <div className="content-box">
                                         <div className="content-header">
-                                            <h3 className="title">description</h3>
+                                            <h3 className="title">Описание</h3>
                                         </div>
                                         <div className="content-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
+                                            <p dangerouslySetInnerHTML={{ __html: lipovoy.content }} />
                                         </div>
                                     </div>
                                 </div>
@@ -428,12 +459,7 @@ const BazaLipoviyVer2 = (props) => {
                                         </div>
                                         <div className="content-body">
                                             <ul className="icon-box-list list-col-4">
-                                                <li><Link to={''} className="icon-box-info">
-                                                    <div className="icon-cell bg-gray">
-                                                        <i className="la la-life-buoy"></i>
-                                                    </div>
-                                                    <span>Expert</span>
-                                                </Link></li>
+
                                                 <li><Link to={''} className="icon-box-info">
                                                     <div className="icon-cell bg-gray">
                                                         <i className="la la-cutlery"></i>
@@ -446,18 +472,7 @@ const BazaLipoviyVer2 = (props) => {
                                                     </div>
                                                     <span>Shopping</span>
                                                 </Link></li>
-                                                <li><Link to={''} className="icon-box-info">
-                                                    <div className="icon-cell bg-gray">
-                                                        <i className="la la-line-chart"></i>
-                                                    </div>
-                                                    <span>State Street</span>
-                                                </Link></li>
-                                                <li><Link to={''} className="icon-box-info">
-                                                    <div className="icon-cell bg-gray">
-                                                        <i className="la la-lemon-o"></i>
-                                                    </div>
-                                                    <span>Tea Tasting</span>
-                                                </Link></li>
+
                                                 <li><Link to={''} className="icon-box-info">
                                                     <div className="icon-cell bg-gray">
                                                         <i className="la la-wifi"></i>
@@ -475,31 +490,19 @@ const BazaLipoviyVer2 = (props) => {
                                 <div className="col-xl-12">
                                     <div className="content-box">
                                         <div className="content-header">
-                                            <h3 className="title">photos</h3>
+                                            <h3 className="title">Фото</h3>
                                         </div>
                                         <div className="content-body">
                                             <div className="widget widget_gallery gallery-grid-4 lightgallery">
                                                 <ul>
-                                                    <li>
-                                                        <span className="check-km" title="Light Gallery Grid 1">
-                                                            <img src={require('./../../images/gallery/img1.jpg')} alt="" />
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <span className="check-km" title="Light Gallery Grid 1">
-                                                            <img src={require('./../../images/gallery/img2.jpg')} alt="" />
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <span className="check-km" title="Light Gallery Grid 1">
-                                                            <img src={require('./../../images/gallery/img3.jpg')} alt="" />
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <span className="check-km" title="Light Gallery Grid 1">
-                                                            <img src={require('./../../images/gallery/img4.jpg')} alt="" />
-                                                        </span>
-                                                    </li>
+                                                    {lipovoy.img ? lipovoy.img.map((item) =>
+                                                        <li>
+                                                            <span className="check-km" title="Light Gallery Grid 1">
+                                                                <Link to={''}>
+                                                                    <div className="dlab-post-thum"><img src={item} alt="" /></div>
+                                                                </Link>
+                                                            </span>
+                                                        </li>) : ''}
                                                 </ul>
                                             </div>
                                         </div>

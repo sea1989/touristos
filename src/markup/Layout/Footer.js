@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import SimpleReactLightbox from 'simple-react-lightbox';
-import { SRLWrapper } from 'simple-react-lightbox';
+
+import Point from '../../images/icon/iconsmap.png';
+import Tel from '../../images/icon/iconsphone.png';
+import WhatsApp from '../../images/icon/iconswhatsapp.png';
+import Mail from '../../images/icon/iconsmail.png';
+import Inst from '../../images/icon/iconsinstagram.png';
+import Telegram from '../../images/icon/iconstelegram.png';
 
 var bg3 = require('./../../images/background/bg6.jpg');
 
@@ -19,33 +24,35 @@ class Footer extends Component {
                                     <ul className="info-contact">
                                         <li>
                                             <span>
-                                                <i className="fa fa-map-marker	"></i> Владивосток, Партизанский Проспект,13 офис 5
+                                                <i className="fa"> <img src={Point} width="32px" height="32px" alt="point" /></i> Владивосток, ул. Алеутская 28, офис 207
                                             </span>
                                         </li>
 
                                         <li>
                                             <span>
-                                                <i className="fa fa-phone"></i> Позвонить нам: 271-49-05 <br />274-35-90
+
+                                                <i className="fa"><img src={Tel} width="32px" height="32px" alt="point" /></i> Позвонить нам: <a href="tel: +7 423 290-94-10">+7 423 290-94-10</a>,<a href="tel: +7 914 791-49-05"> +7 914 791-49-05,</a> <a href="tel: +7 423 290-94-10">+7 423 290-94-10</a>
+                                                {/* <Button label="Write me an E-Mail" mailto="mailto:no-reply@example.com" /> <bi */}
                                             </span>
+
                                         </li>
 
                                         <li>
                                             <span>
-                                                <i className="fa fa-envelope-o"></i> Mail: info@travel.com
+                                                <i className="fa"><img src={Mail} width="32px" height="32px" alt="mail" /></i><a href="mailto: turistdv@bk.ru"> Mail: turistdv@bk.ru </a>
                                             </span>
                                         </li>
                                         <li>
                                             <span>
-                                                <i className="fa fa-fax"></i> Whats App: 8(914)791-49-05
+                                                <i className="fa"><img src={WhatsApp} width="32px" height="32px" alt="whatsapp" /></i><a href='https://wa.me/79147914905?text=Здравствуйте%2C+у+меня+есть+вопросРТО: 021832'> WhatsApp: 8(914)791-49-05 </a>
                                             </span>
                                         </li>
                                     </ul>
                                 </div>
+
                                 <ul className="list-inline">
-                                    <li><Link to={''} className="site-button facebook sharp"><i className="fa fa-facebook"></i></Link></li>
-                                    <li><Link to={''} className="site-button google-plus sharp"><i className="fa fa-google-plus"></i></Link></li>
-                                    <li><Link to={''} className="site-button linkedin sharp"><i className="fa fa-linkedin"></i></Link></li>
-                                    <li><Link to={''} className="site-button twitter sharp"><i className="fa fa-twitter"></i></Link></li>
+                                    <li><Link to={'https://www.instagram.com/vldvtour/'} className="site-button instagram sharp"><img src={Inst} width="16px" height="16px" alt="instagram" /><i className="fa "></i></Link></li>
+                                    <li><Link to={'https://t.me/vldvtour'} className="site-button sharp"><i className="fa"><img src={Telegram} width="16px" height="16px" alt="telegram" /></i></Link></li>
                                 </ul>
                             </div>
                             <div className="col-lg-3 col-md-6 col-sm-7 footer-col-4">
@@ -91,35 +98,16 @@ class Footer extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-3 col-md-6 col-sm-6 footer-col-4">
-                                <div className="widget widget_gallery">
-                                    <h6 className="m-b15 h6 text-uppercase">Галерея</h6>
-                                    <div className="dlab-separator bg-white"></div>
-                                    <SimpleReactLightbox>
-                                        <SRLWrapper >
-                                            <ul className="clearfix mfp-gallery">
-                                                <li className="img-effect2"><Link to={''} className="mfp-link" title="Title Come Here"><img src={require('./../../images/gallery/img1.jpg')} alt="" /></Link> </li>
-                                                <li className="img-effect2"><Link to={''} className="mfp-link" title="Title Come Here"><img src={require('./../../images/gallery/img2.jpg')} alt="" /></Link> </li>
-                                                <li className="img-effect2"><Link to={''} className="mfp-link" title="Title Come Here"><img src={require('./../../images/gallery/img3.jpg')} alt="" /></Link> </li>
-                                                <li className="img-effect2"><Link to={''} className="mfp-link" title="Title Come Here"><img src={require('./../../images/gallery/img4.jpg')} alt="" /></Link> </li>
-                                                <li className="img-effect2"><Link to={''} className="mfp-link" title="Title Come Here"><img src={require('./../../images/gallery/img5.jpg')} alt="" /></Link> </li>
-                                                <li className="img-effect2"><Link to={''} className="mfp-link" title="Title Come Here"><img src={require('./../../images/gallery/img6.jpg')} alt="" /></Link> </li>
-                                                <li className="img-effect2"><Link to={''} className="mfp-link" title="Title Come Here"><img src={require('./../../images/gallery/img7.jpg')} alt="" /></Link> </li>
-                                                <li className="img-effect2"><Link to={''} className="mfp-link" title="Title Come Here"><img src={require('./../../images/gallery/img8.jpg')} alt="" /></Link> </li>
-                                                <li className="img-effect2"><Link to={''} className="mfp-link" title="Title Come Here"><img src={require('./../../images/gallery/img9.jpg')} alt="" /></Link> </li>
-                                            </ul>
-                                        </SRLWrapper>
-                                    </SimpleReactLightbox>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
                 <div className="footer-bottom">
                     <div className="container">
-                        <div className="row">
-                            <div className="col-lg-6 col-md-6 text-left"> <span>Copyright © 2022 &#60;RadaevIvan&#62;</span> </div>
-                            <div className="col-lg-6 col-md-6 text-right "><span> Design With <i className="fa fa-heart text-primary heart"></i> By &#60;RadaevIvan&#62; </span> </div>
+                        <div className="row link-dev">
+                            <div className="col-lg-6 col-md-6 text-left "><span><a href='https://pena.marketing' > Powered by Pena Co., Ltd. </a></span> </div>
+                            <div className="col-lg-6 col-md-6 text-right"> <span> Copyright @ 2022 ТК “Новый век” </span></div>
+
                         </div>
                     </div>
                 </div>

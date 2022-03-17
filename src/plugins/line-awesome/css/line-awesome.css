@@ -282,7 +282,7 @@
 .la-cab:before { content: "\f15a"; }
 .la-calculator:before { content: "\f15b"; }
 .la-calendar:before { content: "\f15c"; }
-.la-calendar-check-o:before { content: "\f15d"; }
+.la-calendar-check-o:before { content: "\1F5DF"; }
 .la-calendar-minus-o:before { content: "\f15e"; }
 .la-calendar-o:before { content: "\f15f"; }
 .la-calendar-plus-o:before { content: "\f160"; }
@@ -366,7 +366,7 @@
 .la-cube:before { content: "\f1ae"; }
 .la-cubes:before { content: "\f1af"; }
 .la-cut:before { content: "\f1b0"; }
-.la-cutlery:before { content: "\f1b1"; }
+.la-cutlery:before { content: "\1F372"; }
 .la-dashboard:before { content: "\f1b2"; }
 .la-dashcube:before { content: "\f1b3"; }
 .la-database:before { content: "\f1b4"; }
@@ -387,7 +387,7 @@
 .la-ellipsis-h:before { content: "\f1c3"; }
 .la-ellipsis-v:before { content: "\f1c4"; }
 .la-empire:before, .la-ge:before { content: "\f1c5"; }
-.la-envelope:before { content: "\f1c6"; }
+.la-envelope:before { content: "\1F6C8"; }
 .la-envelope-o:before { content: "\f1c7"; }
 .la-envelope-square:before { content: "\f1c8"; }
 .la-eraser:before { content: "\f1c9"; }
@@ -425,7 +425,7 @@
 .la-file-picture-o:before { content: "\f1e9"; }
 .la-file-powerpoint-o:before { content: "\f1ea"; }
 .la-file-sound-o:before { content: "\f1eb"; }
-.la-file-text:before { content: "\f1ec"; }
+.la-file-text:before { content: "\1F5CE"; }
 .la-file-text-o:before { content: "\f1ed"; }
 .la-file-video-o:before { content: "\f1ee"; }
 .la-file-word-o:before { content: "\f1ef"; }
@@ -470,7 +470,7 @@
 .la-github-alt:before { content: "\f216"; }
 .la-github-square:before { content: "\f217"; }
 .la-glass:before { content: "\f218"; }
-.la-globe:before { content: "\f219"; }
+.la-globe:before { content: "\1F30D"; }
 .la-google:before { content: "\f21a"; }
 .la-google-plus:before { content: "\f21b"; }
 .la-google-plus-square:before { content: "\f21c"; }
@@ -500,7 +500,7 @@
 .la-heart-o:before { content: "\f234"; }
 .la-heartbeat:before { content: "\f235"; }
 .la-history:before { content: "\f236"; }
-.la-home:before { content: "\f237"; }
+.la-home:before { content: "\1F3E0"; }
 .la-hospital-o:before { content: "\f238"; }
 .la-hotel:before { content: "\f239"; }
 .la-hourglass:before { content: "\f23a"; }
@@ -515,7 +515,7 @@
 .la-html5:before { content: "\f243"; }
 .la-i-cursor:before { content: "\f244"; }
 .la-ils:before { content: "\f245"; }
-.la-image:before { content: "\f246"; }
+.la-image:before { content: "\1F5BD"; }
 .la-inbox:before { content: "\f247"; }
 .la-indent:before { content: "\f248"; }
 .la-industry:before { content: "\f249"; }
@@ -554,7 +554,7 @@
 .la-linkedin-square:before { content: "\f26a"; }
 .la-linux:before { content: "\f26b"; }
 .la-list:before { content: "\f26c"; }
-.la-list-alt:before { content: "\f26d"; }
+.la-list-alt:before { content: "\2713"; }
 .la-list-ol:before { content: "\f26e"; }
 .la-list-ul:before { content: "\f26f"; }
 .la-location-arrow:before { content: "\f270"; }
@@ -570,10 +570,10 @@
 .la-mail-reply-all:before { content: "\f27a"; }
 .la-male:before { content: "\f27b"; }
 .la-map:before { content: "\f27c"; }
-.la-map-marker:before { content: "\f27d"; }
+.la-map-marker:before { content: "\1F3E2"; }
 .la-map-o:before { content: "\f27e"; }
 .la-map-pin:before { content: "\f27f"; }
-.la-map-signs:before { content: "\f280"; }
+.la-map-signs:before { content: "\1F6C8"; }
 .la-mars:before { content: "\f281"; }
 .la-mars-double:before { content: "\f282"; }
 .la-mars-stroke:before { content: "\f283"; }
@@ -624,7 +624,7 @@
 .la-pencil:before { content: "\f2b0"; }
 .la-pencil-square:before { content: "\f2b1"; }
 .la-pencil-square-o:before { content: "\f2b2"; }
-.la-phone:before { content: "\f2b3"; }
+.la-phone:before { content: "\1F57B"; }
 .la-phone-square:before { content: "\f2b4"; }
 .la-photo:before { content: "\f2b5"; }
 .la-picture-o:before { content: "\f2b6"; }
@@ -695,7 +695,7 @@
 .la-shield:before { content: "\f2f7"; }
 .la-ship:before { content: "\f2f8"; }
 .la-shirtsinbulk:before { content: "\f2f9"; }
-.la-shopping-cart:before { content: "\f2fa"; }
+.la-shopping-cart:before { content: "\1F6CD"; }
 .la-sign-in:before { content: "\f2fb"; }
 .la-sign-out:before { content: "\f2fc"; }
 .la-signal:before { content: "\f2fd"; }
@@ -750,7 +750,7 @@
 .la-tablet:before { content: "\f32e"; }
 .la-tachometer:before { content: "\f32f"; }
 .la-tag:before { content: "\f330"; }
-.la-tags:before { content: "\f331"; }
+.la-tags:before { content: "\1F3F7"; }
 .la-tasks:before { content: "\f332"; }
 .la-taxi:before { content: "\f333"; }
 .la-television:before, .la-tv:before { content: "\f334"; }
@@ -825,7 +825,7 @@
 .la-weixin:before { content: "\f379"; }
 .la-whatsapp:before { content: "\f37a"; }
 .la-wheelchair:before { content: "\f37b"; }
-.la-wifi:before { content: "\f37c"; }
+.la-wifi:before { content: "\1F4BB"; }
 .la-wikipedia-w:before { content: "\f37d"; }
 .la-windows:before { content: "\f37e"; }
 .la-won:before { content: "\f37f"; }

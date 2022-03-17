@@ -45,12 +45,7 @@ class Header extends Component {
                                 <span></span>
                             </button>
 
-                            <div className="extra-nav">
-                                <div className="extra-cell">
-                                    {/* <button id="quik-search-btn" type="button" className="site-button outline black"><i className="fa fa-search"></i></button> */}
-                                    <Link to={"/hotelbooking"} className="site-button outline m-l5">Book Now</Link>
-                                </div>
-                            </div>
+
 
                             <div className="dlab-quik-search bg-primary search-style-1">
                                 <form action="#">
@@ -84,10 +79,20 @@ class Header extends Component {
                                     </li>
                                     <li><Link>О нас <i className="fa fa-chevron-down"></i></Link>
                                         <ul className="sub-menu">
-                                            <li><Link to={'/portfolio2'} className="dez-page">Portfolio Grid 2 </Link></li>
+                                            <li><Link to={'/About'} className="dez-page">О компании</Link></li>
+                                            <li><Link to={'/contact'} className="dez-page">Документы</Link></li>
+                                            <li><Link to={'/contact'} className="dez-page">Контакты</Link></li>
                                         </ul>
                                     </li>
-                                    <li><Link to={'/contact'} className="dez-page">Контакты</Link></li>
+
+                                    <li>
+                                        <div className="extra-nav">
+                                            <div className="extra-cell">
+                                                {/* <button id="quik-search-btn" type="button" className="site-button outline black"><i className="fa fa-search"></i></button> */}
+                                                <Link to={"/payment"} className="site-button outline m-l5">Забронировать</Link>
+                                            </div>
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
