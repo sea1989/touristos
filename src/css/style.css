@@ -15928,3 +15928,11 @@ ol.commentlist li .star-rating {
 strong {
     font-weight: bold;
 }
+
+.wp-block-file__button {
+    color: #0046c6;
+    margin-left: 32px;
+    padding: 1px;
+    border: 1px solid blue;
+    border-radius: 5px;
+}

@@ -80,7 +80,7 @@ class Header extends Component {
                                     <li><Link>О нас <i className="fa fa-chevron-down"></i></Link>
                                         <ul className="sub-menu">
                                             <li><Link to={'/About'} className="dez-page">О компании</Link></li>
-                                            <li><Link to={'/contact'} className="dez-page">Документы</Link></li>
+                                            <li><Link to={'/docs'} className="dez-page">Документы</Link></li>
                                             <li><Link to={'/contact'} className="dez-page">Контакты</Link></li>
                                         </ul>
                                     </li>

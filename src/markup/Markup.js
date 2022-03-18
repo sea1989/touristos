@@ -30,6 +30,7 @@ import BazaLipoviy from './Pages/BazaLipoviy';
 import BazaLipoviyVer2 from './Pages/BazaLipoviyVer2';
 import BazaSahaVer2 from './Pages/BazaSahaVer2';
 import Payment from './Pages/Payment';
+import Docs from './Pages/Docs';
 
 
 class Markup extends Component {
@@ -65,6 +66,7 @@ class Markup extends Component {
                         <Route path='/popup' exact component={Popuss} />
                         <Route path='/listing' exact component={ListingDetails} />
                         <Route path='/payment' exact component={Payment} />
+                        <Route path='/docs' exact component={Docs} />
                     </Switch>
                 </div>
             </BrowserRouter>
