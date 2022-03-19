@@ -206,8 +206,8 @@
 .la-angle-double-right:before { content: "\f10e"; }
 .la-angle-double-up:before { content: "\f10f"; }
 .la-angle-down:before { content: "\f110"; }
-.la-angle-left:before { content: "\f111"; }
-.la-angle-right:before { content: "\f112"; }
+.la-angle-left:before { content: "\1438"; }
+.la-angle-right:before { content: "\1433"; }
 .la-angle-up:before { content: "\f113"; }
 .la-apple:before { content: "\f114"; }
 .la-archive:before { content: "\f115"; }

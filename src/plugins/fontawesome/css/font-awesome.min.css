@@ -941,11 +941,11 @@
     content: "\f110";
 }
 .fa-circle:before {
-    content: "\f111";
+    content: "\1438";
 }
 .fa-mail-reply:before,
 .fa-reply:before {
-    content: "\f112";
+    content: "\1433";
 }
 .fa-github-alt:before {
     content: "\f113";
@@ -2022,8 +2022,7 @@
     content: "\f27e";
 }
 .fa-fonticons:before {
-    content: "	
-\1F6C8";
+    content: "\1F6C8";
 }
 .fa-reddit-alien:before {
     content: "\f281";
