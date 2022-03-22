@@ -15,24 +15,27 @@ const WooCommerce = new WooCommerceRestApi({
 });
 
 var bg1 = require('./../../images/background/bg1.jpg');
-var bg3 = require('./../../images/banner/bnr1.jpg');
+//var bg3 = require('./../../images/banner/bnr1.jpg');
 
 
 const Place = () => {
+    const [bg3, setBg3] = useState('');
     const [dataPlaces, setDataPlaces] = useState([]);
-
-    const [pages, setPages] = useState([]);
-
+    const [pages, setPages] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-
     const [categoryArray, setCategoryArray] = useState([]);
-
     const [searchValue, setSearchValue] = useState('');
 
+    const [nextButton, setNextButton] = useState(true);
+    const [leftButton, setLeftButton] = useState(true);
 
-    // const filteredTours = dataPlaces.filter(tour => {
-    //     return tour.name.toLowerCase().includes(searchValue.toLowerCase())
-    // });
+    function nextPageHandler() {
+        setCurrentPage(currentPage + 1);
+    }
+
+    function prevPageHandler() {
+        setCurrentPage(currentPage - 1);
+    }
 
 
     function handleChange(event) {
@@ -42,7 +45,7 @@ const Place = () => {
         console.log([...allForms].map((item) => item.value));
 
         setCategoryArray(
-            [...allForms].map((item) => item.value).reduce((acc, item) => item == 0 ? acc : [...acc, item], []),
+            [...allForms].map((item) => item.value).reduce((acc, item) => item === 0 ? acc : [...acc, item], []),
         );
     }
 
@@ -56,16 +59,12 @@ const Place = () => {
             }
         )
             .then((response) => {
-
                 setDataPlaces(response.data);
                 setPages(response.headers['x-wp-totalpages']);
-
-                console.log(dataPlaces)
             })
             .catch((error) => {
-                console.log(error.response.data);
+                alert('страницы нет');
             });
-
     }
 
     function handleChangeType() {
@@ -83,7 +82,9 @@ const Place = () => {
         //         });
         //     });
 
-        fetch(`http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/product?product_cat[terms]=${categoryArray.toString()}&product_cat[operator]=AND&per_page=12&page=1`)
+        setCurrentPage(1);
+
+        fetch(`http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/product?product_cat[terms]=${categoryArray.filter(item => item != 0).toString()}&product_cat[operator]=AND&per_page=12&page=${currentPage}`)
             .then((response) => {
                 console.log(response.headers['X-WP-TotalPages']);
                 setPages(response.headers['X-WP-TotalPages']);
@@ -97,6 +98,9 @@ const Place = () => {
                         name: [item.title.rendered]
                     })),
                 );
+            })
+            .catch((error) => {
+                alert('страницы нет');
             });
 
         // WooCommerce.get("products",
@@ -121,54 +125,83 @@ const Place = () => {
     }
 
     useEffect(() => {
-        WooCommerce.get("products",
 
-            {
-                per_page: 12,
-                //category: 20,
-            }
-        )
+        fetch(`http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/product?product_cat[terms]=${categoryArray.filter(item => item != 0).toString()}&product_cat[operator]=AND&per_page=12&page=${currentPage}`)
             .then((response) => {
-
-                setDataPlaces(response.data);
-                setPages(response.headers['x-wp-totalpages']);
-
-                console.log(dataPlaces)
+                console.log(response.headers['X-WP-TotalPages']);
+                setPages(response.headers['X-WP-TotalPages']);
+                return response.json()
+            })
+            .then((data) => {
+                console.log(data);
+                setDataPlaces(
+                    data.map((item) => ({
+                        images: [{ src: item.x_featured_media_medium }],
+                        name: [item.title.rendered]
+                    })),
+                );
             })
             .catch((error) => {
-                console.log(error.response.data);
+                alert('страницы нет');
+            });
+
+        // WooCommerce.get("products",
+
+        //     {
+        //         per_page: 12,
+        //         //category: 20,
+        //     }
+        // )
+        //     .then((response) => {
+
+        //         setDataPlaces(response.data);
+        //         setPages(response.headers['x-wp-totalpages']);
+
+        //         console.log(dataPlaces)
+        //     })
+        //     .catch((error) => {
+        //         console.log(error.response.data);
+        //     });
+    }, [currentPage]);
+
+    useEffect(() => {
+        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4268')
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setBg3(data.acf.bg);
             });
     }, []);
 
 
-    function changePage(page) {
+    // function changePage(page) {
 
-        setCurrentPage(
-            page
-        );
+    //     setCurrentPage(
+    //         page
+    //     );
 
-        WooCommerce.get("products",
+    //     WooCommerce.get("products",
 
-            {
-                per_page: 12,
-                category: categoryArray.toString(),
-                page: page,
-            },
+    //         {
+    //             per_page: 12,
+    //             category: categoryArray.toString(),
+    //             page: page,
+    //         },
 
-        )
-            .then((response) => {
-                setDataPlaces(
-                    response.data
-                );
-                setPages(
-                    response.headers['x-wp-totalpages']
-                );
-                console.log(dataPlaces)
-            })
-            .catch((error) => {
-                console.log(error.response.data);
-            });
-    }
+    //     )
+    //         .then((response) => {
+    //             setDataPlaces(
+    //                 response.data
+    //             );
+    //             setPages(
+    //                 response.headers['x-wp-totalpages']
+    //             );
+    //             console.log(dataPlaces)
+    //         })
+    //         .catch((error) => {
+    //             console.log(error.response.data);
+    //         });
+    // }
 
     return (
         <div>
@@ -322,13 +355,19 @@ const Place = () => {
 
                             <div className="pagination-bx clearfix text-center">
                                 <ul className="pagination">
-                                    <li className="previous"><Link><i className="ti-arrow-left"></i> Prev</Link></li>
+                                    <li className="previous"><button
+                                        className='button-place'
+                                        onClick={prevPageHandler}
+                                    ><i className="ti-arrow-left"></i> Prev</button></li>
 
                                     {/* {Array.apply(null, Array(+this.state.pages))?.map((item, i) => {
                                             return <li onClick={() => { this.changePage(i + 1) }}><Link>{i + 1}</Link></li>;
                                         })} */}
 
-                                    <li className="next"><Link>Next <i className="ti-arrow-right"></i></Link></li>
+                                    <li className="next"><button
+                                        className='button-place'
+                                        onClick={nextPageHandler}
+                                    >Next <i className="ti-arrow-right"></i></button></li>
                                 </ul>
                             </div>
 

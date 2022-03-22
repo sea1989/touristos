@@ -128,7 +128,7 @@ class Header2 extends Component {
                                     </li>
                                     <li><Link to={''}>Our Portfolio <i className="fa fa-chevron-down"></i></Link>
                                         <ul className="sub-menu">
-                                            <li><Link to={'portfolio2'} className="dez-page">Portfolio Grid 2 </Link></li>
+                                            <li><Link to={'calendar'} className="dez-page">Portfolio Grid 2 </Link></li>
                                             {/*<li><Link to={'portfolio2'} className="dez-page">Portfolio Grid 3 </Link></li>
 												<li><Link to={'portfolio2'} className="dez-page">Portfolio Grid 4 </Link></li>*/}
                                         </ul>

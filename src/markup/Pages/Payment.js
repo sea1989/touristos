@@ -9,7 +9,6 @@ const Payment = () => {
         <div>
             <Header />
             <div className="payment">
-                <div className="side-panel"></div>
                 <div className="payment-right">
                     <p className="payment-right__title">Онлайн оплата</p>
                     <div className="payment-right__description">

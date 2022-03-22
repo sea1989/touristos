@@ -4,12 +4,8 @@ import { Link } from 'react-router-dom';
 import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
 
-
-var bg3 = 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/Чандолаз2.jpg';
-
-
 export default function Docs() {
-
+    const [bg3, setBg3] = useState('');
     const [docs, setDocs] = useState([]);
 
     useEffect(() => {
@@ -20,6 +16,15 @@ export default function Docs() {
                 setDocs({
                     content: data.content.rendered,
                 });
+            });
+    }, []);
+
+    useEffect(() => {
+        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4274')
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setBg3(data.acf.bg);
             });
     }, []);
 

@@ -45,8 +45,6 @@ class Header extends Component {
                                 <span></span>
                             </button>
 
-
-
                             <div className="dlab-quik-search bg-primary search-style-1">
                                 <form action="#">
                                     <input name="search" type="text" className="form-control" placeholder="Type to search" />
@@ -63,8 +61,8 @@ class Header extends Component {
                                     <li><Link> Услуги <i className="fa fa-chevron-down"></i></Link>
                                         <ul className="sub-menu">
                                             <li><Link to={'/place'} className="dez-page">Туры</Link></li>
-                                            <li><Link to={'/portfolio2'} className="dez-page">График маршрутов</Link></li>
                                             <li><Link to={'/packages'} className="dez-page" >Пакетные туры</Link></li>
+                                            <li><Link to={'/calendar'} className="dez-page">График маршрутов</Link></li>
                                         </ul>
                                     </li>
 

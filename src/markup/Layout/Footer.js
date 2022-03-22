@@ -8,7 +8,7 @@ import Mail from '../../images/icon/iconsmail.png';
 import Inst from '../../images/icon/iconsinstagram.png';
 import Telegram from '../../images/icon/iconstelegram.png';
 
-var bg3 = require('./../../images/background/bg6.jpg');
+var bg3 = 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/03/bg_footer.jpg';
 
 class Footer extends Component {
     render() {
@@ -30,8 +30,8 @@ class Footer extends Component {
 
                                         <li>
                                             <span>
-
-                                                <i className="fa"><img src={Tel} width="32px" height="32px" alt="point" /></i> Позвонить нам: <a href="tel: +7 423 290-94-10">+7 423 290-94-10</a>,<a href="tel: +7 914 791-49-05"> +7 914 791-49-05,</a> <a href="tel: +7 423 290-94-10">+7 423 290-94-10</a>
+                                                <i className="fa"><img src={Tel} width="32px" height="32px" alt="point" /></i> Позвонить нам: <a href="tel: +7 423 290-94-10">+7 423 290-94-10</a>,
+                                                <a href="tel: +7 914 791-49-05"> +7 914 791-49-05,</a> <a href="tel: +7 423 290-94-10">+7 423 290-94-10</a>
                                                 {/* <Button label="Write me an E-Mail" mailto="mailto:no-reply@example.com" /> <bi */}
                                             </span>
 

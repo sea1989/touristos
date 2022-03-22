@@ -19,15 +19,11 @@ const WooCommerce = new WooCommerceRestApi({
     version: 'wc/v3' // WooCommerce WP REST API version
 });
 
-var bg3 = 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/baza_lipoviy.jpg';
-
 const BazaSahaVer2 = (props) => {
+    const [bg3, setBg3] = useState('');
     const [activeTab, setActiveTab] = useState('1');
-
     const [dataPlaces, setDataPlaces] = useState([]);
-
     const [lipovoy, setLipovoy] = useState([]);
-
     const toggle = tab => {
         if (activeTab !== tab) setActiveTab(tab);
     }
@@ -70,6 +66,15 @@ const BazaSahaVer2 = (props) => {
             })
             .catch((error) => {
                 console.log(error.response.data);
+            });
+    }, []);
+
+    useEffect(() => {
+        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4275')
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setBg3(data.acf.bg);
             });
     }, []);
 

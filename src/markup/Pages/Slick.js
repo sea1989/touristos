@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import Slider from "react-slick";
-import { Link } from 'react-router-dom';
-
 
 const destination = [
     {
@@ -61,7 +59,7 @@ class Slick extends Component {
             <div>
                 <div className="slider-background">
                     <div className="container">
-                        <div className="section-head d-flex text-white">
+                        <div className="section-head text-center d-flex text-white">
                             <div className="flex-grow-1">
                                 <h2 className="text-uppercase m-b0">Наши проекты</h2>
                             </div>

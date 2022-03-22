@@ -1,37 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Slider from "react-slick";
-// import { Link } from 'react-router-dom';
 
-
-const destination = [
-    {
-        image: require('./../../images/testimonials/pic1.jpg'),
-        bg: require('./../../images/tour/pic1.jpg'),
-        title: 'Eiffel Tower'
-    },
-    {
-        image: require('./../../images/testimonials/pic2.jpg'),
-        bg: require('./../../images/tour/pic3.jpg'),
-        title: 'South America'
-    },
-    {
-        image: require('./../../images/testimonials/pic3.jpg'),
-        bg: require('./../../images/tour/pic6.jpg'),
-        title: 'Australia '
-    },
-    {
-        image: require('./../../images/testimonials/pic2.jpg'),
-        bg: require('./../../images/tour/pic3.jpg'),
-        title: 'South America'
-    },
-    {
-        image: require('./../../images/testimonials/pic3.jpg'),
-        bg: require('./../../images/tour/pic6.jpg'),
-        title: 'Australia '
-    },
-]
-
-var bg1 = require('./../../images/background/bg1.jpg');
+var bg1 = 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/03/bg_partners.jpg';
 
 function SampleNextArrow(props) {
     const { onClick } = props;

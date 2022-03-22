@@ -15,7 +15,7 @@ const WooCommerce = new WooCommerceRestApi({
     version: 'wc/v3' // WooCommerce WP REST API version
 });
 
-var bg3 = require('./../../images/banner/bnr1.jpg');
+//var bg3 = require('./../../images/banner/bnr1.jpg');
 
 const Packages = () => {
 
@@ -26,6 +26,8 @@ const Packages = () => {
     const [currentPage, setCurrentPage] = useState(1);
 
     const [searchValue, setSearchValue] = useState('');
+
+    const [bg3, setBg3] = useState('');
 
     useEffect(() => {
         WooCommerce.get("products",
@@ -47,6 +49,14 @@ const Packages = () => {
             });
     }, []);
 
+    useEffect(() => {
+        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4268')
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setBg3(data.acf.bg);
+            });
+    }, []);
 
     return (
         <div>

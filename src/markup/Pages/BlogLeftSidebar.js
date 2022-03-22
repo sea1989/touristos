@@ -3,47 +3,9 @@ import { Link } from 'react-router-dom';
 import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
 
-const leftImg = [
-    {
-        image: 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2021/08/DSC_2797-scaled.jpg',
-        date: 'September 10, 2017',
-        author: 'Demongo',
-        comment: '5k',
-        title: 'Релакс-тур «ПЕРЕЗАГРУЗКА»',
-        desc: 'Приглашаем всех после тяжелой рабочей недели, туманов и промозглой приморской погоды посетить МЦ "Океан", расположенный на берегу амурского залива, в лесном массиве. Посвятить немного времени для себя любимых, подарить [...]',
-
-    },
-    {
-        image: 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2021/08/DSC_2797-scaled.jpg',
-        date: 'September 10, 2017',
-        author: 'Demongo',
-        comment: '5k',
-        title: 'Релакс-тур «ПЕРЕЗАГРУЗКА»',
-        desc: 'Приглашаем всех после тяжелой рабочей недели, туманов и промозглой приморской погоды посетить МЦ "Океан", расположенный на берегу амурского залива, в лесном массиве. Посвятить немного времени для себя любимых, подарить [...]',
-    },
-    {
-        image: 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2021/08/DSC_2797-scaled.jpg',
-        date: 'September 10, 2017',
-        author: 'Demongo',
-        comment: '5k',
-        title: 'Релакс-тур «ПЕРЕЗАГРУЗКА»',
-        desc: 'Приглашаем всех после тяжелой рабочей недели, туманов и промозглой приморской погоды посетить МЦ "Океан", расположенный на берегу амурского залива, в лесном массиве. Посвятить немного времени для себя любимых, подарить [...]',
-    },
-    {
-        image: 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2021/08/DSC_2797-scaled.jpg',
-        date: 'September 10, 2017',
-        author: 'Demongo',
-        comment: '5k',
-        desc: 'Приглашаем всех после тяжелой рабочей недели, туманов и промозглой приморской погоды посетить МЦ "Океан", расположенный на берегу амурского залива, в лесном массиве. Посвятить немного времени для себя любимых, подарить [...]', desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model.',
-
-    },
-]
-
-
-var bg3 = 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/baza_lipoviy.jpg';
 
 const BlogLeftSidebar = () => {
-
+    const [bg3, setBg3] = useState('');
     const [blog, setBlog] = useState([]);
 
     useEffect(() => {
@@ -59,6 +21,15 @@ const BlogLeftSidebar = () => {
                     image: item.acf.ava,
 
                 })));
+            });
+    }, []);
+
+    useEffect(() => {
+        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4277')
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setBg3(data.acf.bg);
             });
     }, []);
 

@@ -22,7 +22,6 @@ import BlogGrid from './Pages/BlogGrid';
 import BlogGridSidebar from './Pages/BlogGridSidebar';
 import BlogLeftSidebar from './Pages/BlogLeftSidebar';
 import BlogDetails from './Pages/BlogDetails';
-import PortfolioGrid2 from './Pages/PortfolioGrid2';
 import Contacts from './Pages/Contacts';
 import Popuss from './Pages/Tab';
 import ListingDetails from './Pages/ListingDetails';
@@ -31,6 +30,7 @@ import BazaLipoviyVer2 from './Pages/BazaLipoviyVer2';
 import BazaSahaVer2 from './Pages/BazaSahaVer2';
 import Payment from './Pages/Payment';
 import Docs from './Pages/Docs';
+import Calendar from './Pages/Calendar';
 
 
 class Markup extends Component {
@@ -61,7 +61,7 @@ class Markup extends Component {
                         <Route path='/bloggridsidebar' exact component={BlogGridSidebar} />
                         <Route path='/blogleftsidebar' exact component={BlogLeftSidebar} />
                         <Route path='/blogdetails/:id' exact component={BlogDetails} />
-                        <Route path='/portfolio2' exact component={PortfolioGrid2} />
+                        <Route path='/calendar' exact component={Calendar} />
                         <Route path='/contact' exact component={Contacts} />
                         <Route path='/popup' exact component={Popuss} />
                         <Route path='/listing' exact component={ListingDetails} />
