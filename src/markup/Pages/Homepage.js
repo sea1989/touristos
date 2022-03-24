@@ -21,24 +21,6 @@ const WooCommerce = new WooCommerceRestApi({
     version: 'wc/v3' // WooCommerce WP REST API version
 });
 
-// const content = [
-//     {
-//         title: 'Родной край достоин Вашей любви и внимания!',
-//         button: 'Календарь событий',
-//         image: 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/Чандолаз2.jpg',
-//     },
-//     {
-//         title: 'Tortor Dapibus Commodo Aenean Quam',
-//         button: 'Discover',
-//         image: require('./../../images/main-slider/slide2.jpg'),
-//     },
-//     {
-//         title: 'Tortor Dapibus Commodo Aenean Quam',
-//         button: 'Discover',
-//         image: require('./../../images/main-slider/slide3.jpg'),
-//     }
-// ];
-
 var bg1 = 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/03/bg_partners.jpg';
 
 function Homepage() {
@@ -95,6 +77,8 @@ function Homepage() {
             });
     }, []);
 
+    
+
     return (
         <div>
             <Header />
@@ -118,66 +102,83 @@ function Homepage() {
 
                 <div className="section-full book-form overlay-black-dark bg-img-fix p-t30 p-b10 mid" style={{ backgroundImage: "url(" + bg1 + ")" }}>
                     <div className="container">
-                        <form className="row">
-                            <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
-                                <label>Ключевые слова</label>
-                                <input className="form-control" placeholder="Поиск" type="text" />
-                            </div>
+                        <form className="row" >
+
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                                 <label>Категории</label>
                                 <select className="form-control">
-                                    <option>Обзорные</option>
-                                    <option>Морские</option>
-                                    <option>Познавательные</option>
-                                    <option>Пешеходные</option>
-                                    <option>Активные</option>
-                                    <option>Промышленные</option>
-                                    <option>Природные объекты</option>
-                                    <option>Город крепость</option>
+                                    <option value='0'>Любая</option>
+                                    <option value='0'>Обзорные</option>
+                                    <option value='20'>Морские</option>
+                                    <option value='0'>Познавательные</option>
+                                    <option value='23'>Пешеходные</option>
+                                    <option value='0'>Активные</option>
+                                    <option value='24'>Промышленные</option>
+                                    <option value='0'>Природные объекты</option>
+                                    <option value='21'>Город крепость</option>
                                 </select>
                             </div>
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                                 <label>Вид тура</label>
-                                <select className="form-control">
-                                    <option>Пеший</option>
-                                    <option>Экскурсия</option>
-                                    <option>Тур</option>
-                                    <option>Катерный</option>
-                                    <option>Автобусный</option>
-                                    <option>Катер + автобус</option>
-                                    <option>Семейный</option>
-                                    <option>Детский</option>
-                                    <option>Активный</option>
-                                    <option>Обзорный</option>
-                                    <option>Индивидуальный</option>
-                                    <option>Групповой</option>
+                                <select className="form-control" >
+                                    <option value='0'>Любой</option>
+                                    <option value='23'>Пеший</option>
+                                    <option value='16'>Экскурсия</option>
+                                    <option value='60'>Тур</option>
+                                    <option value='0'>Катерный</option>
+                                    <option value='63'>Автобусный</option>
+                                    <option value='0'>Катер + автобус</option>
+                                    <option value='0'>Семейный</option>
+                                    <option value='61'>Детский</option>
+                                    <option value='0'>Активный</option>
+                                    <option value='0'>Обзорный</option>
+                                    <option value='0'>Индивидуальный</option>
+                                    <option value='0'>Групповой</option>
                                 </select>
                             </div>
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                                 <label>Направления</label>
                                 <select className="form-control">
-                                    <option>Горы</option>
-                                    <option>Острова</option>
-                                    <option>Заповедники</option>
-                                    <option>Базы отдыха</option>
-                                    <option>Лечение</option>
-                                    <option>Море</option>
-                                    <option>Водопады</option>
+                                    <option value='0'>Любое</option>
+                                    <option value='0'>Горы</option>
+                                    <option value='0'>Острова</option>
+                                    <option value='54'>Заповедники</option>
+                                    <option value='0'>Базы отдыха</option>
+                                    <option value='0'>Лечение</option>
+                                    <option value='0'>Море</option>
+                                    <option value='0'>Водопады</option>
                                 </select>
                             </div>
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                                 <label>Продолжительность</label>
+
                                 <select className="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4 отдыха</option>
-                                    <option>5 и более</option>
+                                    <option value='0'>Любая</option>
+                                    <option value='0'>1</option>
+                                    <option value='49'>2</option>
+                                    <option value='50'>3</option>
+                                    <option value='51'>4 отдыха</option>
+                                    <option value='0'>5 и более</option>
+                                </select>
+
+                            </div>
+                            <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
+                                <label>География тура</label>
+                                <select className="form-control">
+                                    <option value='0'>Любая</option>
+                                    <option value='0'>Большой липовый</option>
+                                    <option value='0'>Мама-Саха</option>
+                                    <option value='0'>Хасанский район</option>
+                                    <option value='0'>Заповедник</option>
+                                    <option value='0'>остальное Приморье</option>
+                                    <option value='0'>Алтай</option>
+                                    <option value='0'>Байкал</option>
+                                    <option value='0'>Москва</option>
+                                    <option value='0'>Россия</option>
                                 </select>
                             </div>
 
-                            <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
-                                <label>Find</label>
+                            <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group button__search" >
                                 <Link to={'/place'} className="site-button btn-block">Поиск</Link>
                             </div>
                         </form>

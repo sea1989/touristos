@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { TabContent, TabPane } from 'reactstrap';
 import classnames from 'classnames';
 
-import Inst from '../../images/icon/iconsinstagram.png';
 import Telegram from '../../images/icon/iconstelegram.png';
 
 // Setup:
@@ -401,7 +400,6 @@ const BazaLipoviyVer2 = (props) => {
                                                     </Link></li>
                                                 </ul>
                                                 <ul className="list-inline m-tb20">
-                                                    <li><Link to={'https://www.instagram.com/vldvtour/'} className="site-button instagram sharp"><img src={Inst} width="16px" height="16px" alt="instagram" /><i className="fa "></i></Link></li>
                                                     <li><Link to={'https://t.me/vldvtour'} className="site-button sharp"><i className="fa"><img src={Telegram} width="16px" height="16px" alt="telegram" /></i></Link></li>
                                                 </ul>
                                             </div>

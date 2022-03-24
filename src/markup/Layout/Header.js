@@ -63,6 +63,7 @@ class Header extends Component {
                                             <li><Link to={'/place'} className="dez-page">Туры</Link></li>
                                             <li><Link to={'/packages'} className="dez-page" >Пакетные туры</Link></li>
                                             <li><Link to={'/calendar'} className="dez-page">График маршрутов</Link></li>
+                                            <li><Link to={'/calendar'} className="dez-page">Владивосток экскурсионный</Link></li>
                                         </ul>
                                     </li>
 

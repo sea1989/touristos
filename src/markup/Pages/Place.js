@@ -137,7 +137,8 @@ const Place = () => {
                 setDataPlaces(
                     data.map((item) => ({
                         images: [{ src: item.x_featured_media_medium }],
-                        name: [item.title.rendered]
+                        name: [item.title.rendered],
+                        id: item.id
                     })),
                 );
             })
@@ -297,8 +298,7 @@ const Place = () => {
                             </select>
                         </div>
 
-                        <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group" onClick={handleChangeType}>
-                            <label>Find</label>
+                        <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group button__search" onClick={handleChangeType}>
                             <Link to={'/place'} className="site-button btn-block">Поиск</Link>
                         </div>
                     </form>

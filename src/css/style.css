@@ -16061,3 +16061,11 @@ input[type="radio"] {
     margin-right: 32px;
     border-radius: 4px;
 }
+
+.button__search {
+    align-self: flex-end;
+}
+
+.wp-block-table td {
+    border: 1px solid gray;
+}
