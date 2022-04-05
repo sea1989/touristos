@@ -77,7 +77,7 @@ function Homepage() {
             });
     }, []);
 
-    
+
 
     return (
         <div>
@@ -199,7 +199,7 @@ function Homepage() {
                                 <div className="col-md-6 col-xl-3  col-sm-6 m-b20" key={index}>
                                     <div className="dlab-box">
                                         <div className="dlab-media">
-                                            <Link to={'./booking'}><img src={item.images[0].src} alt="" /> </Link>
+                                            <Link to={'./booking/' + item.id}><img src={item.images[0].src} alt="" /> </Link>
                                         </div>
                                         <div className="dlab-info p-a15 border-1">
                                             <h4 className="dlab-title m-t0"><a href="booking-details.html">{item.name}</a></h4>
@@ -210,8 +210,8 @@ function Homepage() {
                                                     <li> <span className="fa fa-user"></span> People: 2 </li>
                                                 </ul>
                                                 <div className="clearfix">
-                                                    <span className="package-price pull-left text-primary">${item.price}</span>
-                                                    <Link to={'/booking'} className="site-button pull-right">View details</Link>
+                                                    <span className="package-price pull-left text-primary">Руб {item.price}</span>
+                                                    <Link to={'./booking/' + item.id} className="site-button pull-right">Подробнее</Link>
                                                 </div>
                                             </div>
                                         </div>

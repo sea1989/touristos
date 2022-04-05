@@ -24,6 +24,7 @@ function Footer() {
     }, []);
 
     return (
+
         <footer className="site-footer style1">
             <div className="footer-top" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                 <div className="container">
@@ -55,7 +56,7 @@ function Footer() {
                                     </li>
                                     <li>
                                         <span>
-                                            <i className="fa"><img src={WhatsApp} width="32px" height="32px" alt="whatsapp" /></i><a href='https://wa.me/79147914905?text=Здравствуйте%2C+у+меня+есть+вопросРТО: 021832'> WhatsApp: 8(914)791-49-05 </a>
+                                            <i className="fa"><img src={WhatsApp} width="32px" height="32px" alt="whatsapp" /></i><a href='https://wa.me/79147914905?text=Здравствуйте%2C+у+меня+есть+вопрос'> WhatsApp: 8(914)791-49-05 </a>
                                         </span>
                                     </li>
                                 </ul>
@@ -108,6 +109,8 @@ function Footer() {
                                 </div>
                             </div>
                         </div>
+                        <div className="col-lg-3 col-md-6 col-sm-6 footer-col-4">
+                        </div>
 
                     </div>
                 </div>
@@ -121,6 +124,8 @@ function Footer() {
                     </div>
                 </div>
             </div>
+
+
         </footer>
     )
 }
