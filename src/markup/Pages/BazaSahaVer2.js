@@ -39,8 +39,6 @@ const BazaSahaVer2 = (props) => {
     const [dataPlaces, setDataPlaces] = useState([]);
     const [lipovoy, setLipovoy] = useState([]);
 
-    const [content, setСontent] = useState([]);
-
     const toggle = tab => {
         if (activeTab !== tab) setActiveTab(tab);
     }
@@ -63,6 +61,7 @@ const BazaSahaVer2 = (props) => {
                     images: [...data.content.rendered.matchAll(/src="(.*?)"/g)].map(
                         ([, link]) => link
                     ),
+                    tags: data.acf.tags.split(',')
                 });
             });
     }, []);
@@ -91,21 +90,7 @@ const BazaSahaVer2 = (props) => {
             });
     }, []);
 
-    useEffect(() => {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/slider')
-            .then((response) => response.json())
-            .then((data) => {
-                setСontent(data.map((item) => ({
-                    id: item.id,
-                    title: item.title.rendered,
-                    button: item.acf.button_name,
-                    image: item.acf.foto,
-                    link_button: item.acf.link_button,
-                })));
-            });
-    }, []);
-
-    var settings = {
+    const settings = {
         dots: true,
         slidesToShow: 1,
         infinite: true,
@@ -203,27 +188,16 @@ const BazaSahaVer2 = (props) => {
                                         </div>
                                         <div className="content-body">
                                             <ul className="icon-box-list list-col-4">
+                                                {lipovoy.images ? lipovoy.tags.map((item, index) =>
 
-                                                <li><Link to={''} className="icon-box-info">
-                                                    <div className="icon-cell bg-gray">
-                                                        <i className="la la-cutlery"></i>
-                                                    </div>
-                                                    <span>Ресторан</span>
-                                                </Link></li>
+                                                    <li><Link to={''} className="icon-box-info">
+                                                        <div className="icon-cell bg-gray">
+                                                            <i className="la la-cutlery"></i>
+                                                        </div>
+                                                        <span>{item}</span>
+                                                    </Link></li>
 
-                                                <li><Link to={''} className="icon-box-info">
-                                                    <div className="icon-cell bg-gray">
-                                                        <i className="la la-shopping-cart"></i>
-                                                    </div>
-                                                    <span>Шоппинг</span>
-                                                </Link></li>
-
-                                                <li><Link to={''} className="icon-box-info">
-                                                    <div className="icon-cell bg-gray">
-                                                        <i className="la la-wifi"></i>
-                                                    </div>
-                                                    <span>Wifi</span>
-                                                </Link></li>
+                                                ) : ''}
                                             </ul>
                                         </div>
                                     </div>
@@ -440,26 +414,14 @@ const BazaSahaVer2 = (props) => {
                                             </div>
                                             <div className="content-body">
                                                 <ul className="icon-box-list list-col-2">
-
-                                                    <li><Link to={''} className="icon-box-info">
-                                                        <div className="icon-cell bg-gray">
-                                                            <i className="la la-cutlery"></i>
-                                                        </div>
-                                                        <span>Ресторан</span>
-                                                    </Link></li>
-                                                    <li><Link to={''} className="icon-box-info">
-                                                        <div className="icon-cell bg-gray">
-                                                            <i className="la la-shopping-cart"></i>
-                                                        </div>
-                                                        <span>Шоппинг</span>
-                                                    </Link></li>
-
-                                                    <li><Link to={''} className="icon-box-info">
-                                                        <div className="icon-cell bg-gray">
-                                                            <i className="la la-wifi"></i>
-                                                        </div>
-                                                        <span>Wifi</span>
-                                                    </Link></li>
+                                                    {lipovoy.images ? lipovoy.tags.map((item, index) =>
+                                                        <li><Link to={''} className="icon-box-info">
+                                                            <div className="icon-cell bg-gray">
+                                                                <i className="la la-cutlery"></i>
+                                                            </div>
+                                                            <span>{item}</span>
+                                                        </Link></li>
+                                                    ) : ''}
                                                 </ul>
                                             </div>
                                         </div>
@@ -492,26 +454,14 @@ const BazaSahaVer2 = (props) => {
                                         </div>
                                         <div className="content-body">
                                             <ul className="icon-box-list list-col-4">
-
-                                                <li><Link to={''} className="icon-box-info">
-                                                    <div className="icon-cell bg-gray">
-                                                        <i className="la la-cutlery"></i>
-                                                    </div>
-                                                    <span>Ресторан</span>
-                                                </Link></li>
-                                                <li><Link to={''} className="icon-box-info">
-                                                    <div className="icon-cell bg-gray">
-                                                        <i className="la la-shopping-cart"></i>
-                                                    </div>
-                                                    <span>Шоппинг</span>
-                                                </Link></li>
-
-                                                <li><Link to={''} className="icon-box-info">
-                                                    <div className="icon-cell bg-gray">
-                                                        <i className="la la-wifi"></i>
-                                                    </div>
-                                                    <span>Wifi</span>
-                                                </Link></li>
+                                                {lipovoy.images ? lipovoy.tags.map((item, index) =>
+                                                    <li><Link to={''} className="icon-box-info">
+                                                        <div className="icon-cell bg-gray">
+                                                            <i className="la la-cutlery"></i>
+                                                        </div>
+                                                        <span>{item}</span>
+                                                    </Link></li>
+                                                ) : ''}
                                             </ul>
                                         </div>
                                     </div>
