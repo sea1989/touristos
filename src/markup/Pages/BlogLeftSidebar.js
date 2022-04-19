@@ -12,7 +12,6 @@ const BlogLeftSidebar = () => {
         fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/posts?categories=82')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setBlog(data.map((item) => ({
                     id: item.id,
                     title: item.title.rendered,
@@ -28,7 +27,6 @@ const BlogLeftSidebar = () => {
         fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4277')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setBg3(data.acf.bg);
             });
     }, []);
@@ -36,7 +34,7 @@ const BlogLeftSidebar = () => {
     return (
         <div>
             <Header />
-            <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
+            <div className="dlab-bnr-inr overlay-black-light" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                 <div className="container">
                     <div className="dlab-bnr-inr-entry">
                         <h1 className="text-white">Блог</h1>

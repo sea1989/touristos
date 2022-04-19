@@ -54,7 +54,7 @@ class Slick3 extends Component {
             <Slider className="slider-carousel" {...settings}>
                 {destination.map((item, index) => (
                     <div class="item" key={index}>
-                        <div class="dlab-box overlay-black-middle">
+                        <div class="dlab-box overlay-black-light">
                             <img src={item.image} alt="" />
                         </div>
                     </div>

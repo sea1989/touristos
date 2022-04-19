@@ -12,7 +12,6 @@ function About() {
         fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4278')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setBg3(data.acf.bg);
             });
     }, []);
@@ -21,16 +20,10 @@ function About() {
     return (
         <div>
             <Header />
-            <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
+            <div className="dlab-bnr-inr overlay-black-light" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                 <div className="container">
                     <div className="dlab-bnr-inr-entry">
                         <h1 className="text-white">О Компании</h1>
-                        <div className="breadcrumb-row">
-                            <ul className="list-inline">
-                                <li><Link>Главная</Link></li>
-                                <li>О Компании</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>

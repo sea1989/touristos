@@ -33,7 +33,6 @@ function Homepage() {
         fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/slider')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setСontent(data.map((item) => ({
                     id: item.id,
                     title: item.title.rendered,
@@ -205,10 +204,6 @@ function Homepage() {
                                             <h4 className="dlab-title m-t0"><a href="booking-details.html">{item.name}</a></h4>
                                             <span className="location">{item.id}</span>
                                             <div className="package-content">
-                                                <ul className="package-meta">
-                                                    <li><span className="fa fa-calendar"></span> No of Days: 5 </li>
-                                                    <li> <span className="fa fa-user"></span> People: 2 </li>
-                                                </ul>
                                                 <div className="clearfix">
                                                     <span className="package-price pull-left text-primary">Руб {item.price}</span>
                                                     <Link to={'./booking/' + item.id} className="site-button pull-right">Подробнее</Link>

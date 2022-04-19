@@ -159,7 +159,7 @@ class Homepage2 extends Component {
                         </div>
                     </div>
 
-                    <div className="section-full content-inner bg-img-fix overlay-black-middle" style={{ backgroundImage: "url(" + bg1 + ")" }}>
+                    <div className="section-full content-inner bg-img-fix overlay-black-light" style={{ backgroundImage: "url(" + bg1 + ")" }}>
                         <div className="container">
                             <div className="video-banner-box">
                                 <div>

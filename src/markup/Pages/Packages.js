@@ -53,7 +53,6 @@ const Packages = () => {
         fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4268')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setBg3(data.acf.bg);
             });
     }, []);
@@ -61,16 +60,10 @@ const Packages = () => {
     return (
         <div>
             <Header />
-            <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
+            <div className="dlab-bnr-inr overlay-black-light" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                 <div className="container">
                     <div className="dlab-bnr-inr-entry">
-                        <h1 className="text-white">Packages</h1>
-                        <div className="breadcrumb-row">
-                            <ul className="list-inline">
-                                <li><Link>Home</Link></li>
-                                <li>Packages</li>
-                            </ul>
-                        </div>
+                        <h1 className="text-white">Пакетные туры</h1>
                     </div>
                 </div>
             </div>
@@ -87,13 +80,9 @@ const Packages = () => {
                                         <h4 className="dlab-title m-t0"><a href="booking-details.html">{item.name}</a></h4>
                                         <span className="location">{item.id}</span>
                                         <div className="package-content">
-                                            <ul className="package-meta">
-                                                <li><span className="fa fa-calendar"></span> No of Days: 5 </li>
-                                                <li> <span className="fa fa-user"></span> People: 2 </li>
-                                            </ul>
                                             <div className="clearfix">
-                                                <span className="package-price pull-left text-primary">${item.price}</span>
-                                                <Link to={'/booking'} className="site-button pull-right">View details</Link>
+                                                <span className="package-price pull-left text-primary">{item.price}Руб</span>
+                                                <Link to={'/booking/' + item.id} className="site-button pull-right">Подробнее</Link>
                                             </div>
                                         </div>
                                     </div>

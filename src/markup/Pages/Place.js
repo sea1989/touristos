@@ -207,7 +207,7 @@ const Place = () => {
     return (
         <div>
             <Header />
-            <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
+            <div className="dlab-bnr-inr overlay-black-light" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                 <div className="container">
                     <div className="dlab-bnr-inr-entry">
                         <h1 className="text-white">Услуги</h1>
@@ -335,7 +335,7 @@ const Place = () => {
                             </div>
                             <div className="row">
                                 <div className="col-md-12 col-sm-12 m-b15">
-                                    <h3 className="m-b5">Places in :</h3>
+                                    <h3 className="m-b5">Туры и Экскурсии:</h3>
                                     <div className="dlab-separator bg-primary"></div>
                                 </div>
 
@@ -356,18 +356,18 @@ const Place = () => {
                             <div className="pagination-bx clearfix text-center">
                                 <ul className="pagination">
                                     <li className="previous"><button
-                                        className='button-place'
+                                        className='button-place site-button'
                                         onClick={prevPageHandler}
-                                    ><i className="ti-arrow-left"></i> Prev</button></li>
+                                    ><i className="ti-arrow-left"></i> Предыдущая страница</button></li>
 
                                     {/* {Array.apply(null, Array(+this.state.pages))?.map((item, i) => {
                                             return <li onClick={() => { this.changePage(i + 1) }}><Link>{i + 1}</Link></li>;
                                         })} */}
 
                                     <li className="next"><button
-                                        className='button-place'
+                                        className='button-place site-button'
                                         onClick={nextPageHandler}
-                                    >Next <i className="ti-arrow-right"></i></button></li>
+                                    >Следующая страница <i className="ti-arrow-right"></i></button></li>
                                 </ul>
                             </div>
 

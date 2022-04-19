@@ -12,7 +12,6 @@ export default function Docs() {
         fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/pages/4230')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setDocs({
                     content: data.content.rendered,
                 });
@@ -23,7 +22,6 @@ export default function Docs() {
         fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4274')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setBg3(data.acf.bg);
             });
     }, []);
@@ -31,16 +29,10 @@ export default function Docs() {
     return (
         <div>
             <Header />
-            <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
+            <div className="dlab-bnr-inr overlay-black-light" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                 <div className="container">
                     <div className="dlab-bnr-inr-entry">
                         <h1 className="text-white">Документы</h1>
-                        <div className="breadcrumb-row">
-                            <ul className="list-inline">
-                                <li><Link>Главная</Link></li>
-                                <li>Документы</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>

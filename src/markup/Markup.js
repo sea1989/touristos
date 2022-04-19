@@ -25,7 +25,6 @@ import BlogDetails from './Pages/BlogDetails';
 import Contacts from './Pages/Contacts';
 import Popuss from './Pages/Tab';
 import ListingDetails from './Pages/ListingDetails';
-import BazaLipoviy from './Pages/BazaLipoviy';
 import BazaLipoviyVer2 from './Pages/BazaLipoviyVer2';
 import BazaSahaVer2 from './Pages/BazaSahaVer2';
 import Payment from './Pages/Payment';
@@ -52,7 +51,6 @@ class Markup extends Component {
                         <Route path='/register2' exact component={Register2} />
                         <Route path='/forgot' exact component={ForgotPass} />
                         <Route path='/hotelbooking' exact component={HotelBooking} />
-                        <Route path='/baza_lipoviy' exact component={BazaLipoviy} />
                         <Route path='/baza_lipoviy_ver2' exact component={BazaLipoviyVer2} />
                         <Route path='/baza_saha_ver2' exact component={BazaSahaVer2} />
                         <Route path='/blogclassic' exact component={BlogClassic} />

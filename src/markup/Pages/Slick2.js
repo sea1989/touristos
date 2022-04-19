@@ -85,7 +85,7 @@ function Slick2() {
                                         <div className="testimonial-1 style-2" style={{ backgroundImage: "url(" + item.bg + ")" }}>
                                             <div className="testimonial-detail clearfix">
                                                 <div className="testimonial-pic radius">
-                                                    <img src={item.image} width="100" height="100" alt="" />
+                                                    <img src={item.image} width="150" height="150" alt="" />
                                                 </div>
                                                 <strong className="testimonial-name text-primary">{item.title}</strong>
                                                 <span dangerouslySetInnerHTML={{ __html: item.content }} />

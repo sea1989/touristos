@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import Slider from "react-slick";
 import Header from '../Layout/Header';
 import Footer from '../Layout/Footer';
 import { Link } from 'react-router-dom';
 import { TabContent, TabPane } from 'reactstrap';
 import classnames from 'classnames';
 
-import Inst from '../../images/icon/iconsinstagram.png';
 import Telegram from '../../images/icon/iconstelegram.png';
 
 // Setup:
@@ -19,11 +19,28 @@ const WooCommerce = new WooCommerceRestApi({
     version: 'wc/v3' // WooCommerce WP REST API version
 });
 
+function SampleNextArrow(props) {
+    const { onClick } = props;
+    return (
+        <div className="la la-angle-right nav-right" onClick={onClick} />
+    );
+}
+
+function SamplePrevArrow(props) {
+    const { onClick } = props;
+    return (
+        <div className="la la-angle-left nav-left" onClick={onClick} />
+    );
+}
+
 const BazaSahaVer2 = (props) => {
     const [bg3, setBg3] = useState('');
     const [activeTab, setActiveTab] = useState('1');
     const [dataPlaces, setDataPlaces] = useState([]);
     const [lipovoy, setLipovoy] = useState([]);
+
+    const [content, setСontent] = useState([]);
+
     const toggle = tab => {
         if (activeTab !== tab) setActiveTab(tab);
     }
@@ -37,7 +54,6 @@ const BazaSahaVer2 = (props) => {
         fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/pages/3982')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setLipovoy({
                     title: data.title.rendered,
                     content: data.content.rendered,
@@ -60,9 +76,7 @@ const BazaSahaVer2 = (props) => {
             }
         )
             .then((response) => {
-
                 setDataPlaces(response.data);
-                console.log(dataPlaces)
             })
             .catch((error) => {
                 console.log(error.response.data);
@@ -73,23 +87,42 @@ const BazaSahaVer2 = (props) => {
         fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4275')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setBg3(data.acf.bg);
             });
     }, []);
 
+    useEffect(() => {
+        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/slider')
+            .then((response) => response.json())
+            .then((data) => {
+                setСontent(data.map((item) => ({
+                    id: item.id,
+                    title: item.title.rendered,
+                    button: item.acf.button_name,
+                    image: item.acf.foto,
+                    link_button: item.acf.link_button,
+                })));
+            });
+    }, []);
+
+    var settings = {
+        dots: true,
+        slidesToShow: 1,
+        infinite: true,
+        centerPadding: 30,
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />,
+    };
+
     return (
         <div>
             <Header />
-            <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
+            <div className="dlab-bnr-inr overlay-black-light" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                 <div className="container">
                     <div className="dlab-bnr-inr-entry">
-                        <h1 className="text-white">Турбаза "Мама Саха"</h1>
+                        <h1 className="text-white"> Центр экотуризма «Мама–Саха»-«Черный берег под одинокой звездой»</h1>
                         <div className="breadcrumb-row">
-                            <ul className="list-inline">
-                                <li><Link to={''}>Главная</Link></li>
-                                <li>Турбаза "Мама Саха"</li>
-                            </ul>
+
                         </div>
                     </div>
                 </div>
@@ -102,7 +135,7 @@ const BazaSahaVer2 = (props) => {
                         </div>
                         <div className="listing-info">
                             <div className="listing-info-left">
-                                <h3 className="title">БОЛЬШОЙ ЛИПОВЫЙ</h3>
+                                <h3 className="title">"Мама Саха"</h3>
                                 <p>Центр экотуризма
                                     «Мама–Саха»-«Черный берег под одинокой звездой»,
                                     расположенный на острове Попова,
@@ -175,14 +208,14 @@ const BazaSahaVer2 = (props) => {
                                                     <div className="icon-cell bg-gray">
                                                         <i className="la la-cutlery"></i>
                                                     </div>
-                                                    <span>Restaurant</span>
+                                                    <span>Ресторан</span>
                                                 </Link></li>
 
                                                 <li><Link to={''} className="icon-box-info">
                                                     <div className="icon-cell bg-gray">
                                                         <i className="la la-shopping-cart"></i>
                                                     </div>
-                                                    <span>Shopping</span>
+                                                    <span>Шоппинг</span>
                                                 </Link></li>
 
                                                 <li><Link to={''} className="icon-box-info">
@@ -198,24 +231,20 @@ const BazaSahaVer2 = (props) => {
                                         <div className="content-header">
                                             <h3 className="title"><i className="la la-file-image-o"></i> Фото</h3>
                                         </div>
-                                        <div className="content-body">
-                                            <div className="widget widget_gallery gallery-grid-4 lightgallery">
-                                                <ul>
-
-                                                    {lipovoy.img ? lipovoy.img.map((item) =>
-                                                        <li>
-                                                            <span className="check-km" title="Light Gallery Grid 1">
-                                                                <Link to={''}>
-                                                                    <div className="dlab-post-thum"><img src={item} alt="" /></div>
-                                                                </Link>
-                                                            </span>
-                                                        </li>) : ''}
-
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div className="content-footer content-btn">
-                                            <Link to={''} className="site-button">See All</Link>
+                                        <div className="product-gallery on-show-slider">
+                                            <Slider className="blog-carousel nav-btn-center-lr btn-1" {...settings} >
+                                                {
+                                                    lipovoy.images ? lipovoy.img.map((item, index) => (
+                                                        <div className="item" key={index}>
+                                                            <div className="dlab-box">
+                                                                <div className="dlab-thum-bx">
+                                                                    <img src={item} alt="" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    ))
+                                                        : ''}
+                                            </Slider>
                                         </div>
                                     </div>
 
@@ -239,9 +268,6 @@ const BazaSahaVer2 = (props) => {
                                                     </div>
                                                 ))}
                                             </div>
-                                        </div>
-                                        <div className="content-footer content-btn">
-                                            <Link to={''} className="site-button">See All</Link>
                                         </div>
                                     </div>
 
@@ -344,7 +370,7 @@ const BazaSahaVer2 = (props) => {
                                                                             name="rooms"
                                                                         />
                                                                     </div>
-                                                                    <span className="font-12">Rooms</span>
+                                                                    <span className="font-12">Комнаты</span>
                                                                 </div>
                                                             </div>
 
@@ -378,7 +404,7 @@ const BazaSahaVer2 = (props) => {
 
                                         <div className="content-box">
                                             <div className="content-header">
-                                                <h3 className="title"><i className="la la-map-signs m-r5"></i>business info</h3>
+                                                <h3 className="title"><i className="la la-map-signs m-r5"></i>Инфо</h3>
                                             </div>
                                             <div className="content-body">
                                                 <ul className="icon-box-list">
@@ -410,7 +436,7 @@ const BazaSahaVer2 = (props) => {
 
                                         <div className="content-box">
                                             <div className="content-header">
-                                                <h3 className="title"><i className="la la-tags m-r5"></i>tags</h3>
+                                                <h3 className="title"><i className="la la-tags m-r5"></i>Отметки</h3>
                                             </div>
                                             <div className="content-body">
                                                 <ul className="icon-box-list list-col-2">
@@ -419,13 +445,13 @@ const BazaSahaVer2 = (props) => {
                                                         <div className="icon-cell bg-gray">
                                                             <i className="la la-cutlery"></i>
                                                         </div>
-                                                        <span>Restaurant</span>
+                                                        <span>Ресторан</span>
                                                     </Link></li>
                                                     <li><Link to={''} className="icon-box-info">
                                                         <div className="icon-cell bg-gray">
                                                             <i className="la la-shopping-cart"></i>
                                                         </div>
-                                                        <span>Shopping</span>
+                                                        <span>Шоппинг</span>
                                                     </Link></li>
 
                                                     <li><Link to={''} className="icon-box-info">
@@ -462,7 +488,7 @@ const BazaSahaVer2 = (props) => {
                                 <div className="col-xl-12">
                                     <div className="content-box">
                                         <div className="content-header">
-                                            <h3 className="title">listing features</h3>
+                                            <h3 className="title">Отметки</h3>
                                         </div>
                                         <div className="content-body">
                                             <ul className="icon-box-list list-col-4">
@@ -471,13 +497,13 @@ const BazaSahaVer2 = (props) => {
                                                     <div className="icon-cell bg-gray">
                                                         <i className="la la-cutlery"></i>
                                                     </div>
-                                                    <span>Restaurant</span>
+                                                    <span>Ресторан</span>
                                                 </Link></li>
                                                 <li><Link to={''} className="icon-box-info">
                                                     <div className="icon-cell bg-gray">
                                                         <i className="la la-shopping-cart"></i>
                                                     </div>
-                                                    <span>Shopping</span>
+                                                    <span>Шоппинг</span>
                                                 </Link></li>
 
                                                 <li><Link to={''} className="icon-box-info">
@@ -500,45 +526,25 @@ const BazaSahaVer2 = (props) => {
                                             <h3 className="title">Фото</h3>
                                         </div>
                                         <div className="content-body">
-                                            <div className="widget widget_gallery gallery-grid-4 lightgallery">
-                                                <ul>
-                                                    {lipovoy.img ? lipovoy.img.map((item) =>
-                                                        <li>
-                                                            <span className="check-km" title="Light Gallery Grid 1">
-                                                                <Link to={''}>
-                                                                    <div className="dlab-post-thum"><img src={item} alt="" /></div>
-                                                                </Link>
-                                                            </span>
-                                                        </li>) : ''}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </TabPane>
-                        <TabPane tabId="5">
-                            <div className="row">
-                                <div className="col-xl-12">
-                                    <div className="content-box">
-                                        <div className="content-header">
-                                            <h3 className="title">videos</h3>
-                                        </div>
-                                        <div className="content-body">
-                                            <div className="widget widget_video video-grid-4">
-                                                <ul>
-                                                    <li>
-                                                        <div className="dlab-post-thum video-bx">
-                                                            <img src={require('./../../images/gallery/pic1.jpg')} alt="" />
-                                                            <div className="video-play-icon">
-                                                                <Link to={''} className="popup-youtube video"><i className="la la-play"></i></Link>
+                                            <div className="product-gallery on-show-slider">
+                                                <Slider className="blog-carousel nav-btn-center-lr btn-1" {...settings} >
+                                                    {
+                                                        lipovoy.images ? lipovoy.img.map((item, index) => (
+                                                            <div className="item" key={index}>
+                                                                <div className="dlab-box">
+                                                                    <div className="dlab-thum-bx">
+                                                                        <img src={item} alt="" />
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                                                        ))
+                                                            : ''}
+                                                </Slider>
                                             </div>
                                         </div>
                                     </div>
+
+
                                 </div>
                             </div>
                         </TabPane>
@@ -570,400 +576,11 @@ const BazaSahaVer2 = (props) => {
                                 </div>
                             </div>
                         </TabPane>
-                        <TabPane tabId="7">
-                            <div className="row">
-                                <div className="col-xl-8">
-
-                                    <div className="comments-review-area">
-                                        <div className="comments-review-box">
-                                            <div className="review-header">
-                                                <div className="review-comment-author">
-                                                    <div className="review-avatar">
-                                                        <img src={require('./../../images/testimonials/pic1.jpg')} alt="" />
-                                                    </div>
-                                                    <div className="comment-info">
-                                                        <div className="info-group">
-                                                            <h3 className="title"><Link to={''}>Diamond Anderson</Link></h3>
-                                                        </div>
-                                                        <span className="comment-date">July 25, 2019</span>
-                                                    </div>
-                                                </div>
-                                                <div className="clearfix d-flex">
-                                                    <div className="average-reviews-single">
-                                                        <div className="average-reviews-info">
-                                                            <h4 className="average-reviews">7.7</h4>
-                                                            <div className="clearfix">
-                                                                <h4 className="average-reviews-in">/ 10</h4>
-                                                                <span>Quality</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="dropdown dropdown-btn dropdown-btn-sm">
-                                                        <button className="site-button-link button-xl dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i className="la la-ellipsis-h"></i>
-                                                        </button>
-                                                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <Link className="dropdown-item" data-toggle="modal" data-target="#report-reviews" to={''}><i className="la la-flag-o"></i><span> Report Review</span></Link>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="review-body">
-                                                <h3 className="review-title"><Link to={''}>Food & Drink</Link></h3>
-                                                <p className="review-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                                                <ul className="review-meta">
-                                                    <li>4 Liked</li>
-                                                    <li>4 Shared</li>
-                                                </ul>
-                                            </div>
-                                            <div className="review-footer">
-                                                <div className="review-btn">
-                                                    <ul>
-                                                        <li><Link to={''}><i className="la la-thumbs-up"></i> <span>Like</span></Link></li>
-                                                        <li><Link to={''}><i className="la la-comments-o"></i> <span>Comment</span></Link></li>
-                                                        <li>
-                                                            <div className="dropdown dropdown-btn">
-                                                                <button className="site-button-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                    <i className="la la-share-square-o m-r5"></i>  Share
-                                                                </button>
-                                                                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                    <Link className="dropdown-item site-button-link facebook" to={''}>
-                                                                        <i className="fa fa-facebook"></i><span>Facebook</span></Link>
-                                                                    <Link className="dropdown-item site-button-link twitter" to={''}>
-                                                                        <i className="fa fa-twitter"></i><span> Twitter</span></Link>
-                                                                    <Link className="dropdown-item site-button-link pinterest" to={''}>
-                                                                        <i className="fa fa-pinterest"></i><span> Pinterest</span></Link>
-                                                                    <Link className="dropdown-item site-button-link linkedin" to={''}>
-                                                                        <i className="fa fa-linkedin"></i><span> Linkedin</span></Link>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div className="review-comments-list">
-                                                    <ul>
-                                                        <li>
-                                                            <div className="review-comment-author">
-                                                                <div className="review-avatar">
-                                                                    <img src={require('./../../images/testimonials/pic1.jpg')} alt="" />
-                                                                </div>
-                                                                <div className="comment-info">
-                                                                    <div className="info-group">
-                                                                        <h3 className="title"><Link to={''}>Diamond Anderson</Link></h3>
-                                                                        <p className="comment-text">Lorem Ipsum is simply dummy text</p>
-                                                                    </div>
-                                                                    <span className="comment-date">July 25, 2019</span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div className="review-comment-author">
-                                                                <div className="review-avatar">
-                                                                    <img src={require('./../../images/testimonials/pic1.jpg')} alt="" />
-                                                                </div>
-                                                                <div className="comment-info">
-                                                                    <div className="info-group">
-                                                                        <h3 className="title"><Link to={''}>Diamond Anderson</Link></h3>
-                                                                        <p className="comment-text">Lorem Ipsum is simply dummy text</p>
-                                                                    </div>
-                                                                    <span className="comment-date">July 25, 2019</span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div className="review-comments-form">
-                                                    <div className="review-avatar">
-                                                        <img src={require('./../../images/testimonials/pic1.jpg')} alt="" />
-                                                    </div>
-                                                    <div className="form-area">
-                                                        <textarea className="form-control" placeholder="Type To Message"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="comments-review-box">
-                                            <div className="review-header">
-                                                <div className="review-comment-author">
-                                                    <div className="review-avatar">
-                                                        <img src={require('./../../images/testimonials/pic1.jpg')} alt="" />
-                                                    </div>
-                                                    <div className="comment-info">
-                                                        <div className="info-group">
-                                                            <h3 className="title"><Link to={''}>Diamond Anderson</Link></h3>
-                                                        </div>
-                                                        <span className="comment-date">July 25, 2019</span>
-                                                    </div>
-                                                </div>
-                                                <div className="clearfix d-flex">
-                                                    <div className="average-reviews-single">
-                                                        <div className="average-reviews-info">
-                                                            <h4 className="average-reviews">7.7</h4>
-                                                            <div className="clearfix">
-                                                                <h4 className="average-reviews-in">/ 10</h4>
-                                                                <span>Quality</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="dropdown dropdown-btn dropdown-btn-sm">
-                                                        <button className="site-button-link button-xl dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i className="fa fa-ellipsis-h"></i>
-                                                        </button>
-                                                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <Link className="dropdown-item" data-toggle="modal" data-target="#report-reviews" to={''}><i className="la la-flag-o"></i><span> Report Review</span></Link>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="review-body">
-                                                <h3 className="review-title"><Link to={''}>Food & Drink</Link></h3>
-                                                <p className="review-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                                                <ul className="review-meta">
-                                                    <li>4 Liked</li>
-                                                    <li>4 Shared</li>
-                                                </ul>
-                                            </div>
-                                            <div className="review-footer">
-                                                <div className="review-btn">
-                                                    <ul>
-                                                        <li><Link to={''}><i className="la la-thumbs-up"></i> <span>Like</span></Link></li>
-                                                        <li><Link to={''}><i className="la la-comments-o"></i> <span>Comment</span></Link></li>
-                                                        <li>
-                                                            <div className="dropdown dropdown-btn">
-                                                                <button className="site-button-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                    <i className="la la-share-square-o m-r5"></i>  Share
-                                                                </button>
-                                                                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                    <Link className="dropdown-item site-button-link facebook" to={''}>
-                                                                        <i className="fa fa-facebook"></i><span>Facebook</span></Link>
-                                                                    <Link className="dropdown-item site-button-link twitter" to={''}>
-                                                                        <i className="fa fa-twitter"></i><span> Twitter</span></Link>
-                                                                    <Link className="dropdown-item site-button-link pinterest" to={''}>
-                                                                        <i className="fa fa-pinterest"></i><span> Pinterest</span></Link>
-                                                                    <Link className="dropdown-item site-button-link linkedin" to={''}>
-                                                                        <i className="fa fa-linkedin"></i><span> Linkedin</span></Link>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div className="review-comments-list">
-                                                    <ul>
-                                                        <li>
-                                                            <div className="review-comment-author">
-                                                                <div className="review-avatar">
-                                                                    <img src={require('./../../images/testimonials/pic1.jpg')} alt="" />
-                                                                </div>
-                                                                <div className="comment-info">
-                                                                    <div className="info-group">
-                                                                        <h3 className="title"><Link to={''}>Diamond Anderson</Link></h3>
-                                                                        <p className="comment-text">Lorem Ipsum is simply dummy text</p>
-                                                                    </div>
-                                                                    <span className="comment-date">July 25, 2019</span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div className="review-comment-author">
-                                                                <div className="review-avatar">
-                                                                    <img src={require('./../../images/testimonials/pic1.jpg')} alt="" />
-                                                                </div>
-                                                                <div className="comment-info">
-                                                                    <div className="info-group">
-                                                                        <h3 className="title"><Link to={''}>Diamond Anderson</Link></h3>
-                                                                        <p className="comment-text">Lorem Ipsum is simply dummy text</p>
-                                                                    </div>
-                                                                    <span className="comment-date">July 25, 2019</span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div className="review-comments-form">
-                                                    <div className="review-avatar">
-                                                        <img src={require('./../../images/testimonials/pic1.jpg')} alt="" />
-                                                    </div>
-                                                    <div className="form-area">
-                                                        <textarea className="form-control" placeholder="Type To Message"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="comments-review-box">
-                                            <div className="review-header">
-                                                <div className="review-comment-author">
-                                                    <div className="review-avatar">
-                                                        <img src={require('./../../images/testimonials/pic1.jpg')} alt="" />
-                                                    </div>
-                                                    <div className="comment-info">
-                                                        <div className="info-group">
-                                                            <h3 className="title"><Link to={''}>Diamond Anderson</Link></h3>
-                                                        </div>
-                                                        <span className="comment-date">July 25, 2019</span>
-                                                    </div>
-                                                </div>
-                                                <div className="clearfix d-flex">
-                                                    <div className="average-reviews-single">
-                                                        <div className="average-reviews-info">
-                                                            <h4 className="average-reviews">7.7</h4>
-                                                            <div className="clearfix">
-                                                                <h4 className="average-reviews-in">/ 10</h4>
-                                                                <span>Quality</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="dropdown dropdown-btn dropdown-btn-sm">
-                                                        <button className="site-button-link button-xl dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i className="fa fa-ellipsis-v"></i>
-                                                        </button>
-                                                        <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                                            <Link className="dropdown-item" data-toggle="modal" data-target="#report-reviews" to={''}><i className="la la-flag-o"></i><span> Report Review</span></Link>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="review-body">
-                                                <h3 className="review-title"><Link to={''}>Food & Drink</Link></h3>
-                                                <p className="review-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                                                <ul className="review-meta">
-                                                    <li>4 Liked</li>
-                                                    <li>4 Shared</li>
-                                                </ul>
-                                            </div>
-                                            <div className="review-footer">
-                                                <div className="review-btn">
-                                                    <ul>
-                                                        <li><Link to={''}><i className="la la-thumbs-up"></i> <span>Like</span></Link></li>
-                                                        <li><Link to={''}><i className="la la-comments-o"></i> <span>Comment</span></Link></li>
-                                                        <li>
-                                                            <div className="dropdown dropdown-btn">
-                                                                <button className="site-button-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                    <i className="la la-share-square-o m-r5"></i>  Share
-                                                                </button>
-                                                                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                    <Link className="dropdown-item site-button-link facebook" to={''}>
-                                                                        <i className="fa fa-facebook"></i><span>Facebook</span></Link>
-                                                                    <Link className="dropdown-item site-button-link twitter" to={''}>
-                                                                        <i className="fa fa-twitter"></i><span> Twitter</span></Link>
-                                                                    <Link className="dropdown-item site-button-link pinterest" to={''}>
-                                                                        <i className="fa fa-pinterest"></i><span> Pinterest</span></Link>
-                                                                    <Link className="dropdown-item site-button-link linkedin" to={''}>
-                                                                        <i className="fa fa-linkedin"></i><span> Linkedin</span></Link>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div className="review-comments-list">
-                                                    <ul>
-                                                        <li>
-                                                            <div className="review-comment-author">
-                                                                <div className="review-avatar">
-                                                                    <img src={require('./../../images/testimonials/pic1.jpg')} alt="" />
-                                                                </div>
-                                                                <div className="comment-info">
-                                                                    <div className="info-group">
-                                                                        <h3 className="title"><Link to={''}>Diamond Anderson</Link></h3>
-                                                                        <p className="comment-text">Lorem Ipsum is simply dummy text</p>
-                                                                    </div>
-                                                                    <span className="comment-date">July 25, 2019</span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div className="review-comment-author">
-                                                                <div className="review-avatar">
-                                                                    <img src={require('./../../images/testimonials/pic1.jpg')} alt="" />
-                                                                </div>
-                                                                <div className="comment-info">
-                                                                    <div className="info-group">
-                                                                        <h3 className="title"><Link to={''}>Diamond Anderson</Link></h3>
-                                                                        <p className="comment-text">Lorem Ipsum is simply dummy text</p>
-                                                                    </div>
-                                                                    <span className="comment-date">July 25, 2019</span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div className="review-comments-form">
-                                                    <div className="review-avatar">
-                                                        <img src={require('./../../images/testimonials/pic1.jpg')} alt="" />
-                                                    </div>
-                                                    <div className="form-area">
-                                                        <textarea className="form-control" placeholder="Type To Message"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div className="col-xl-4">
-                                    <div className="content-box">
-                                        <div className="content-header">
-                                            <h3 className="title">24 REVIEWS FOR triper</h3>
-                                        </div>
-                                        <div className="content-body">
-                                            <div className="average-reviews-list bar-rating">
-                                                <ul>
-                                                    <li>
-                                                        <div className="average-reviews-info">
-                                                            <span>Quality</span>
-                                                            <div className="bar">
-                                                                <div className="bar-rat bg-primary"></div>
-                                                            </div>
-                                                            <h4 className="average-reviews">8.5</h4>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div className="average-reviews-info">
-                                                            <span>Location</span>
-                                                            <div className="bar">
-                                                                <div className="bar-rat bg-primary"></div>
-                                                            </div>
-                                                            <h4 className="average-reviews">7.5</h4>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div className="average-reviews-info">
-                                                            <span>Space</span>
-                                                            <div className="bar">
-                                                                <div className="bar-rat bg-primary"></div>
-                                                            </div>
-                                                            <h4 className="average-reviews">7.4</h4>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div className="average-reviews-info">
-                                                            <span>Service</span>
-                                                            <div className="bar">
-                                                                <div className="bar-rat bg-primary"></div>
-                                                            </div>
-                                                            <h4 className="average-reviews">7.9</h4>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div className="average-reviews-info">
-                                                            <span>Price</span>
-                                                            <div className="bar">
-                                                                <div className="bar-rat bg-primary"></div>
-                                                            </div>
-                                                            <h4 className="average-reviews">7.4</h4>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </TabPane>
                     </TabContent>
-                </div>
-            </div>
+                </div >
+            </div >
             <Footer />
-        </div>
+        </div >
     );
 }
 export default BazaSahaVer2;

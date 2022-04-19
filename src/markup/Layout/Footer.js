@@ -18,10 +18,14 @@ function Footer() {
         fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4285')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setBg3(data.acf.bg);
             });
     }, []);
+
+    function formHandler() {
+        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/contact-form-7/v1/contact-forms/4289/feedback',
+            { method: 'POST', body: new FormData(document.querySelector('#formFooter')) })
+    }
 
     return (
 
@@ -91,19 +95,24 @@ function Footer() {
                                 <div className="dlab-separator bg-white"></div>
                                 <div className="search-bx">
                                     <div className="dzFormMsg"></div>
-                                    <form method="post" className="dzForm" action="script/contact.php">
+                                    <form className="dzForm" id="formFooter">
                                         <input type="hidden" value="Contact" name="dzToDo" />
                                         <div className="input-group">
-                                            <input name="dzName" type="text" required className="form-control" placeholder="Ваше имя" />
+                                            <input name="fio" type="text" required className="form-control" placeholder="Ваше имя" />
                                         </div>
                                         <div className="input-group">
-                                            <input name="dzEmail" type="email" className="form-control" required placeholder="Ваша почта" />
+                                            <input name="email" type="email" className="form-control" required placeholder="Ваша почта" />
                                         </div>
                                         <div className="input-group">
-                                            <textarea name="dzMessage" rows="4" className="form-control" required placeholder="Ваще сообщение..."></textarea>
+                                            <textarea name="comments" rows="4" className="form-control" required placeholder="Ваше сообщение..."></textarea>
                                         </div>
                                         <div className="input-group">
-                                            <button name="submit" type="submit" value="Submit" className="site-button "> <span>Отправить</span> </button>
+                                            <button
+                                                onClick={formHandler}
+                                                type="submit"
+                                                className="site-button"
+                                            > <span>Отправить</span>
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -124,7 +133,6 @@ function Footer() {
                     </div>
                 </div>
             </div>
-
 
         </footer>
     )

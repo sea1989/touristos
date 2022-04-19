@@ -13,12 +13,11 @@ const Calendar = () => {
         fetch('https://script.google.com/macros/s/AKfycbzySd6YzTKgOXWtFsyV4fR4Xu7E2EbMbPyKqf5tBVgr2Adz1wXgQIzKKorDxGwt3Uuj/exec?role=true')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data.users);
                 setShedule(data.users.map((item) => ({
                     time: item.time,
                     price: item.price,
                     excursion: item.excursion,
-                    date: item.date,
+                    date: new Date(item.date).toLocaleDateString(),
                 })));
             });
     }, []);
@@ -27,7 +26,6 @@ const Calendar = () => {
         fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4272')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setBg3(data.acf.bg);
             });
     }, []);
@@ -35,16 +33,10 @@ const Calendar = () => {
     return (
         <div>
             <Header />
-            <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
+            <div className="dlab-bnr-inr overlay-black-light" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                 <div className="container">
                     <div className="dlab-bnr-inr-entry">
                         <h1 className="text-white">График маршрутов</h1>
-                        <div className="breadcrumb-row">
-                            <ul className="list-inline">
-                                <li><Link>Главная</Link></li>
-                                <li>График маршрутов</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -58,11 +50,11 @@ const Calendar = () => {
                         </div>
 
 
-                        <figure class="wp-block-table is-style-stripes"><table><tbody>
+                        <figure className="wp-block-table is-style-stripes"><table><tbody>
                             <tr><td><strong>Дата</strong></td><td><strong>Экскурсия</strong></td><td><strong>Время, час</strong></td><td><strong>Стоимость, руб.</strong></td></tr>
 
-                            {schedule.map((item) =>
-                                <tr><td>{item.date}</td><td>{item.excursion}</td><td>{item.time}</td><td>{item.price}</td></tr>
+                            {schedule.map((item, index) =>
+                                <tr key={index}><td>{item.date}</td><td>{item.excursion}</td><td>{item.time}</td><td>{item.price}</td></tr>
                             )}
 
                         </tbody></table></figure>

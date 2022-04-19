@@ -15,9 +15,6 @@ const WooCommerce = new WooCommerceRestApi({
     version: 'wc/v3' // WooCommerce WP REST API version
 });
 
-
-var bg3 = require('./../../images/banner/bnr1.jpg');
-
 function SampleNextArrow(props) {
     const { onClick } = props;
     return (
@@ -33,6 +30,7 @@ function SamplePrevArrow(props) {
 }
 
 const BookingDetails = () => {
+    const [bg3, setBg3] = useState('');
     const { id } = useParams();
     const [tour, setTour] = useState([]);
     const [tourImg, setTourImg] = useState([]);
@@ -45,7 +43,6 @@ const BookingDetails = () => {
 
     useEffect(() => {
         WooCommerce.get(`products/${id}`,
-
         )
             .then((response) => {
                 setTour(response.data);
@@ -56,6 +53,15 @@ const BookingDetails = () => {
                 console.log(error.response.data);
             });
     }, [id])
+
+    useEffect(() => {
+        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4268')
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setBg3(data.acf.bg);
+            });
+    }, []);
 
     var settings = {
         dots: true,
@@ -68,16 +74,10 @@ const BookingDetails = () => {
     return (
         <div>
             <Header />
-            <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
+            <div className="dlab-bnr-inr overlay-black-light" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                 <div className="container">
                     <div className="dlab-bnr-inr-entry">
-                        <h1 className="text-white">Тур №{id}</h1>
-                        <div className="breadcrumb-row">
-                            <ul className="list-inline">
-                                <li><Link>Главная</Link></li>
-                                <li>Тур №{id}</li>
-                            </ul>
-                        </div>
+                        <h1 className="text-white">{tour.name}</h1>
                     </div>
                 </div>
             </div>
@@ -100,7 +100,6 @@ const BookingDetails = () => {
                                 </div>
                                 <div className="product-gallery on-show-slider">
                                     <Slider className="blog-carousel nav-btn-center-lr btn-1" {...settings} >
-
                                         {
                                             tourImg.map((item, index) => (
                                                 <div className="item" key={index}>
@@ -206,7 +205,7 @@ const BookingDetails = () => {
                                                             name="rooms"
                                                         />
                                                     </div>
-                                                    <span className="font-12">Rooms</span>
+                                                    <span className="font-12">Комнат</span>
                                                 </div>
                                             </div>
 
@@ -253,10 +252,6 @@ const BookingDetails = () => {
                                         <div className="row">
                                             <div className="col-md-12 ">
                                                 <p dangerouslySetInnerHTML={{ __html: tour.short_description }} />
-                                                <ul className="tour-tag">
-                                                    <li><Link>Breakfast</Link></li>
-                                                    <li><Link>Dinner</Link></li>
-                                                </ul>
                                             </div>
 
                                         </div>
@@ -265,154 +260,6 @@ const BookingDetails = () => {
                             </div>
                         }
                     </div>
-                    {/* <div className="modal fade submit-query" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div className="modal-dialog" role="document">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">Check Price & Availability</h5>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                    <form className="row">
-                                        <div className="col-md-6">
-                                            <div className="form-group">
-                                                <label>Customer City</label>
-                                                <div className="input-group">
-                                                    <select className="form-control">
-                                                        <option>Select City</option>
-                                                        <option>Kochi</option>
-                                                        <option>Mumbai</option>
-                                                        <option>New Delhi</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <div className="form-group">
-                                                <label>Customer State</label>
-                                                <div className="input-group">
-                                                    <select className="form-control">
-                                                        <option>Select State</option>
-                                                        <option>Kochi</option>
-                                                        <option>Mumbai</option>
-                                                        <option>New Delhi</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-12">
-                                            <div className="form-group">
-                                                <label>Departure Date Selected</label>
-                                                <div className="input-group">
-                                                    <input name="dzName" required="" className="form-control" type="date" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-4">
-                                            <div className="quantity btn-quantity">
-                                                <input id="demo_vertical2" type="text" name="demo_vertical2" />
-                                                <span className="font-12">Adult (12yrs +)</span>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-4">
-                                            <div className="quantity btn-quantity">
-                                                <input id="demo_vertical2" type="text" name="demo_vertical2" />
-                                                <span className="font-12">Child (2-12yrs)</span>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-4">
-                                            <div className="quantity btn-quantity">
-                                                <input id="demo_vertical2" type="text" name="demo_vertical2" />
-                                                <span className="font-12">Infant (0-2yrs)</span>
-                                            </div>
-                                        </div>
-                                    </form>
-
-                                </div>
-                                <div className="modal-footer d-flex justify-content-between">
-                                    <button type="submit" className="site-button-secondry" data-dismiss="modal">Close</button>
-                                    <button type="submit" className="site-button">Submit</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="modal fade submit-query" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div className="modal-dialog" role="document">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">Get the Best Holiday Planned by Experts!</h5>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                    <h5 className="text-center">Enter your contact details and we will plan the best holiday suiting all your requirements.</h5>
-                                    <form className="row">
-                                        <div className="col-md-6">
-                                            <div className="form-group">
-                                                <div className="input-group">
-                                                    <input name="dzName" required="" className="form-control" placeholder="Your Name" type="text" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <div className="form-group">
-                                                <div className="input-group">
-                                                    <input name="dzName" required="" className="form-control" placeholder="Your Email Address" type="email" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-4">
-                                            <div className="form-group">
-                                                <div className="input-group">
-                                                    <input name="dzName" required="" className="form-control" placeholder="Mobile No" type="text" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-4">
-                                            <div className="form-group">
-                                                <div className="input-group">
-                                                    <input name="dzName" required="" className="form-control" placeholder="Your City" type="text" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-4">
-                                            <div className="form-group">
-                                                <div className="input-group">
-                                                    <input name="dzName" required="" className="form-control" type="date" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-4">
-                                            <div className="quantity btn-quantity">
-                                                <input id="demo_vertical2" type="text" name="demo_vertical2" />
-                                                <span className="font-12">Adult (12yrs +)</span>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-4">
-                                            <div className="quantity btn-quantity">
-                                                <input id="demo_vertical2" type="text" name="demo_vertical2" />
-                                                <span className="font-12">Child (2-12yrs)</span>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-4">
-                                            <div className="quantity btn-quantity">
-                                                <input id="demo_vertical2" type="text" name="demo_vertical2" />
-                                                <span className="font-12">Infant (0-2yrs)</span>
-                                            </div>
-                                        </div>
-                                    </form>
-
-                                </div>
-                                <div className="modal-footer d-flex justify-content-between">
-                                    <button type="submit" className="site-button-secondry" data-dismiss="modal">Close</button>
-                                    <button type="submit" className="site-button">Submit</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
 
                 </div>
 

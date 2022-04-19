@@ -56,7 +56,7 @@ class Hotel extends Component {
         return (
             <div>
                 <Header2 />
-                <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
+                <div className="dlab-bnr-inr overlay-black-light" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                     <div className="container">
                         <div className="dlab-bnr-inr-entry">
                             <h1 className="text-white">Hotel</h1>

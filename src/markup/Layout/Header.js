@@ -55,7 +55,7 @@ class Header extends Component {
 
                             <div className="header-nav navbar-collapse collapse navbar myNavbar justify-content-end" id="navbarNavDropdown">
                                 <ul className="nav navbar-nav">
-                                    <li><Link to={'/'}>Главная <i class="fa "></i></Link>
+                                    <li><Link to={'/'}>Главная <i className="fa "></i></Link>
 
                                     </li>
                                     <li><Link> Услуги <i className="fa fa-chevron-down"></i></Link>
@@ -88,7 +88,7 @@ class Header extends Component {
                                         <div className="extra-nav">
                                             <div className="extra-cell">
                                                 {/* <button id="quik-search-btn" type="button" className="site-button outline black"><i className="fa fa-search"></i></button> */}
-                                                <Link to={"/payment"} className="site-button outline m-l5">Забронировать</Link>
+                                                <Link to={"/payment"} className="site-button m-l5">Забронировать</Link>
                                             </div>
                                         </div>
                                     </li>
