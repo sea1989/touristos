@@ -244,7 +244,7 @@ const BookingDetails = () => {
                             <div className="row m-b30" >
                                 <div className="col-md-3 col-lg-2">
                                     <div className="sticky-top">
-                                        <div className="day-details bg-primary">Расписание</div>
+                                        <div className="day-details bg-primary">Программа</div>
                                     </div>
                                 </div>
                                 <div className="col-md-9 col-lg-10">

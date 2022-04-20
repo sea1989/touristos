@@ -63,7 +63,7 @@ const Packages = () => {
             <div className="dlab-bnr-inr overlay-black-light" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                 <div className="container">
                     <div className="dlab-bnr-inr-entry">
-                        <h1 className="text-white">Пакетные туры</h1>
+                        <h1 className="text-white">Туры</h1>
                     </div>
                 </div>
             </div>

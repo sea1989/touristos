@@ -189,8 +189,8 @@ function Homepage() {
                 <div className="section-full bg-white content-inner dlab-about-1 promotions">
                     <div className="container">
                         <div className="section-head text-black text-center">
-                            <h2 className="text-uppercase m-b0">Пакетные туры</h2>
-                            <p className="font-18">Лучшие пакетные туры </p>
+                            <h2 className="text-uppercase m-b0">Туры</h2>
+                            <p className="font-18">Лучшие туры </p>
                         </div>
                         <div className="row packages">
 

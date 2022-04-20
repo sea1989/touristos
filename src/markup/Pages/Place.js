@@ -210,12 +210,7 @@ const Place = () => {
             <div className="dlab-bnr-inr overlay-black-light" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                 <div className="container">
                     <div className="dlab-bnr-inr-entry">
-                        <h1 className="text-white">Услуги</h1>
-                        <div className="breadcrumb-row">
-                            <ul className="list-inline">
-                                <li>Туры и Экскурсии</li>
-                            </ul>
-                        </div>
+                        <h1 className="text-white">Экскурсии</h1>
                     </div>
                 </div>
             </div>
@@ -317,7 +312,7 @@ const Place = () => {
                                             <input
                                                 type="text"
                                                 className="form-control"
-                                                placeholder="Начните вводить тур..."
+                                                placeholder="Поиск..."
                                                 onChange={(event) => setSearchValue(
                                                     event.target.value
                                                 )}
@@ -335,7 +330,7 @@ const Place = () => {
                             </div>
                             <div className="row">
                                 <div className="col-md-12 col-sm-12 m-b15">
-                                    <h3 className="m-b5">Туры и Экскурсии:</h3>
+                                    <h3 className="m-b5">Экскурсии:</h3>
                                     <div className="dlab-separator bg-primary"></div>
                                 </div>
 

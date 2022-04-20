@@ -60,10 +60,9 @@ class Header extends Component {
                                     </li>
                                     <li><Link> Услуги <i className="fa fa-chevron-down"></i></Link>
                                         <ul className="sub-menu">
-                                            <li><Link to={'/place'} className="dez-page">Туры</Link></li>
-                                            <li><Link to={'/packages'} className="dez-page" >Пакетные туры</Link></li>
+                                            <li><Link to={'/place'} className="dez-page">Экскурсии</Link></li>
+                                            <li><Link to={'/packages'} className="dez-page" >Туры</Link></li>
                                             <li><Link to={'/calendar'} className="dez-page">График маршрутов</Link></li>
-                                            <li><Link to={'/calendar'} className="dez-page">Владивосток экскурсионный</Link></li>
                                         </ul>
                                     </li>
 

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Slider from "react-slick";
 
-var bg1 = 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/03/bg_partners.jpg';
-
 function SampleNextArrow(props) {
     const { onClick } = props;
     return (
@@ -18,7 +16,7 @@ function SamplePrevArrow(props) {
 }
 
 function Slick2() {
-
+    const [bg1, setBg1] = useState('');
     const [partners, setPartners] = useState([]);
 
     useEffect(() => {
@@ -33,6 +31,15 @@ function Slick2() {
                     image: item.acf.ava,
 
                 })));
+            });
+    }, []);
+
+    useEffect(() => {
+        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4401')
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setBg1(data.acf.bg);
             });
     }, []);
 
@@ -71,7 +78,7 @@ function Slick2() {
 
     return (
         <div>
-            <div className="section-full bg-white content-inner-1 testimonial-one-area overlay-black-dark" style={{ backgroundImage: "url(" + bg1 + ")" }}>
+            <div className="section-full bg-white content-inner-1 overlay-black-dark" style={{ backgroundImage: "url(" + bg1 + ")" }}>
                 <div className="container">
                     <div className="section-head style1 text-center text-white">
                         <h2 className="box-title">Наши партнеры</h2>
