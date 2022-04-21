@@ -29,7 +29,6 @@ function Slick2() {
                     title: item.title.rendered,
                     content: item.content.rendered,
                     image: item.acf.ava,
-
                 })));
             });
     }, []);
