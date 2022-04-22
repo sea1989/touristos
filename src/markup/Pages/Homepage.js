@@ -32,7 +32,7 @@ function Homepage() {
     const [dataPlaces, setDataPlaces] = useState([]);
     const [packages, setPackages] = useState([]);
     const [content, setСontent] = useState([]);
-    const [categoryArray, setCategoryArray] = useState({ categoryStore });
+    const [categoryArray, setCategoryArray] = useState(categoryStore);
 
     function handleChange(event) {
         console.log(event.target.value);

@@ -27,7 +27,7 @@ const Place = () => {
     const [bg3, setBg3] = useState('');
     const [dataPlaces, setDataPlaces] = useState([]);
     const [pages, setPages] = useState('');
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState({ number: 1 });
     const [categoryArray, setCategoryArray] = useState(categoryStore);
     const [searchValue, setSearchValue] = useState('');
 
@@ -35,39 +35,28 @@ const Place = () => {
     const [leftButton, setLeftButton] = useState(true);
 
     function nextPageHandler() {
-        try {
-            fetchData(currentPage + 1)
-            setCurrentPage(currentPage + 1);
-        } catch (e) {
-            console.log(e)
-        }
+        setCurrentPage({ number: currentPage.number + 1 });
     }
 
     function prevPageHandler() {
-        try {
-            fetchData(currentPage - 1)
-            setCurrentPage(currentPage - 1);
-        } catch (e) {
-            console.log(e)
-        }
+        setCurrentPage({ number: currentPage.number - 1 });
     }
 
     function getArray(allForms) {
-        return [...allForms].map((item) => item.value).reduce((acc, item) => item === 0 ? acc : [...acc, item], [])
+        return [...allForms]
+            .map((item) => item.value)
+            .reduce((acc, item) => item === 0 ? acc : [...acc, item], [])
     }
 
     function handleChange(event) {
-
         const allForms = document.querySelectorAll('select.form-control');
         const array = getArray(allForms)
         setCategoryArray([...array])
-
-
     }
 
     function handleSearch() {
-        WooCommerce.get("products",
-
+        WooCommerce.get(
+            "products",
             {
                 per_page: 12,
                 search: searchValue,
@@ -84,41 +73,33 @@ const Place = () => {
     }
 
     function handleChangeType() {
-
-
-
         dispatch({ type: 'ADD_CATEGORIES', payload: categoryArray });
-
-        setCurrentPage(1);
-
-        fetchData(1)
-
+        setCurrentPage({ number: 1 });
     }
 
-    function fetchData(page) {
-
-        console.log(currentPage);
-        fetch(`http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/product?product_cat[terms]=${categoryArray.filter(item => item != 0).toString()}&product_cat[operator]=AND&per_page=12&page=${page}`)
+    function fetchData() {
+        fetch(
+            `http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/product?product_cat[terms]=${categoryArray
+                .filter((item) => item != 0)
+                .toString()}&product_cat[operator]=AND&per_page=12&page=${currentPage.number
+            }`
+        )
             .then((response) => {
-                if (response.ok) {
-                    console.log(response.headers['X-WP-TotalPages']);
-                    setPages(response.headers['X-WP-TotalPages']);
-                    return response.json()
-                }
-                throw new Error('Something went wrong');
+                console.log(response.headers["X-WP-TotalPages"]);
+                setPages(response.headers["X-WP-TotalPages"]);
+                return response.json();
             })
             .then((data) => {
-
                 setDataPlaces(
                     data.map((item) => ({
                         images: [{ src: item.x_featured_media_medium }],
                         name: [item.title.rendered],
-                        id: item.id
-                    })),
+                        id: item.id,
+                    }))
                 );
             })
             .catch((error) => {
-                alert('страницы нет');
+                alert("страницы нет");
             });
     }
 
@@ -126,9 +107,9 @@ const Place = () => {
 
         console.log('hh')
 
-        fetchData(1)
+        fetchData()
 
-    }, []);
+    }, [currentPage]);
 
     useEffect(() => {
         fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4268')
@@ -139,35 +120,6 @@ const Place = () => {
             });
     }, []);
 
-
-    // function changePage(page) {
-
-    //     setCurrentPage(
-    //         page
-    //     );
-
-    //     WooCommerce.get("products",
-
-    //         {
-    //             per_page: 12,
-    //             category: categoryArray.toString(),
-    //             page: page,
-    //         },
-
-    //     )
-    //         .then((response) => {
-    //             setDataPlaces(
-    //                 response.data
-    //             );
-    //             setPages(
-    //                 response.headers['x-wp-totalpages']
-    //             );
-    //             console.log(dataPlaces)
-    //         })
-    //         .catch((error) => {
-    //             console.log(error.response.data);
-    //         });
-    // }
 
     return (
         <div>
@@ -188,13 +140,13 @@ const Place = () => {
                             <label>Категории</label>
                             <select className="form-control">
                                 <option value='0' selected={categoryArray[0] == '0'}>Любая</option>
-                                <option value='0' selected={categoryArray[0] == '0'}>Обзорные</option>
+                                <option value='0' selected={categoryArray[0] == ''}>Обзорные</option>
                                 <option value='20' selected={categoryArray[0] == '20'}>Морские</option>
-                                <option value='0' selected={categoryArray[0] == '0'}>Познавательные</option>
+                                <option value='0' selected={categoryArray[0] == ''}>Познавательные</option>
                                 <option value='23' selected={categoryArray[0] == '23'}>Пешеходные</option>
-                                <option value='0' selected={categoryArray[0] == '0'}>Активные</option>
+                                <option value='0' selected={categoryArray[0] == ''}>Активные</option>
                                 <option value='24' selected={categoryArray[0] == '24'}>Промышленные</option>
-                                <option value='0' selected={categoryArray[0] == '0'}>Природные объекты</option>
+                                <option value='0' selected={categoryArray[0] == ''}>Природные объекты</option>
                                 <option value='21' selected={categoryArray[0] == '21'}>Город крепость</option>
                             </select >
                         </div >
