@@ -9,6 +9,7 @@ import Slick2 from './Slick2';
 import TopPlaces from './../Element/TopPlaces';
 import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Setup:
 const WooCommerceRestApi = require("@woocommerce/woocommerce-rest-api").default;
@@ -25,9 +26,29 @@ var bg1 = 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/0
 
 function Homepage() {
 
+    const dispatch = useDispatch()
+    const categoryStore = useSelector(state => state.categoryArray)
+
     const [dataPlaces, setDataPlaces] = useState([]);
     const [packages, setPackages] = useState([]);
     const [content, setСontent] = useState([]);
+    const [categoryArray, setCategoryArray] = useState({ categoryStore });
+
+    function handleChange(event) {
+        console.log(event.target.value);
+
+        const allForms = document.querySelectorAll('select.form-control');
+        console.log([...allForms].map((item) => item.value));
+
+        setCategoryArray(
+            [...allForms].map((item) => item.value).reduce((acc, item) => item === 0 ? acc : [...acc, item], []),
+        );
+    }
+
+    function handleChangeType() {
+        dispatch({ type: 'ADD_CATEGORIES', payload: categoryArray })
+    }
+
 
     useEffect(() => {
         fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/slider')
@@ -78,6 +99,8 @@ function Homepage() {
 
 
 
+
+
     return (
         <div>
             <Header />
@@ -101,7 +124,7 @@ function Homepage() {
 
                 <div className="section-full book-form overlay-black-dark bg-img-fix p-t30 p-b10 mid" style={{ backgroundImage: "url(" + bg1 + ")" }}>
                     <div className="container">
-                        <form className="row" >
+                        <form className="row" onChange={handleChange}>
 
                             <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                                 <label>Категории</label>
@@ -177,7 +200,7 @@ function Homepage() {
                                 </select>
                             </div>
 
-                            <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group button__search" >
+                            <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group button__search" onClick={handleChangeType}>
                                 <Link to={'/place'} className="site-button btn-block">Поиск</Link>
                             </div>
                         </form>

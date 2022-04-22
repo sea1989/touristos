@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
@@ -19,34 +20,49 @@ var bg1 = require('./../../images/background/bg1.jpg');
 
 
 const Place = () => {
+
+    const dispatch = useDispatch()
+    const categoryStore = useSelector(state => state.categoryArray)
+
     const [bg3, setBg3] = useState('');
     const [dataPlaces, setDataPlaces] = useState([]);
     const [pages, setPages] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const [categoryArray, setCategoryArray] = useState([]);
+    const [categoryArray, setCategoryArray] = useState(categoryStore);
     const [searchValue, setSearchValue] = useState('');
 
     const [nextButton, setNextButton] = useState(true);
     const [leftButton, setLeftButton] = useState(true);
 
     function nextPageHandler() {
-        setCurrentPage(currentPage + 1);
+        try {
+            fetchData(currentPage + 1)
+            setCurrentPage(currentPage + 1);
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     function prevPageHandler() {
-        setCurrentPage(currentPage - 1);
+        try {
+            fetchData(currentPage - 1)
+            setCurrentPage(currentPage - 1);
+        } catch (e) {
+            console.log(e)
+        }
     }
 
+    function getArray(allForms) {
+        return [...allForms].map((item) => item.value).reduce((acc, item) => item === 0 ? acc : [...acc, item], [])
+    }
 
     function handleChange(event) {
-        console.log(event.target.value);
 
         const allForms = document.querySelectorAll('select.form-control');
-        console.log([...allForms].map((item) => item.value));
+        const array = getArray(allForms)
+        setCategoryArray([...array])
 
-        setCategoryArray(
-            [...allForms].map((item) => item.value).reduce((acc, item) => item === 0 ? acc : [...acc, item], []),
-        );
+
     }
 
     function handleSearch() {
@@ -69,71 +85,30 @@ const Place = () => {
 
     function handleChangeType() {
 
-        // fetch(`http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/product?product_cat[terms]=${this.state.categoryArray.toString()}&product_cat[operator]=AND&per_page=12`)
-        //     .then((response) => response.json())
-        //     .then((data) => {
-        //         console.log(data);
-        //         this.setState({
-        //             dataPlaces: data.map((item) => ({
-        //                 images: [{ src: item.x_featured_media_medium }],
-        //                 name: [item.title.rendered]
-        //             })),
-        //             //pages: response.headers['x-wp-totalpages']
-        //         });
-        //     });
+
+
+        dispatch({ type: 'ADD_CATEGORIES', payload: categoryArray });
 
         setCurrentPage(1);
 
-        fetch(`http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/product?product_cat[terms]=${categoryArray.filter(item => item != 0).toString()}&product_cat[operator]=AND&per_page=12&page=${currentPage}`)
-            .then((response) => {
-                console.log(response.headers['X-WP-TotalPages']);
-                setPages(response.headers['X-WP-TotalPages']);
-                return response.json()
-            })
-            .then((data) => {
-                console.log(data);
-                setDataPlaces(
-                    data.map((item) => ({
-                        images: [{ src: item.x_featured_media_medium }],
-                        name: [item.title.rendered]
-                    })),
-                );
-            })
-            .catch((error) => {
-                alert('страницы нет');
-            });
-
-        // WooCommerce.get("products",
-        //     {
-        //         per_page: 12,
-        //         category: this.state.categoryArray.toString(),
-        //         relation: 'AND',
-        //         page: 1,
-        //     },
-        // )
-        //     .then((response) => {
-        //         this.setState({
-        //             dataPlaces: response.data,
-        //             pages: response.headers['x-wp-totalpages']
-        //         });
-        //         console.log(this.state.dataPlaces)
-        //     })
-        //     .catch((error) => {
-        //         console.log(error.response.data);
-        //     });
+        fetchData(1)
 
     }
 
-    useEffect(() => {
+    function fetchData(page) {
 
-        fetch(`http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/product?product_cat[terms]=${categoryArray.filter(item => item != 0).toString()}&product_cat[operator]=AND&per_page=12&page=${currentPage}`)
+        console.log(currentPage);
+        fetch(`http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/product?product_cat[terms]=${categoryArray.filter(item => item != 0).toString()}&product_cat[operator]=AND&per_page=12&page=${page}`)
             .then((response) => {
-                console.log(response.headers['X-WP-TotalPages']);
-                setPages(response.headers['X-WP-TotalPages']);
-                return response.json()
+                if (response.ok) {
+                    console.log(response.headers['X-WP-TotalPages']);
+                    setPages(response.headers['X-WP-TotalPages']);
+                    return response.json()
+                }
+                throw new Error('Something went wrong');
             })
             .then((data) => {
-                console.log(data);
+
                 setDataPlaces(
                     data.map((item) => ({
                         images: [{ src: item.x_featured_media_medium }],
@@ -145,25 +120,15 @@ const Place = () => {
             .catch((error) => {
                 alert('страницы нет');
             });
+    }
 
-        // WooCommerce.get("products",
+    useEffect(() => {
 
-        //     {
-        //         per_page: 12,
-        //         //category: 20,
-        //     }
-        // )
-        //     .then((response) => {
+        console.log('hh')
 
-        //         setDataPlaces(response.data);
-        //         setPages(response.headers['x-wp-totalpages']);
+        fetchData(1)
 
-        //         console.log(dataPlaces)
-        //     })
-        //     .catch((error) => {
-        //         console.log(error.response.data);
-        //     });
-    }, [currentPage]);
+    }, []);
 
     useEffect(() => {
         fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4268')
@@ -222,17 +187,17 @@ const Place = () => {
                         <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                             <label>Категории</label>
                             <select className="form-control">
-                                <option value='0'>Любая</option>
-                                <option value='0'>Обзорные</option>
-                                <option value='20'>Морские</option>
-                                <option value='0'>Познавательные</option>
-                                <option value='23'>Пешеходные</option>
-                                <option value='0'>Активные</option>
-                                <option value='24'>Промышленные</option>
-                                <option value='0'>Природные объекты</option>
-                                <option value='21'>Город крепость</option>
-                            </select>
-                        </div>
+                                <option value='0' selected={categoryArray[0] == '0'}>Любая</option>
+                                <option value='0' selected={categoryArray[0] == '0'}>Обзорные</option>
+                                <option value='20' selected={categoryArray[0] == '20'}>Морские</option>
+                                <option value='0' selected={categoryArray[0] == '0'}>Познавательные</option>
+                                <option value='23' selected={categoryArray[0] == '23'}>Пешеходные</option>
+                                <option value='0' selected={categoryArray[0] == '0'}>Активные</option>
+                                <option value='24' selected={categoryArray[0] == '24'}>Промышленные</option>
+                                <option value='0' selected={categoryArray[0] == '0'}>Природные объекты</option>
+                                <option value='21' selected={categoryArray[0] == '21'}>Город крепость</option>
+                            </select >
+                        </div >
                         <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                             <label>Вид тура</label>
                             <select className="form-control" >
@@ -296,9 +261,9 @@ const Place = () => {
                         <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group button__search" onClick={handleChangeType}>
                             <Link to={'/place'} className="site-button btn-block">Поиск</Link>
                         </div>
-                    </form>
-                </div>
-            </div>
+                    </form >
+                </div >
+            </div >
 
             <div className="section-full bg-white content-inner dlab-about-1">
                 <div className="container">
@@ -371,7 +336,7 @@ const Place = () => {
                 </div>
             </div>
             <Footer />
-        </div>
+        </div >
     )
 
 }
