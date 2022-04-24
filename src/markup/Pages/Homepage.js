@@ -225,7 +225,6 @@ function Homepage() {
                                         </div>
                                         <div className="dlab-info p-a15 border-1">
                                             <h4 className="dlab-title m-t0"><a href="booking-details.html">{item.name}</a></h4>
-                                            <span className="location">{item.id}</span>
                                             <div className="package-content">
                                                 <div className="clearfix">
                                                     <span className="package-price pull-left text-primary">Руб {item.price}</span>

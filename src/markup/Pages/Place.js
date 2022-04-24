@@ -127,7 +127,7 @@ const Place = () => {
             <div className="dlab-bnr-inr overlay-black-light" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                 <div className="container">
                     <div className="dlab-bnr-inr-entry">
-                        <h1 className="text-white">Экскурсии</h1>
+                        <h1 className="text-white">Экскурсии и туры</h1>
                     </div>
                 </div>
             </div>
@@ -153,60 +153,60 @@ const Place = () => {
                         <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                             <label>Вид тура</label>
                             <select className="form-control" >
-                                <option value='0'>Любой</option>
-                                <option value='23'>Пеший</option>
-                                <option value='16'>Экскурсия</option>
-                                <option value='60'>Тур</option>
-                                <option value='0'>Катерный</option>
-                                <option value='63'>Автобусный</option>
-                                <option value='0'>Катер + автобус</option>
-                                <option value='0'>Семейный</option>
-                                <option value='61'>Детский</option>
-                                <option value='0'>Активный</option>
-                                <option value='0'>Обзорный</option>
-                                <option value='0'>Индивидуальный</option>
-                                <option value='0'>Групповой</option>
-                            </select>
-                        </div>
+                                <option value='0' selected={categoryArray[1] == ''}>Любой</option>
+                                <option value='23' selected={categoryArray[1] == '23'}>Пеший</option>
+                                <option value='16' selected={categoryArray[1] == '16'}>Экскурсия</option>
+                                <option value='60' selected={categoryArray[1] == '60'}>Тур</option>
+                                <option value='0' selected={categoryArray[1] == ''}>Катерный</option>
+                                <option value='63' selected={categoryArray[1] == '63'}>Автобусный</option>
+                                <option value='0' selected={categoryArray[1] == ''}>Катер + автобус</option>
+                                <option value='0' selected={categoryArray[1] == ''}>Семейный</option>
+                                <option value='61' selected={categoryArray[1] == '61'}>Детский</option>
+                                <option value='0' selected={categoryArray[1] == ''}>Активный</option>
+                                <option value='0' selected={categoryArray[1] == ''}>Обзорный</option>
+                                <option value='0' selected={categoryArray[1] == ''}>Индивидуальный</option>
+                                <option value='0' selected={categoryArray[1] == ''}>Групповой</option>
+                            </select >
+                        </div >
                         <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                             <label>Направления</label>
                             <select className="form-control">
-                                <option value='0'>Любое</option>
-                                <option value='0'>Горы</option>
-                                <option value='0'>Острова</option>
-                                <option value='54'>Заповедники</option>
-                                <option value='0'>Базы отдыха</option>
-                                <option value='0'>Лечение</option>
-                                <option value='0'>Море</option>
-                                <option value='0'>Водопады</option>
+                                <option value='0' selected={categoryArray[2] == ''}>Любое</option>
+                                <option value='0' selected={categoryArray[2] == ''}>Горы</option>
+                                <option value='0' selected={categoryArray[2] == ''}>Острова</option>
+                                <option value='54' selected={categoryArray[2] == '54'}>Заповедники</option>
+                                <option value='0' selected={categoryArray[2] == ''}>Базы отдыха</option>
+                                <option value='0' selected={categoryArray[2] == ''}>Лечение</option>
+                                <option value='0' selected={categoryArray[2] == ''}>Море</option>
+                                <option value='0' selected={categoryArray[2] == ''}>Водопады</option>
                             </select>
                         </div>
                         <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                             <label>Продолжительность</label>
 
                             <select className="form-control">
-                                <option value='0'>Любая</option>
-                                <option value='0'>1</option>
-                                <option value='49'>2</option>
-                                <option value='50'>3</option>
-                                <option value='51'>4 отдыха</option>
-                                <option value='0'>5 и более</option>
+                                <option value='0' selected={categoryArray[3] == ''}>Любая</option>
+                                <option value='0' selected={categoryArray[3] == ''}>1</option>
+                                <option value='49' selected={categoryArray[3] == '49'}>2</option>
+                                <option value='50' selected={categoryArray[3] == '50'}>3</option>
+                                <option value='51' selected={categoryArray[3] == '51'}>4 отдыха</option>
+                                <option value='0' selected={categoryArray[3] == ''}>5 и более</option>
                             </select>
 
                         </div>
                         <div className="col-md-4 col-sm-6 col-6 col-lg-2 form-group">
                             <label>География тура</label>
                             <select className="form-control">
-                                <option value='0'>Любая</option>
-                                <option value='0'>Большой липовый</option>
-                                <option value='0'>Мама-Саха</option>
-                                <option value='0'>Хасанский район</option>
-                                <option value='0'>Заповедник</option>
-                                <option value='0'>остальное Приморье</option>
-                                <option value='0'>Алтай</option>
-                                <option value='0'>Байкал</option>
-                                <option value='0'>Москва</option>
-                                <option value='0'>Россия</option>
+                                <option value='0' selected={categoryArray[4] == ''}>Любая</option>
+                                <option value='0' selected={categoryArray[4] == ''}>Большой липовый</option>
+                                <option value='0' selected={categoryArray[4] == ''}>Мама-Саха</option>
+                                <option value='0' selected={categoryArray[4] == ''}>Хасанский район</option>
+                                <option value='0' selected={categoryArray[4] == ''}>Заповедник</option>
+                                <option value='0' selected={categoryArray[4] == ''}>остальное Приморье</option>
+                                <option value='0' selected={categoryArray[4] == ''}>Алтай</option>
+                                <option value='0' selected={categoryArray[4] == ''}>Байкал</option>
+                                <option value='0' selected={categoryArray[4] == ''}>Москва</option>
+                                <option value='0' selected={categoryArray[4] == ''}>Россия</option>
                             </select>
                         </div>
 
@@ -247,17 +247,16 @@ const Place = () => {
                             </div>
                             <div className="row">
                                 <div className="col-md-12 col-sm-12 m-b15">
-                                    <h3 className="m-b5">Экскурсии:</h3>
+                                    <h3 className="m-b5">Экскурсии и туры:</h3>
                                     <div className="dlab-separator bg-primary"></div>
                                 </div>
 
                                 {dataPlaces.map((item, index) => (
                                     <div className="col-md-12 col-lg-6 col-sm-12 m-b30" key={index}>
                                         <div className="dlab-box place-bx top-item">
-                                            <div className="dlab-media top-item__media"> <Link><img src={item.images[0]?.src || 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2018/11/DSC_2797-scaled.jpg'} alt="" /></Link> </div>
+                                            <div className="dlab-media top-item__media"> <Link to={'./booking/' + item.id}><img src={item.images[0]?.src || 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2018/11/DSC_2797-scaled.jpg'} alt="" /></Link> </div>
                                             <div className="dlab-info p-tb30 p-lr10 text-center bg-gray">
                                                 <h4 className="dlab-title m-t0"><Link>{item.name}</Link></h4>
-                                                <p className="m-b10">{item.name}</p>
                                                 <Link to={'./booking/' + item.id} className="site-button outline radius-xl m-lr5">Подробнее</Link>
                                             </div>
                                         </div>
