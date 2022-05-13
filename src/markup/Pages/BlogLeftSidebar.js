@@ -9,7 +9,7 @@ const BlogLeftSidebar = () => {
     const [blog, setBlog] = useState([]);
 
     useEffect(() => {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/posts?categories=82')
+        fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/posts?categories=82')
             .then((response) => response.json())
             .then((data) => {
                 setBlog(data.map((item) => ({
@@ -24,7 +24,7 @@ const BlogLeftSidebar = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4277')
+        fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4277')
             .then((response) => response.json())
             .then((data) => {
                 setBg3(data.acf.bg);

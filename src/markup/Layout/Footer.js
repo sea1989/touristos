@@ -15,7 +15,7 @@ function Footer() {
     const [bg3, setBg3] = useState('');
 
     useEffect(() => {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4285')
+        fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4285')
             .then((response) => response.json())
             .then((data) => {
                 setBg3(data.acf.bg);
@@ -23,7 +23,7 @@ function Footer() {
     }, []);
 
     function formHandler() {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/contact-form-7/v1/contact-forms/4289/feedback',
+        fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/contact-form-7/v1/contact-forms/4289/feedback',
             { method: 'POST', body: new FormData(document.querySelector('#formFooter')) })
     }
 

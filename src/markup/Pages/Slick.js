@@ -3,23 +3,23 @@ import Slider from "react-slick";
 
 const destination = [
     {
-        image: 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/image-2.png',
+        image: 'https://xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/image-2.png',
         title: 'Eiffel Tower'
     },
     {
-        image: 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/image-3.png',
+        image: 'https://xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/image-3.png',
         title: 'South America'
     },
     {
-        image: 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/image-4.png',
+        image: 'https://xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/image-4.png',
         title: 'Australia '
     },
     {
-        image: 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/03/Frame-71.png',
+        image: 'https://xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/03/Frame-71.png',
         title: 'India'
     },
     {
-        image: 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/image-5.png',
+        image: 'https://xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/image-5.png',
         title: 'Philippines '
     },
 ]

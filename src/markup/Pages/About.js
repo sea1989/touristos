@@ -9,7 +9,7 @@ function About() {
     const [bg3, setBg3] = useState('');
 
     useEffect(() => {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4278')
+        fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4278')
             .then((response) => response.json())
             .then((data) => {
                 setBg3(data.acf.bg);
@@ -52,7 +52,7 @@ function About() {
                         </div>
                         <div className="row">
                             <div className="col-lg-6 col-md-6 col-sm-6 m-b30 col-12">
-                                <img src='http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2021/08/DSC_2797-scaled.jpg' alt="" />
+                                <img src='https://xn--b1amiugdde.xn--p1ai/wp-content/uploads/2021/08/DSC_2797-scaled.jpg' alt="" />
                             </div>
                         </div>
 

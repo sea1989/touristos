@@ -13,7 +13,7 @@ const WooCommerceRestApi = require("@woocommerce/woocommerce-rest-api").default;
 // import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api"; // Supports ESM
 
 const WooCommerce = new WooCommerceRestApi({
-    url: 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/', // Your store URL
+    url: 'https://xn--b1amiugdde.xn--p1ai/', // Your store URL
     consumerKey: 'ck_ec13b20905009b1ea7018f1696f5f0d45738b4a4', // Your consumer key
     consumerSecret: 'cs_524a79c134001e1c82f209675cf4d1303c8d3899', // Your consumer secret
     version: 'wc/v3' // WooCommerce WP REST API version
@@ -45,12 +45,12 @@ const BazaLipoviyVer2 = (props) => {
     }
 
     function formHandler() {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/contact-form-7/v1/contact-forms/4220/feedback',
+        fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/contact-form-7/v1/contact-forms/4220/feedback',
             { method: 'POST', body: new FormData(document.querySelector('#formElem')) })
     }
 
     useEffect(() => {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/pages/3988')
+        fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/pages/3988')
             .then((response) => response.json())
             .then((data) => {
                 setLipovoy({
@@ -84,7 +84,7 @@ const BazaLipoviyVer2 = (props) => {
     }, []);
 
     useEffect(() => {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4274')
+        fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4274')
             .then((response) => response.json())
             .then((data) => {
                 setBg3(data.acf.bg);
@@ -114,7 +114,7 @@ const BazaLipoviyVer2 = (props) => {
                 <div className="container">
                     <div className="listing-info-box">
                         <div className="listing-theme-logo">
-                            <img src='http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/image-3.png' alt="" />
+                            <img src='https://xn--b1amiugdde.xn--p1ai/wp-content/uploads/2022/02/image-3.png' alt="" />
                         </div>
                         <div className="listing-info">
                             <div className="listing-info-left">
@@ -227,7 +227,7 @@ const BazaLipoviyVer2 = (props) => {
                                                 {dataPlaces.map((item, index) => (
                                                     <div className="col-md-12 col-lg-6 col-sm-12 m-b30" key={index}>
                                                         <div className="dlab-box place-bx top-item">
-                                                            <div className="dlab-media top-item__media"> <Link><img src={item.images[0]?.src || 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2018/11/DSC_2797-scaled.jpg'} alt="" /></Link> </div>
+                                                            <div className="dlab-media top-item__media"> <Link><img src={item.images[0]?.src || 'https://xn--b1amiugdde.xn--p1ai/wp-content/uploads/2018/11/DSC_2797-scaled.jpg'} alt="" /></Link> </div>
                                                             <div className="dlab-info p-tb30 p-lr10 text-center bg-gray">
                                                                 <h4 className="dlab-title m-t0"><Link>{item.name}</Link></h4>
                                                                 <p className="m-b10">{item.name}</p>
@@ -511,7 +511,7 @@ const BazaLipoviyVer2 = (props) => {
                                                 {dataPlaces.map((item, index) => (
                                                     <div className="col-md-12 col-lg-6 col-sm-12 m-b30" key={index}>
                                                         <div className="dlab-box place-bx top-item">
-                                                            <div className="dlab-media top-item__media"> <Link><img src={item.images[0]?.src || 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2018/11/DSC_2797-scaled.jpg'} alt="" /></Link> </div>
+                                                            <div className="dlab-media top-item__media"> <Link><img src={item.images[0]?.src || 'https://xn--b1amiugdde.xn--p1ai/wp-content/uploads/2018/11/DSC_2797-scaled.jpg'} alt="" /></Link> </div>
                                                             <div className="dlab-info p-tb30 p-lr10 text-center bg-gray">
                                                                 <h4 className="dlab-title m-t0"><Link>{item.name}</Link></h4>
                                                                 <p className="m-b10">{item.name}</p>

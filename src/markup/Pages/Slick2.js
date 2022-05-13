@@ -20,7 +20,7 @@ function Slick2() {
     const [partners, setPartners] = useState([]);
 
     useEffect(() => {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/posts?categories=84')
+        fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/posts?categories=84')
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
@@ -34,7 +34,7 @@ function Slick2() {
     }, []);
 
     useEffect(() => {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4401')
+        fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4401')
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
@@ -77,7 +77,7 @@ function Slick2() {
 
     return (
         <div>
-            <div className="section-full bg-white content-inner-1 overlay-black-dark" style={{ backgroundImage: "url(" + bg1 + ")" }}>
+            <div className="section-full bg-white content-inner-1" style={{ backgroundImage: "url(" + bg1 + ")", backgroundSize: 'cover' }}>
                 <div className="container">
                     <div className="section-head style1 text-center text-white">
                         <h2 className="box-title">Наши партнеры</h2>

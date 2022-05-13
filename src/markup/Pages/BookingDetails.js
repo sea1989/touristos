@@ -9,7 +9,7 @@ const WooCommerceRestApi = require("@woocommerce/woocommerce-rest-api").default;
 // import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api"; // Supports ESM
 
 const WooCommerce = new WooCommerceRestApi({
-    url: 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/', // Your store URL
+    url: 'https://xn--b1amiugdde.xn--p1ai/', // Your store URL
     consumerKey: 'ck_ec13b20905009b1ea7018f1696f5f0d45738b4a4', // Your consumer key
     consumerSecret: 'cs_524a79c134001e1c82f209675cf4d1303c8d3899', // Your consumer secret
     version: 'wc/v3' // WooCommerce WP REST API version
@@ -37,7 +37,7 @@ const BookingDetails = () => {
     const [baner, setBaner] = useState([]);
 
     function formHandler() {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/contact-form-7/v1/contact-forms/4220/feedback',
+        fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/contact-form-7/v1/contact-forms/4220/feedback',
             { method: 'POST', body: new FormData(document.querySelector('#formElem')) })
     }
 
@@ -55,7 +55,7 @@ const BookingDetails = () => {
     }, [id])
 
     useEffect(() => {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4268')
+        fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4272')
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
@@ -88,7 +88,7 @@ const BookingDetails = () => {
                             <div className="col-lg-8">
                                 <div className="d-flex info-bx m-b30">
                                     <div className="tour-title">
-                                        <h2>{tour.name}</h2>
+                    
                                         <p>Описание тура</p>
                                         <p><span className="site-button button-sm">6 Дней</span> <span className="site-button button-sm">6 Ночей</span> Тур</p>
                                     </div>

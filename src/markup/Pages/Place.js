@@ -9,7 +9,7 @@ const WooCommerceRestApi = require("@woocommerce/woocommerce-rest-api").default;
 // import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api"; // Supports ESM
 
 const WooCommerce = new WooCommerceRestApi({
-    url: 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/', // Your store URL
+    url: 'https://xn--b1amiugdde.xn--p1ai/', // Your store URL
     consumerKey: 'ck_ec13b20905009b1ea7018f1696f5f0d45738b4a4', // Your consumer key
     consumerSecret: 'cs_524a79c134001e1c82f209675cf4d1303c8d3899', // Your consumer secret
     version: 'wc/v3' // WooCommerce WP REST API version
@@ -79,7 +79,7 @@ const Place = () => {
 
     function fetchData() {
         fetch(
-            `http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/product?product_cat[terms]=${categoryArray
+            `https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/product?product_cat[terms]=${categoryArray
                 .filter((item) => item != 0)
                 .toString()}&product_cat[operator]=AND&per_page=12&page=${currentPage.number
             }`
@@ -112,7 +112,7 @@ const Place = () => {
     }, [currentPage]);
 
     useEffect(() => {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4268')
+        fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4272')
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
@@ -254,7 +254,7 @@ const Place = () => {
                                 {dataPlaces.map((item, index) => (
                                     <div className="col-md-12 col-lg-6 col-sm-12 m-b30" key={index}>
                                         <div className="dlab-box place-bx top-item">
-                                            <div className="dlab-media top-item__media"> <Link to={'./booking/' + item.id}><img src={item.images[0]?.src || 'http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-content/uploads/2018/11/DSC_2797-scaled.jpg'} alt="" /></Link> </div>
+                                            <div className="dlab-media top-item__media"> <Link to={'./booking/' + item.id}><img src={item.images[0]?.src || 'https://xn--b1amiugdde.xn--p1ai/wp-content/uploads/2018/11/DSC_2797-scaled.jpg'} alt="" /></Link> </div>
                                             <div className="dlab-info p-tb30 p-lr10 text-center bg-gray">
                                                 <h4 className="dlab-title m-t0"><Link>{item.name}</Link></h4>
                                                 <Link to={'./booking/' + item.id} className="site-button outline radius-xl m-lr5">Подробнее</Link>

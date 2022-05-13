@@ -12,7 +12,7 @@ function Contacts() {
     const [bg3, setBg3] = useState('');
 
     useEffect(() => {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4280')
+        fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4280')
             .then((response) => response.json())
             .then((data) => {
                 setBg3(data.acf.bg);

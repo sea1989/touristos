@@ -3524,7 +3524,7 @@ blockquote:before {
 ---------------------------------------------------------------*/
 
 .main-bar {
-    background: #1B4367;
+    background: #1b4367;
     width: 100%;
     position: relative;
 }
@@ -16067,4 +16067,11 @@ input[type="radio"] {
 
 .wp-block-table td {
     border: 1px solid gray;
+}
+
+.packages-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }

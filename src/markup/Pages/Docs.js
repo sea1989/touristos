@@ -9,7 +9,7 @@ export default function Docs() {
     const [docs, setDocs] = useState([]);
 
     useEffect(() => {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/pages/4230')
+        fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/pages/4230')
             .then((response) => response.json())
             .then((data) => {
                 setDocs({
@@ -19,7 +19,7 @@ export default function Docs() {
     }, []);
 
     useEffect(() => {
-        fetch('http://xn--b1aoke0e.xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4274')
+        fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4274')
             .then((response) => response.json())
             .then((data) => {
                 setBg3(data.acf.bg);
