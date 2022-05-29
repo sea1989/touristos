@@ -11870,7 +11870,7 @@ ul[class*="list-"] {
 .overlay-black-light:after,
 .overlay-black-middle:after,
 .overlay-black-dark:after {
-    background: #000;
+    background: #1b4367;
 }
 
 .overlay-gradient-light:after,
@@ -15910,7 +15910,7 @@ ol.commentlist li .star-rating {
 }
 
 .slider-background {
-    background: #6666a4;
+    background: #1b4367;
     padding: 48px;
 }
 

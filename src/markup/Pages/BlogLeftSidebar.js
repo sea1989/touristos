@@ -54,7 +54,7 @@ const BlogLeftSidebar = () => {
                             {blog.map((item, index) => (
                                 <div className="blog-post blog-md clearfix" key={index}>
                                     <div className="dlab-post-media dlab-img-effect zoom-slow radius-sm">
-                                        <Link><img src={item.image} alt="" /></Link>
+                                        <Link to={'./blogdetails/' + item.id}><img src={item.image} alt="" /></Link>
                                     </div>
                                     <div className="dlab-post-info">
                                         <div className="dlab-post-meta">
@@ -63,7 +63,7 @@ const BlogLeftSidebar = () => {
                                             </ul>
                                         </div>
                                         <div className="dlab-post-title ">
-                                            <h4 className="post-title font-24"><Link href="blog-details.html">{item.title}</Link></h4>
+                                            <h4 className="post-title font-24"><Link to={'./blogdetails/' + item.id}>{item.title}</Link></h4>
                                         </div>
                                         <div className="dlab-post-text">
                                             <p>{item.desc}</p>
@@ -75,15 +75,6 @@ const BlogLeftSidebar = () => {
                                 </div>
                             ))}
 
-                            <div className="pagination-bx clearfix text-center">
-                                <ul className="pagination">
-                                    <li className="previous"><Link><i className="ti-arrow-left"></i> Prev</Link></li>
-                                    <li className="active"><Link>1</Link></li>
-                                    <li><Link>2</Link></li>
-                                    <li><Link>3</Link></li>
-                                    <li className="next"><Link>Next <i className="ti-arrow-right"></i></Link></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
