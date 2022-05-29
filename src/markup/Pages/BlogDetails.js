@@ -37,13 +37,7 @@ const BlogDetails = () => {
             <div className="dlab-bnr-inr overlay-black-light" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                 <div className="container">
                     <div className="dlab-bnr-inr-entry">
-                        <h1 className="text-white">Blog Details</h1>
-                        <div className="breadcrumb-row">
-                            <ul className="list-inline">
-                                <li><Link>Home</Link></li>
-                                <li>Blog Details</li>
-                            </ul>
-                        </div>
+                        <h1 className="text-white">Блог</h1>
                     </div>
                 </div>
             </div>
