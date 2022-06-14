@@ -74,14 +74,14 @@ const Packages = () => {
                             <div className="col-md-6 col-xl-3  col-sm-6 m-b20" key={index}>
                                 <div className="dlab-box top-item">
                                     <div className="top-item__media">
-                                        <Link to={'./booking'}><img src={item.images[0].src} alt="" /> </Link>
+                                        <Link to={'./booking/' + item.id}><img src={item.images[0]?.src || 'https://xn--b1amiugdde.xn--p1ai/wp-content/uploads/2018/11/DSC_2797-scaled.jpg'} alt="" /> </Link>
                                     </div>
                                     <div className="dlab-info p-a15 border-1">
                                         <h4 className="dlab-title m-t0"><a href="booking-details.html">{item.name}</a></h4>
                                         <div className="package-content">
                                             <div className="clearfix packages-footer">
-                                                <span className="package-price pull-left text-primary">{item.price}Руб</span>
-                                                <Link to={'/booking/' + item.id} className="site-button pull-right">Подробнее</Link>
+                                                <span className="package-price pull-left text-primary">{item.price || 'цена не указана  '}Руб</span>
+                                                <Link to={'./booking/' + item.id} className="site-button pull-right">Подробнее</Link>
                                             </div>
                                         </div>
                                     </div>

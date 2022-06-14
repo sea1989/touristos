@@ -55,7 +55,12 @@ function About() {
                                 <img src='https://xn--b1amiugdde.xn--p1ai/wp-content/uploads/2021/08/DSC_2797-scaled.jpg' alt="" />
                             </div>
                         </div>
-
+                        <script type="text/javascript" src="https://tourism.gov.ru/operators/widget/js/widget.js"></script>
+                        {/*  Russiatourism.ru Widget  */}
+                        <div id="russiatourism_widget"></div>
+                        <script type="text/javascript">
+                            RT.Widget.build('%D0%A0%D0%A2%D0%9E+021832');
+                        </script>
                     </div>
                 </div>
 
