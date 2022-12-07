@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
-import Header from './../Layout/Header';
-import Footer from './../Layout/Footer';
+import Header from '../Layout/Header';
+import Footer from '../Layout/Footer';
 
 
 // Setup:
@@ -17,7 +17,7 @@ const WooCommerce = new WooCommerceRestApi({
 
 //var bg3 = require('./../../images/banner/bnr1.jpg');
 
-const Packages = () => {
+const Kids = () => {
 
     const [packages, setPackages] = useState([]);
 
@@ -34,7 +34,7 @@ const Packages = () => {
 
             {
                 per_page: 12,
-                category: 83,
+                category: 61,
             }
         )
             .then((response) => {
@@ -63,7 +63,7 @@ const Packages = () => {
             <div className="dlab-bnr-inr overlay-black-light" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                 <div className="container">
                     <div className="dlab-bnr-inr-entry">
-                        <h1 className="text-white">Пакетные туры</h1>
+                        <h1 className="text-white">Детские туры и экскурсии</h1>
                     </div>
                 </div>
             </div>
@@ -95,4 +95,4 @@ const Packages = () => {
         </div>
     )
 }
-export default Packages;
+export default Kids;

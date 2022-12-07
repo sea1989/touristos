@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header2 from './../Layout/Header2';
+import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
 
 class Login extends Component {
@@ -7,7 +7,7 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <Header2 />
+                <Header />
                 <div className="section-full content-inner-2 shop-account bg-white">
                     <div className="container">
                         <div className="row">

@@ -23,7 +23,6 @@ function Slick2() {
         fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/posts?categories=84')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setPartners(data.map((item) => ({
                     id: item.id,
                     title: item.title.rendered,
@@ -37,7 +36,6 @@ function Slick2() {
         fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4401')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setBg1(data.acf.bg);
             });
     }, []);

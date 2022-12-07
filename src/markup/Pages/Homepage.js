@@ -35,11 +35,7 @@ function Homepage() {
     const [categoryArray, setCategoryArray] = useState(categoryStore);
 
     function handleChange(event) {
-        console.log(event.target.value);
-
         const allForms = document.querySelectorAll('select.form-control');
-        console.log([...allForms].map((item) => item.value));
-
         setCategoryArray(
             [...allForms].map((item) => item.value).reduce((acc, item) => item === 0 ? acc : [...acc, item], []),
         );

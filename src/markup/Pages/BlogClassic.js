@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import Header2 from './../Layout/Header2';
+import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
 
 const classicBlog = [
@@ -50,7 +50,7 @@ class BlogClassic extends Component {
     render() {
         return (
             <div>
-                <Header2 />
+                <Header />
                 <div className="dlab-bnr-inr overlay-black-light" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                     <div className="container">
                         <div className="dlab-bnr-inr-entry">

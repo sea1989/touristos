@@ -85,7 +85,6 @@ const Place = () => {
             }`
         )
             .then((response) => {
-                console.log(response.headers["X-WP-TotalPages"]);
                 setPages(response.headers["X-WP-TotalPages"]);
                 return response.json();
             })
@@ -104,18 +103,13 @@ const Place = () => {
     }
 
     useEffect(() => {
-
-        console.log('hh')
-
         fetchData()
-
     }, [currentPage]);
 
     useEffect(() => {
         fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4272')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setBg3(data.acf.bg);
             });
     }, []);

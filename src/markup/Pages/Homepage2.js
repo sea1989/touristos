@@ -5,7 +5,7 @@ import Slick2 from './Slick2';
 import HomeBlog from './../Element/HomeBlog';
 import { Link } from 'react-router-dom';
 
-import Header2 from './../Layout/Header2';
+import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
 import Tab2 from './../Pages/Tab2';
 
@@ -52,7 +52,7 @@ class Homepage2 extends Component {
         return (
             <div>
 
-                <Header2 />
+                <Header />
                 <Slider className="slider-wrapper" {...settings}>
                     {content.map((item, index) => (
                         <div

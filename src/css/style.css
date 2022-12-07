@@ -16075,3 +16075,8 @@ input[type="radio"] {
     align-items: center;
     gap: 10px;
 }
+
+.qr {
+    display:flex;
+    flex-direction: column;
+}

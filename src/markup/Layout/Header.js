@@ -16,7 +16,6 @@ class Header extends Component {
 
         btn.addEventListener('click', toggleFunc);
 
-
         // Sidenav li open close
         var navUl = [].slice.call(document.querySelectorAll('.navbar-nav > li'));
         for (var y = 0; y < navUl.length; y++) {
@@ -52,7 +51,6 @@ class Header extends Component {
                                 </form>
                             </div>
 
-
                             <div className="header-nav navbar-collapse collapse navbar myNavbar justify-content-end" id="navbarNavDropdown">
                                 <ul className="nav navbar-nav">
                                     <li><Link to={'/'}>Главная <i className="fa "></i></Link>
@@ -63,6 +61,7 @@ class Header extends Component {
                                             <li><Link to={'/place'} className="dez-page">Экскурсии и туры</Link></li>
                                             <li><Link to={'/packages'} className="dez-page" >Пакетные туры</Link></li>
                                             <li><Link to={'/calendar'} className="dez-page">График маршрутов</Link></li>
+                                            <li><Link to={'/kids'} className="dez-page">Детские туры и экскурсии</Link></li>
                                         </ul>
                                     </li>
 

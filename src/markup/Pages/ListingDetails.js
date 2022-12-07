@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Header2 from './../Layout/Header2';
+import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
 import { Link } from 'react-router-dom';
 import { TabContent, TabPane } from 'reactstrap';
@@ -17,7 +17,7 @@ var bg3 = require('./../../images/banner/bnr1.jpg');
     
         return (
             <div>
-                <Header2 />
+                <Header />
                 <div className="dlab-bnr-inr overlay-black-light" style={{ backgroundImage: "url(" + bg3 + ")", backgroundSize: 'cover' }}>
                     <div className="container">
                         <div className="dlab-bnr-inr-entry">

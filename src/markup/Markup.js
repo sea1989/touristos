@@ -30,6 +30,7 @@ import BazaSahaVer2 from './Pages/BazaSahaVer2';
 import Payment from './Pages/Payment';
 import Docs from './Pages/Docs';
 import Calendar from './Pages/Calendar';
+import Kids from './Pages/Kids';
 
 
 class Markup extends Component {
@@ -45,6 +46,7 @@ class Markup extends Component {
                         <Route path='/booking/:id' exact component={BookingDetails} />
                         <Route path='/place' exact component={Place} />
                         <Route path='/packages' exact component={Packages} />
+                        <Route path='/kids' exact component={Kids} />
                         <Route path='/error' exact component={Error404} />
                         <Route path='/login' exact component={Login2} />
                         <Route path='/register' exact component={Register} />

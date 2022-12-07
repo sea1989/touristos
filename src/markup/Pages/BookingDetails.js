@@ -36,18 +36,32 @@ const BookingDetails = () => {
     const [tourImg, setTourImg] = useState([]);
     const [baner, setBaner] = useState([]);
 
+    const [days, setDays] = useState([]);
+    const [nights, setNights] = useState([]);
+    const [linkForPay, setLinkForPay] = useState([]);
+    const [qr, setQR] = useState([]);
+
+
+
     function formHandler() {
         fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/contact-form-7/v1/contact-forms/4220/feedback',
             { method: 'POST', body: new FormData(document.querySelector('#formElem')) })
     }
 
     useEffect(() => {
+
+
+
         WooCommerce.get(`products/${id}`,
         )
             .then((response) => {
                 setTour(response.data);
                 setTourImg(response.data.images);
                 setBaner(response.data.attributes.filter((item) => item.name === 'baner')[0]?.options[0]);
+                setDays(response.data.meta_data.find(({ key }) => key == 'days').value)
+                setNights(response.data.meta_data.find(({ key }) => key == 'nights').value)
+                setLinkForPay(response.data.meta_data.find(({ key }) => key == 'link_for_pay').value)
+                setQR(response.data.meta_data.find(({ key }) => key == 'qr').value)
             })
             .catch((error) => {
                 console.log(error.response.data);
@@ -58,7 +72,6 @@ const BookingDetails = () => {
         fetch('https://xn--b1amiugdde.xn--p1ai/wp-json/wp/v2/bgpages/4272')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setBg3(data.acf.bg);
             });
     }, []);
@@ -88,9 +101,9 @@ const BookingDetails = () => {
                             <div className="col-lg-8">
                                 <div className="d-flex info-bx m-b30">
                                     <div className="tour-title">
-                    
+
                                         <p>Описание тура</p>
-                                        <p><span className="site-button button-sm">6 Дней</span> <span className="site-button button-sm">6 Ночей</span> Тур</p>
+                                        <p><span className="site-button button-sm">{days} Дней</span> <span className="site-button button-sm">{nights} Ночей</span> Тур</p>
                                     </div>
                                     <div className="tour-price ml-auto">
                                         <span>Цена</span>
@@ -122,6 +135,16 @@ const BookingDetails = () => {
                             <div className="col-lg-4">
                                 <div className="sticky-top">
 
+                                    <form className='hotel-booking qr'>
+                                        <img src={qr} alt='qr' />
+                                        <a target="_blank" rel="noopener noreferrer" href={linkForPay} ><button
+                                            className="site-button btn-block"
+                                        >Купить</button></a>
+                                    </form>
+
+                                    <hr />
+                                    <h2>или</h2>
+                                    <hr />
                                     <form id="formElem" className="hotel-booking">
                                         <input type='hidden' name='tourName' value={tour.name}></input>
                                         <div className="row">
@@ -237,6 +260,8 @@ const BookingDetails = () => {
                                         <img src={baner ? baner : ''} className="d-md-none d-xl-block d-lg-block" alt="" />
                                     </div>
                                 </div>
+
+
                             </div>
                         </div>
 
@@ -265,7 +290,7 @@ const BookingDetails = () => {
 
             </div>
             <Footer />
-        </div>
+        </div >
     )
 }
 
